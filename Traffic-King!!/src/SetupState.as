@@ -2,13 +2,62 @@ package
 {
 	import flash.display.NativeMenu;
 	import mx.core.FlexSprite;
+	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
 	public class SetupState extends FlxState
 	{
-		public var map:FlxTilemap;			//variable that represents the map itself
-		//*****************************************************************************************
+		/*Embedding outside text assets for use (this includes tilemaps etc.) */
+		[Embed(source = '../assets/maplayouts/map1.txt', mimeType = 'application/octet-stream')] private var Map1_MapData:Class;	//data for the map layout
+		
+		/*Embedding art assets for use */
+		[Embed(source = "../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
+		[Embed(source = "../assets/tiles/Tiles.png")] private var Tiles:Class;
+		
+		/*Represents the map itself*/
+		public var map:FlxTilemap;
+		
+		/*The level we are on*/
+//		public var level:Level;
 
+		/*used to make the camera follow the mouse*/
+		private var MouseRectangle:FlxObject;
+		
 		FlxG.debug;							//allows debug messages to appear
+		
+/*		public function SetupState(level:Level)
+		{
+			this.level = level;
+		}
+*/		
+		
+		override public function create():void 
+		{
+			FlxG.mouse.show();
+			
+			/*Initializes the rectangle that the camera will follow*/
+			MouseRectangle = new FlxObject(FlxG.mouse.x, FlxG.mouse.y, 16, 16);
+			add(MouseRectangle);
+			
+			/*Generates the level*/
+			map = new FlxTilemap();
+			map.loadMap(new Map1_MapData, Tiles, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
+			add(map);
+			
+			/*sets the camera to follow the mouse */
+			FlxG.camera.setBounds(0, 0, map.width, map.height);
+			FlxG.camera.follow(MouseRectangle);
+			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
+												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);
+			
+			super.create();
+		}
+		
+		override public function update():void
+		{
+			/*updates the position of the mouse*/
+			MouseRectangle.x = FlxG.mouse.x;
+			MouseRectangle.y = FlxG.mouse.y;
+		}
 		/*
 		private var cursor:Cursor;			//a generic cursor. This will be used thoughout the game to select things
 		private var menu:Menu;				//a generic menu. This will be used throughout the game to display selectable menu's

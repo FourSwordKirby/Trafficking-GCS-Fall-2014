@@ -11,7 +11,7 @@ package
 		FlxG.debug;
 		
 		/*Buttons for the start menu*/
-		private var StartButton:FlxButton;				
+		private var start_button:FlxButton;				
 		
 		/*Background for the start menu*/
 		private var background_sprite:FlxSprite;
@@ -25,8 +25,8 @@ package
 			add(background_sprite);	
 			
 			/*Initializes and adds the start button to the game*/
-			StartButton = new FlxButton(100, 400, "LAUNCH CAMPAIGN", BeginGame);
-			add(StartButton);											//This adds the button to the game world
+			start_button = new FlxButton(100, 400, "LAUNCH CAMPAIGN", BeginGame);
+			add(start_button);											//This adds the button to the game world
 			
 			super.create();	//super method that takes care of the rest
 		}

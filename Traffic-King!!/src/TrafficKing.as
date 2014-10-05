@@ -10,7 +10,7 @@ package  {
 		public function TrafficKing() 
 		{
 			//initiates the game state		
-			super(Parameters.GAME_WIDTH, Parameters.GAME_HEIGHT, StartState, 1);
+			super(Parameters.SCREEN_WIDTH, Parameters.SCREEN_HEIGHT, StartState, 1);
 		}
 	}
 

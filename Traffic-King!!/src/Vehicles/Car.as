@@ -1,5 +1,4 @@
-package  
-{
+package Vehicles {
 	import flash.net.NetStreamMulticastInfo;
 	import org.flixel.*;
 
@@ -8,22 +7,21 @@ package
 		/*Embedding art assets for use */
 		[Embed(source = "../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
 		
-		//variables to control player movement
+		//variables that describe the vehicles movement
 		public var direction:String = "";
 		public var moving:Boolean;
 		
-		//these set the bounds for where the player can move
-		public var xfloor:int;			//This is how far to the left the cursor can go
-		public var xceiling:int;		//This is how far to the right the cursor can go
-		
-		public var yfloor:int;			//This is how far up the cursor can go
-		public var yceiling:int;		//This is how far down the cursor can go
+		//the end destination for the care
+		public var destination;
 		
 		public function Car(X:int,Y:int) 
 		{
 			super(X, Y);
 			loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 		}
+		
+		override public function 
+		//implement a graph interface?
 /*		
 		//REQUIRES: A string direction indicating what direction to move in
 		//ENSURES: The character moves 1 space in said direction.
