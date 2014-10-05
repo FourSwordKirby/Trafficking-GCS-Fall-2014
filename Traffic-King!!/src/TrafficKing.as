@@ -9,7 +9,8 @@ package  {
 	{
 		public function TrafficKing() 
 		{
-			super(960, 640, StartState, 1);		//initiates the game state
+			//initiates the game state		
+			super(Parameters.GAME_WIDTH, Parameters.GAME_HEIGHT, StartState, 1);
 		}
 	}
 

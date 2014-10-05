@@ -5,14 +5,27 @@ package
 
 	public class StartState extends FlxState
 	{
+		/*Embedding art assets for use */
+		[Embed(source = "../assets/backgrounds/Main-Style1.png")] private var Background:Class;			//Background for the title screen
+
 		FlxG.debug;
-		private var StartButton:FlxButton;				//This button is used to enter the overworld map state
+		
+		/*Buttons for the start menu*/
+		private var StartButton:FlxButton;				
+		
+		/*Background for the start menu*/
+		private var background_sprite:FlxSprite;
 		
 		override public function create():void
 		{
 			FlxG.mouse.show();							//Displays the mouse on the screen
 			
-			StartButton = new FlxButton(320, 500, "LAUNCH CAMPAIGN", BeginGame);	//This creates the button which will let us actuall start the game
+			/*Initializes and adds the background to the game*/
+			background_sprite = new FlxSprite(0, 0, Background);
+			add(background_sprite);	
+			
+			/*Initializes and adds the start button to the game*/
+			StartButton = new FlxButton(100, 400, "LAUNCH CAMPAIGN", BeginGame);
 			add(StartButton);											//This adds the button to the game world
 			
 			super.create();	//super method that takes care of the rest
@@ -20,7 +33,7 @@ package
 		
 		private function BeginGame(): void 
 		{
-			trace("helllo");
+			FlxG.switchState(new SetupState);			//switches the current state to the overworld map.
 		}
 	}
 }
