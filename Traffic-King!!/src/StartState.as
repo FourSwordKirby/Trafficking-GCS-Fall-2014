@@ -7,7 +7,8 @@ package
 	{
 		/*Embedding art assets for use */
 		[Embed(source = "../assets/backgrounds/Main-Style1.png")] private var Background:Class;			//Background for the title screen
-
+		[Embed(source = "../assets/gfx/Main-StartBtn1.png")] private var StartButton:Class;			//Background for the title screen
+		
 		FlxG.debug;
 		
 		/*Buttons for the start menu*/
@@ -25,7 +26,8 @@ package
 			add(background_sprite);	
 			
 			/*Initializes and adds the start button to the game*/
-			start_button = new FlxButton(100, 400, "LAUNCH CAMPAIGN", BeginGame);
+			start_button = new FlxButton(100, 400, "", BeginGame);
+			start_button.loadGraphic(StartButton);
 			add(start_button);											//This adds the button to the game world
 			
 			super.create();	//super method that takes care of the rest
