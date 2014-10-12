@@ -11,7 +11,7 @@ package
 		
 		/*Embedding art assets for use */
 		[Embed(source = "../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
-		[Embed(source = "../assets/tiles/Tiles.png")] private var Tiles:Class;
+		[Embed(source = "../assets/tiles/Sprite Sheet.png")] private var Tiles:Class;
 		
 		/*Represents the map itself*/
 		public var map:FlxTilemap;

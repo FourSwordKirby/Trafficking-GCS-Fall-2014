@@ -6,7 +6,7 @@ package
 	public class MapSelectState extends FlxState
 	{
 		/*Embedding art assets for use */
-		[Embed(source = "../assets/backgrounds/Menu-BG.png")] private var Background:Class;			//Background for the title screen
+		[Embed(source = "../assets/UI/Menu-BG.png")] private var Background:Class;			//Background for the title screen
 
 		[Embed(source = "../assets/UI/Menu-PittBtn1.png")] private var PittButton:Class;
 		[Embed(source = "../assets/UI/Menu-NYBtn1.png")] private var NewYorkButton:Class;
