@@ -23,7 +23,11 @@ package GameObjects
 			this.timer = 0;
 			this.onCoolDown = false;
 			
-			this.
+			switch (arrangement)
+			{
+				case Parameters.ARRANGEMENT_NESW:
+					NorthSouthLights.add(new TrafficLight(this.x,this.y,
+			}
 		}
 		
 	}
