@@ -7,7 +7,7 @@ package
 	public class SetupState extends FlxState
 	{
 		/*Embedding outside text assets for use (this includes tilemaps etc.) */
-		[Embed(source = '../assets/maplayouts/map1.txt', mimeType = 'application/octet-stream')] private var Map1_MapData:Class;	//data for the map layout
+		[Embed(source = '../assets/maplayouts/map1.csv', mimeType = 'application/octet-stream')] private var Map1_MapData:Class;	//data for the map layout
 		
 		/*Embedding art assets for use */
 		[Embed(source = "../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
