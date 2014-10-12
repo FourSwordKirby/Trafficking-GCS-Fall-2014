@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="50" tileheight="50">
- <tileset firstgid="1" name="Sprite Sheet" tilewidth="50" tileheight="50" spacing="1">
-  <image source="Sprite Sheet.png" trans="00ff00" width="600" height="1000"/>
+ <tileset firstgid="1" name="Road Tiles" tilewidth="50" tileheight="50" spacing="1">
+  <image source="Road Tiles.png" trans="00ff00" width="560" height="1000"/>
  </tileset>
- <layer name="Tile Layer 1" width="12" height="12" opacity="0.96">
+ <layer name="Tile Layer 1" width="12" height="12">
   <data encoding="csv">
 5,24,24,24,24,24,24,24,24,24,24,32,
 36,63,35,79,35,62,63,35,79,35,62,37,
