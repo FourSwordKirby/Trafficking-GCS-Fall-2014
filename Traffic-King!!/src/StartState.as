@@ -6,8 +6,8 @@ package
 	public class StartState extends FlxState
 	{
 		/*Embedding art assets for use */
-		[Embed(source = "../assets/backgrounds/Main-Style1.png")] private var Background:Class;			//Background for the title screen
-		[Embed(source = "../assets/gfx/Main-StartBtn1.png")] private var StartButton:Class;			//Background for the title screen
+		[Embed(source = "../assets/backgrounds/Main-Style2.png")] private var Background:Class;			//Background for the title screen
+		[Embed(source = "../assets/UI/Main-StartBtn1.png")] private var StartButton:Class;			//Button Graphic
 		
 		FlxG.debug;
 		
@@ -26,16 +26,16 @@ package
 			add(background_sprite);	
 			
 			/*Initializes and adds the start button to the game*/
-			start_button = new FlxButton(100, 400, "", BeginGame);
+			start_button = new FlxButton(400, 400, "", SelectMap);
 			start_button.loadGraphic(StartButton);
 			add(start_button);											//This adds the button to the game world
 			
 			super.create();	//super method that takes care of the rest
 		}
 		
-		private function BeginGame(): void 
+		private function SelectMap(): void 
 		{
-			FlxG.switchState(new SetupState);			//switches the current state to the overworld map.
+			FlxG.switchState(new MapSelectState);			//switches the current state to the map select screen
 		}
 	}
 }

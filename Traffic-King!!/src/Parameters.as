@@ -9,5 +9,10 @@ package
 		
 		public static const DEADZONE_WIDTH:int = SCREEN_WIDTH * 0.875;
 		public static const DEADZONE_HEIGHT:int = SCREEN_HEIGHT * 0.875;
+		
+		public static const GREEN_LIGHT:int = 0;
+		public static const YELLOW_LIGHT:int = 1;
+		public static const RED_LIGHT:int = 2;
+
 	}
 }
