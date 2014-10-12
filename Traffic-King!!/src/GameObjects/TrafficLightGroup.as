@@ -2,7 +2,7 @@ package GameObjects
 {
 	import org.flixel.*;
 	
-	public class TrafficLightGroup 
+	public class TrafficLightGroup extends FlxGroup
 	{
 		private var NorthSouthLights:FlxGroup;
 		private var EastWestLights:FlxGroup;
@@ -23,13 +23,130 @@ package GameObjects
 			this.timer = 0;
 			this.onCoolDown = false;
 			
+			this.NorthSouthLights = new FlxGroup();
+			this.EastWestLights = new FlxGroup();
+			
+			var light:TrafficLight;
 			switch (arrangement)
 			{
 				case Parameters.ARRANGEMENT_NESW:
-					NorthSouthLights.add(new TrafficLight(this.x,this.y,
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_NORTH);
+					light.x = this.position.x;
+					light.y = this.position.y - light.height / 2;
+					NorthSouthLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_SOUTH);
+					light.x = this.position.x;
+					light.y = this.position.y + light.height / 2;
+					NorthSouthLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_EAST);
+					light.x = this.position.x + light.width / 2;
+					light.y = this.position.y;
+					EastWestLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_WEST);
+					light.x = this.position.x - light.width / 2;
+					light.y = this.position.y;
+					EastWestLights.add(light);
+					
+				case Parameters.ARRANGEMENT_NES:
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_NORTH);
+					light.x = this.position.x;
+					light.y = this.position.y - light.height / 2;
+					NorthSouthLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_SOUTH);
+					light.x = this.position.x;
+					light.y = this.position.y + light.height / 2;
+					NorthSouthLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_EAST);
+					light.x = this.position.x + light.width / 2;
+					light.y = this.position.y;
+					EastWestLights.add(light);
+				
+				case Parameters.ARRANGEMENT_ESW:
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_SOUTH);
+					light.x = this.position.x;
+					light.y = this.position.y + light.height / 2;
+					NorthSouthLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_EAST);
+					light.x = this.position.x + light.width / 2;
+					light.y = this.position.y;
+					EastWestLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_WEST);
+					light.x = this.position.x - light.width / 2;
+					light.y = this.position.y;
+					EastWestLights.add(light);
+					
+				case Parameters.ARRANGEMENT_SWN:
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_NORTH);
+					light.x = this.position.x;
+					light.y = this.position.y - light.height / 2;
+					NorthSouthLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_SOUTH);
+					light.x = this.position.x;
+					light.y = this.position.y + light.height / 2;
+					NorthSouthLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_WEST);
+					light.x = this.position.x - light.width / 2;
+					light.y = this.position.y;
+					EastWestLights.add(light);
+					
+				case Parameters.ARRANGEMENT_WNE:
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_NORTH);
+					light.x = this.position.x;
+					light.y = this.position.y - light.height / 2;
+					NorthSouthLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_EAST);
+					light.x = this.position.x + light.width / 2;
+					light.y = this.position.y;
+					EastWestLights.add(light);
+					
+					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_WEST);
+					light.x = this.position.x - light.width / 2;
+					light.y = this.position.y;
+					EastWestLights.add(light);
 			}
+			
+			NorthSouthLights.callAll("changeColor");
+			NorthSouthLights.callAll("changeColor");
+			
+			this.add(NorthSouthLights);
+			this.add(EastWestLights);
 		}
 		
+		override public function update():void
+		{
+			if (timer < frequency && timer == frequency - Parameters.LIGHT_YELLOW_TRANSITION_TIME)
+			{
+				if ((TrafficLight) (NorthSouthLights.members[0]).getColor() == Parameters.LIGHT_GREEN)
+					NorthSouthLights.callAll("changeColor");
+				else
+					EastWestLights.callAll("changeColor");
+			}
+			
+			if (timer == frequency)
+			{
+				NorthSouthLights.callAll("changeColor");
+				EastWestLights.callAll("changeColor");
+				timer = 0;
+			}
+			
+			//trace(timer);
+			timer++;
+		}
+		
+		public function onClick():void 
+		{
+			timer = frequency - Parameters.LIGHT_YELLOW_TRANSITION_TIME;
+			onCoolDown = true;
+		}
 	}
-
 }

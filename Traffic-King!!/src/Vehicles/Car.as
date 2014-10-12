@@ -5,7 +5,7 @@ package Vehicles {
 	public class Car extends FlxSprite 
 	{
 		/*Embedding art assets for use */
-		[Embed(source = "../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
+		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
 		
 		//variables that describe the vehicles movement
 		public var direction:String = "";
@@ -20,7 +20,7 @@ package Vehicles {
 			loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 		}
 		
-		override public function 
+		//override public function 
 		//implement a graph interface?
 /*		
 		//REQUIRES: A string direction indicating what direction to move in
@@ -62,6 +62,6 @@ package Vehicles {
 			var y_displacement:int = Math.abs(this.y+this.height/2 - this.origin.y)/this.height;
 			return (x_displacement + y_displacement >= movement);
 		}
+		*/
 	}
-*/
 }

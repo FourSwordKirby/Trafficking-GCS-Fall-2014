@@ -26,6 +26,6 @@ package
 		public static const ARRANGEMENT_NES:int = 1;
 		public static const ARRANGEMENT_ESW:int = 2;
 		public static const ARRANGEMENT_SWN:int = 3;
-		public static const ARRANGEMENT_WNS:int = 4;
+		public static const ARRANGEMENT_WNE:int = 4;
 	}
 }

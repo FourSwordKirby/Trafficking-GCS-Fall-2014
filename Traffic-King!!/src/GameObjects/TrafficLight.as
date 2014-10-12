@@ -1,4 +1,4 @@
-package  
+package GameObjects
 {
 	import mx.collections.*;
 	import org.flixel.*;
@@ -6,22 +6,22 @@ package
 	public class TrafficLight extends FlxSprite
 	{
 		/*Embedding art assets for use */
-		[Embed(source = "../assets/gfx/Car Temporary Graphic.PNG")] private var TrafficLightSprite:Class;
+		[Embed(source = "/../assets/gfx/Traffic Lights.PNG")] private static var TrafficLightSprite:Class;
 		
 		private var light_state:int;
 		private var direction:int;
 		
-		public function TrafficLight(X:int, Y:int,direction:int = Parameters.DIRECTION_NORTH,light_state:int = Parameters.GREEN_LIGHT)
+		public function TrafficLight(X:int, Y:int,direction:int = Parameters.DIRECTION_NORTH)
 		{
 			super(X, Y);
-			this.light_state = light_state;	
+			this.light_state = Parameters.LIGHT_GREEN;
 			this.direction = direction;
 			
-			this.loadGraphic(TrafficLightSprite);
+			this.loadGraphic(TrafficLightSprite,true,true,21);
 			
-			addAnimation("Green", [0], 0);
+			addAnimation("Green", [2], 0);
 			addAnimation("Yellow", [1], 0);
-			addAnimation("Red", [2], 0);
+			addAnimation("Red", [0], 0);
 			
 			switch (light_state)
 			{
@@ -52,12 +52,12 @@ package
 			}
 		}
 				
-		public function getState()
+		public function getColor():int
 		{
 			return light_state;
 		}		
 		
-		public function changeColor()
+		public function changeColor():void
 		{
 			switch (light_state)
 			{
