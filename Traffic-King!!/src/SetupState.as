@@ -1,6 +1,7 @@
 package  
 {
 	import flash.display.NativeMenu;
+	import GameObjects.TrafficLightGroup;
 	import mx.core.FlexSprite;
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
@@ -11,24 +12,15 @@ package
 		
 		/*Embedding art assets for use */
 		[Embed(source = "../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
-		[Embed(source = "../assets/tiles/Sprite Sheet.png")] private var Tiles:Class;
+		[Embed(source = "../assets/tiles/Road Tiles No Edges.png")] private var Tiles:Class;
 		
 		/*Represents the map itself*/
 		public var map:FlxTilemap;
-		
-		/*The level we are on*/
-//		public var level:Level;
 
 		/*used to make the camera follow the mouse*/
 		private var MouseRectangle:FlxObject;
 		
 		FlxG.debug;							//allows debug messages to appear
-		
-/*		public function SetupState(level:Level)
-		{
-			this.level = level;
-		}
-*/		
 		
 		override public function create():void 
 		{
@@ -47,7 +39,10 @@ package
 			FlxG.camera.setBounds(0, 0, map.width, map.height);
 			FlxG.camera.follow(MouseRectangle);
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
-												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);
+												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);	
+			
+			var trafficLights:TrafficLightGroup = new TrafficLightGroup(20, 20, Parameters.ARRANGEMENT_NESW, 200);
+			add(trafficLights);
 			
 			super.create();
 		}
@@ -57,6 +52,8 @@ package
 			/*updates the position of the mouse*/
 			MouseRectangle.x = FlxG.mouse.x;
 			MouseRectangle.y = FlxG.mouse.y;
+			
+			super.update();
 		}
 		/*
 		private var cursor:Cursor;			//a generic cursor. This will be used thoughout the game to select things

@@ -13,14 +13,14 @@ package
 		[Embed(source = "../assets/UI/Menu-LondonBtn1.png")] private var LondonButton:Class;		
 		[Embed(source = "../assets/UI/Menu-ParisBtn1.png")] private var ParisButton:Class;	
 		[Embed(source = "../assets/UI/Menu-TokyoBtn1.png")] private var TokyoButton:Class;	
-		[Embed(source = "../assets/UI/Menu-LondonBtn1.png")] private var BeijingButton:Class;
+		[Embed(source = "../assets/UI/Menu-BJBtn1.png")] private var BeijingButton:Class;
 		
 		[Embed(source = "../assets/UI/Menu-PittBtn2.png")] private var PittButtonOn:Class;
 		[Embed(source = "../assets/UI/Menu-NYBtn2.png")] private var NewYorkButtonOn:Class;	
 		[Embed(source = "../assets/UI/Menu-LondonBtn2.png")] private var LondonButtonOn:Class;
 		[Embed(source = "../assets/UI/Menu-ParisBtn2.png")] private var ParisButtonOn:Class;	
 		[Embed(source = "../assets/UI/Menu-TokyoBtn2.png")] private var TokyoButtonOn:Class;	
-		[Embed(source = "../assets/UI/Menu-LondonBtn2.png")] private var BeijingButtonOn:Class;	
+		[Embed(source = "../assets/UI/Menu-BJBtn2.png")] private var BeijingButtonOn:Class;	
 		
 		/*Buttons for the start menu*/
 		private var pitt_button:FlxButton;	
