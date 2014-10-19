@@ -1,5 +1,9 @@
 package Vehicles 
 {
+	import adobe.utils.CustomActions;
+	import Graph.DirectedEdge;
+	import Graph.Vertex;
+	import mx.collections.ArrayList;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	/**
@@ -8,18 +12,34 @@ package Vehicles
 	 */ 
 	public class Vehicle extends FlxSprite 
 	{
-		public static var maxspeed:int;
-		public var speed:int;
-		public var stopped:Boolean;
-		public static var followdist:int;
-		public static var destination:FlxPoint;
-		public var location:FlxPoint;
+		private var stopped:Boolean;
+		private static var follow_distance:int;
+
+		private var location:FlxPoint;
+		private var direction:int;
 		
-		public function Vehicle(X:int, Y:int) 
+		private var destination:FlxPoint;
+		
+		//this is an arraylist of edges that details the path the car is following to get to it's destination.
+		private var planned_path:ArrayList;
+		private var current_road:DirectedEdge;
+		
+		/* this is the game state that the car is in, used to make the car stop if cars in front
+		 * of it are stopped etc.
+		 */
+		private var game:GameState;
+		
+		public function Vehicle(X:int, Y:int, maxSpeed:int,destination:Vertex, game:GameState) 
 		{
 			super(X, Y); 
-			//load sprites, animation, etc; potentially set velocity/acceleration?
-			//child classes set certain specifics in regards to variables?
+			this.maxVelocity.x = maxSpeed;
+			this.maxVelocity.y = maxSpeed;
+			this.destination = destination;
+			this.direction = Parameters.DIRECTION_SOUTH;
+			
+			/* the car upon initilization will generate the path it needs to travel?
+			this.path = */
+			this.game = game;
 		}
 		
 		public function isStopped():Boolean
@@ -34,18 +54,59 @@ package Vehicles
 		
 		public function getNextDir(direction:int):void
 		{
-			//takes current direction, looks at map, updates direction and location.
+			
+		}
+		
+		public function getCurrentRoad():DirectedEdge 
+		{
+			return this.current_road;
 		}
 		
 		public override function update():void
 		{
-		// The vehicle follows 
-		// if the vehicle in front of us is within follow_distance, set speed to their speed.
-		//if vehicle in front of us is stopped, we stop as well (isn't stopping the same thing as speed = 0?).
-		//if the light in front of us is red, then we stop; if it turns green, accelerate to maxspeed.
-		// If the vehicle reaches its destination, it'll remove itself from the screen, increment points?
-		super.update();
-		}		
+			switch (this.direction)
+			{
+				case Parameters.DIRECTION_NORTH:
+					this.acceleration.y = -2;
+					break;	
+				case Parameters.DIRECTION_EAST:
+					this.acceleration.x = 2;
+					break;
+				case Parameters.DIRECTION_SOUTH:
+					this.acceleration.y = 2;
+					break;
+				case Parameters.DIRECTION_WEST:
+					this.acceleration.x = -2;
+					break;
+			}
+			
+			for each (var vehicle:Vehicle in game.getVehciles().members)
+			{
+				if (current_road.equals(vehicle.current_road))
+				{
+					switch (this.direction)
+					{
+						case Parameters.DIRECTION_NORTH:
+							if (vehicle.y - this.y >= 0 && vehicle.y - this.y <= follow_distance)
+								this.velocity.y = vehicle.velocity.y;
+							break;	
+						case Parameters.DIRECTION_EAST:
+							if (vehicle.x - this.x >= 0 && vehicle.x - this.x <= follow_distance)
+								this.velocity.x = vehicle.velocity.x;
+							break;
+						case Parameters.DIRECTION_SOUTH:
+							if (this.y - vehicle.y >= 0 && this.y-vehicle.y <= follow_distance)
+								this.velocity.y = vehicle.velocity.y;
+							break;
+						case Parameters.DIRECTION_WEST:
+							if (this.x - vehicle.x >= 0 && this.x-vehicle.x <= follow_distance)
+								this.velocity.x = vehicle.velocity.x;
+							break;
+					}
+				}
+			}
+			
+			
+		}
 	}
-
 }

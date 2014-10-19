@@ -1,10 +1,11 @@
 package  
 {
 	import org.flixel.*;
+	import GameObjects.*;
 	
-	public class Map extends 
+	public class Map
 	{
-		public var map:FlxTilemap;
+		public var game_map:FlxTilemap;
 		//public var buildings:Building;
 		public var traffic_light_group:TrafficLightGroup;
 		public var vehicle_spawner:VehicleSpawner;
@@ -16,9 +17,11 @@ package
 			
 		}
 		
+		/*
 		override public function create() {
-			
+			super.
 		}
+		*/
 		
 	}
 

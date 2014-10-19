@@ -16,19 +16,24 @@ package Graph
 			this.destination = destination;
 		}
 		
-		public function getSource():Vertex;
+		public function equals(edge:DirectedEdge):Boolean
 		{
-			return this.source;
+			return (this.source.equals(edge.source) && this.destination.equals(edge.destination));
 		}
 		
-		public function getDestination():Vertex;
+		public function getSource():Vertex
 		{
-			return this.destination;
+			return source;
 		}
 		
-		public function getWeight():int;
+		public function getDestination():Vertex
 		{
-			return this.weight;
+			return destination;
+		}
+		
+		public function getWeight():int
+		{
+			return weight;
 		}
 	}
 

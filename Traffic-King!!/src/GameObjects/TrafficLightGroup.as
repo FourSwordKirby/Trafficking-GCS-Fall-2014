@@ -146,9 +146,7 @@ package GameObjects
 			
 			if (timer == frequency / 2)
 				onCoolDown = false;
-			
-			trace(timer);
-
+				
 			timer++;
 		}
 		

@@ -1,8 +1,9 @@
 package Vehicles {
 	import flash.net.NetStreamMulticastInfo;
+	import Graph.Vertex;
 	import org.flixel.*;
 
-	public class Car extends FlxSprite 
+	public class Car extends FlxSprite
 	{
 		/*Embedding art assets for use */
 		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
@@ -14,8 +15,11 @@ package Vehicles {
 		//the end destination for the care
 		public var destination;
 		
-		public function Car(X:int,Y:int) 
+		public function Car(X:int,Y:int)//,destination:Vertex,game:GameState) 
 		{
+			/*
+			super(X, Y, 20, new Vertex(20, 20),game);
+			*/
 			super(X, Y);
 			loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 		}
