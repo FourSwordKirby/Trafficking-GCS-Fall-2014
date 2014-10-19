@@ -6,7 +6,7 @@ package Vehicles
 	 * ...
 	 * @author sophia
 	 */ 
-	public class Vehicles_Super extends FlxSprite 
+	public class Vehicle extends FlxSprite 
 	{
 		public static var maxspeed:int;
 		public var speed:int;
@@ -15,7 +15,7 @@ package Vehicles
 		public static var destination:FlxPoint;
 		public var location:FlxPoint;
 		
-		public function Vehicles_Super(X:int, Y:int) 
+		public function Vehicle(X:int, Y:int) 
 		{
 			super(X, Y); 
 			//load sprites, animation, etc; potentially set velocity/acceleration?
@@ -27,7 +27,7 @@ package Vehicles
 			return stopped;
 		}
 		
-		public function getLocation_x():FlxPoint
+		public function getLocation():FlxPoint
 		{
 			return location;
 		}
