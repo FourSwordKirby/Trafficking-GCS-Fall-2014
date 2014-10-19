@@ -1,6 +1,7 @@
 package  
 {
 	import flash.display.NativeMenu;
+	import GameObjects.TrafficLight;
 	import GameObjects.TrafficLightGroup;
 	import GameObjects.VehicleSpawner;
 	import mx.core.FlexSprite;

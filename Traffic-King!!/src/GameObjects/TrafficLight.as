@@ -17,7 +17,7 @@ package GameObjects
 			this.light_state = Parameters.LIGHT_GREEN;
 			this.direction = direction;
 			
-			this.loadGraphic(TrafficLightSprite,true,true,21);
+			this.loadGraphic(TrafficLightSprite,true,true,22,16);
 			
 			addAnimation("Green", [2], 0);
 			addAnimation("Yellow", [1], 0);
