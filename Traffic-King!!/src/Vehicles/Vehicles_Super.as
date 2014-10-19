@@ -1,5 +1,6 @@
 package Vehicles 
 {
+	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
 	/**
 	 * ...
@@ -11,10 +12,8 @@ package Vehicles
 		public var speed:int;
 		public var stopped:Boolean;
 		public static var followdist:int;
-		public static var destination_x:int;
-		public static var destination_y:int;
-		public var location_x:int;
-		public var location_y:int;
+		public static var destination:FlxPoint;
+		public var location:FlxPoint;
 		
 		public function Vehicles_Super(X:int, Y:int) 
 		{
@@ -23,27 +22,17 @@ package Vehicles
 			//child classes set certain specifics in regards to variables?
 		}
 		
-		public function getSpeed():int
-		{
-			return speed;
-		}
-		
 		public function isStopped():Boolean
 		{
 			return stopped;
 		}
 		
-		public function getLocation_x():int
+		public function getLocation_x():FlxPoint
 		{
-			return location_x;
+			return location;
 		}
 		
-		public function getLocation_y():int
-		{
-			return location_y;
-		}
-		
-		public function getNextDir(D:String):void
+		public function getNextDir(direction:int):void
 		{
 			//takes current direction, looks at map, updates direction and location.
 		}
@@ -56,8 +45,7 @@ package Vehicles
 		//if the light in front of us is red, then we stop; if it turns green, accelerate to maxspeed.
 		// If the vehicle reaches its destination, it'll remove itself from the screen, increment points?
 		super.update();
-		}
-		
+		}		
 	}
 
 }

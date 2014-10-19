@@ -32,12 +32,12 @@ package GameObjects
 				case Parameters.ARRANGEMENT_NESW:
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_NORTH);
 					light.x = this.position.x;
-					light.y = this.position.y - light.height / 2;
+					light.y = this.position.y - light.width  / 2;
 					NorthSouthLights.add(light);
 					
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_SOUTH);
 					light.x = this.position.x;
-					light.y = this.position.y + light.height / 2;
+					light.y = this.position.y + light.width  / 2;
 					NorthSouthLights.add(light);
 					
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_EAST);
@@ -49,27 +49,29 @@ package GameObjects
 					light.x = this.position.x - light.width / 2;
 					light.y = this.position.y;
 					EastWestLights.add(light);
+					break;
 					
 				case Parameters.ARRANGEMENT_NES:
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_NORTH);
 					light.x = this.position.x;
-					light.y = this.position.y - light.height / 2;
+					light.y = this.position.y - light.width  / 2;
 					NorthSouthLights.add(light);
 					
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_SOUTH);
 					light.x = this.position.x;
-					light.y = this.position.y + light.height / 2;
+					light.y = this.position.y + light.width / 2;
 					NorthSouthLights.add(light);
 					
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_EAST);
 					light.x = this.position.x + light.width / 2;
 					light.y = this.position.y;
 					EastWestLights.add(light);
+					break;
 				
 				case Parameters.ARRANGEMENT_ESW:
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_SOUTH);
 					light.x = this.position.x;
-					light.y = this.position.y + light.height / 2;
+					light.y = this.position.y + light.width / 2;
 					NorthSouthLights.add(light);
 					
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_EAST);
@@ -81,27 +83,29 @@ package GameObjects
 					light.x = this.position.x - light.width / 2;
 					light.y = this.position.y;
 					EastWestLights.add(light);
+					break;
 					
 				case Parameters.ARRANGEMENT_SWN:
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_NORTH);
 					light.x = this.position.x;
-					light.y = this.position.y - light.height / 2;
+					light.y = this.position.y - light.width / 2;
 					NorthSouthLights.add(light);
 					
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_SOUTH);
 					light.x = this.position.x;
-					light.y = this.position.y + light.height / 2;
+					light.y = this.position.y + light.width / 2;
 					NorthSouthLights.add(light);
 					
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_WEST);
 					light.x = this.position.x - light.width / 2;
 					light.y = this.position.y;
 					EastWestLights.add(light);
+					break;
 					
 				case Parameters.ARRANGEMENT_WNE:
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_NORTH);
 					light.x = this.position.x;
-					light.y = this.position.y - light.height / 2;
+					light.y = this.position.y - light.width / 2;
 					NorthSouthLights.add(light);
 					
 					light = new TrafficLight(this.position.x, this.position.y, Parameters.DIRECTION_EAST);
@@ -113,6 +117,7 @@ package GameObjects
 					light.x = this.position.x - light.width / 2;
 					light.y = this.position.y;
 					EastWestLights.add(light);
+					break;
 			}
 			
 			NorthSouthLights.callAll("changeColor");
@@ -139,14 +144,20 @@ package GameObjects
 				timer = 0;
 			}
 			
+			if (timer == frequency / 2)
+				onCoolDown = false;
+			
 			trace(timer);
 			timer++;
 		}
 		
 		public function onClick():void 
 		{
-			timer = frequency - Parameters.LIGHT_YELLOW_TRANSITION_TIME;
-			onCoolDown = true;
+			if (!onCoolDown)
+			{
+				timer = frequency - Parameters.LIGHT_YELLOW_TRANSITION_TIME;
+				onCoolDown = true;
+			}
 		}
 	}
 }
