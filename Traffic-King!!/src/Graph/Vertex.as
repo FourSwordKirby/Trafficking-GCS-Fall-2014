@@ -4,7 +4,7 @@ package Graph
 
 	public class Vertex extends FlxPoint
 	{	
-		private var isTerminal:Boolean;
+		private var is_terminal:Boolean;
 		public function Vertex(X:int, Y:int)
 		{
 			super(X, Y);
