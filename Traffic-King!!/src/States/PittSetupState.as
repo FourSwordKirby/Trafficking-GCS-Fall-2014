@@ -1,5 +1,4 @@
-package  
-{
+package States {
 	import flash.display.NativeMenu;
 	import GameObjects.TrafficLight;
 	import GameObjects.TrafficLightGroup;
@@ -7,41 +6,32 @@ package
 	import mx.core.FlexSprite;
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
-	public class SetupState extends FlxState
+	public class PittSetupState extends SetupState
 	{
 		/*Embedding outside text assets for use (this includes tilemaps etc.) */
-		[Embed(source = '../assets/maplayouts/map1.csv', mimeType = 'application/octet-stream')] private var Map1_MapData:Class;	//data for the map layout
+		[Embed(source = '../../assets/maplayouts/map1.csv', mimeType = 'application/octet-stream')] private var Map1_MapData:Class;	//data for the map layout
 		
 		/*Embedding art assets for use */
-		[Embed(source = "../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
-		[Embed(source = "../assets/tiles/Road Tiles No Edges.png")] private var Tiles:Class;
-		
-		/*Represents the map itself*/
-		public var map:FlxTilemap;
-
-		/*used to make the camera follow the mouse*/
-		private var MouseRectangle:FlxObject;
+		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
+		[Embed(source = "../../assets/tiles/Road Tiles No Edges.png")] private var Tiles:Class;
 		
 		FlxG.debug;							//allows debug messages to appear
+		
+		public function PittSetupState()
+		{
+			super("Pitt", "1");
+		}
 		
 		override public function create():void 
 		{
 			FlxG.mouse.show();
-			
-			/*Initializes the rectangle that the camera will follow*/
-			MouseRectangle = new FlxObject(FlxG.mouse.x, FlxG.mouse.y, 16, 16);
-			add(MouseRectangle);
 			
 			/*Generates the level*/
 			map = new FlxTilemap();
 			map.loadMap(new Map1_MapData, Tiles, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 			add(map);
 			
-			/*sets the camera to follow the mouse */
-			FlxG.camera.setBounds(0, 0, map.width, map.height);
-			FlxG.camera.follow(MouseRectangle);
-			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
-												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);	
+			super.create();
 			
 			var trafficLights:TrafficLightGroup = new TrafficLightGroup(20, 20, Parameters.ARRANGEMENT_NESW, 200);
 			add(trafficLights);
@@ -50,16 +40,10 @@ package
 			vehicleSpawner.reinitialize(["car", "car", "car"], 100);
 			vehicleSpawner.startSpawning();
 			add(vehicleSpawner);
-			
-			super.create();
 		}
 		
 		override public function update():void
-		{
-			/*updates the position of the mouse*/
-			MouseRectangle.x = FlxG.mouse.x;
-			MouseRectangle.y = FlxG.mouse.y;
-			
+		{	
 			super.update();
 		}
 		/*

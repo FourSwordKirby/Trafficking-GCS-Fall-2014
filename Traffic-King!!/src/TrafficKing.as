@@ -1,4 +1,6 @@
-package  {
+package
+{
+	import States.*;
 	import org.flixel.FlxGame;
 	/**
 	 * ...
@@ -13,5 +15,4 @@ package  {
 			super(Parameters.SCREEN_WIDTH, Parameters.SCREEN_HEIGHT, StartState, 1);
 		}
 	}
-
 }

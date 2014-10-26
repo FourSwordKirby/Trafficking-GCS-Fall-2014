@@ -2,6 +2,7 @@ package
 {
 	import mx.core.FlexSprite;
 	import org.flixel.*;
+	import States.PittSetupState;
 
 	public class MapSelectState extends FlxState
 	{
@@ -83,7 +84,7 @@ package
 		
 		private function BeginGame(): void 
 		{
-			FlxG.switchState(new SetupState);			//switches the current state to the overworld map.
+			FlxG.switchState(new PittSetupState);			//switches the current state to the overworld map.
 		}
 	}
 }

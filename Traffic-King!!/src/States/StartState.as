@@ -1,13 +1,12 @@
-package  
-{
+package States {
 	import mx.core.FlexSprite;
 	import org.flixel.*;
 
 	public class StartState extends FlxState
 	{
 		/*Embedding art assets for use */
-		[Embed(source = "../assets/backgrounds/Main-Style2.png")] private var Background:Class;			//Background for the title screen
-		[Embed(source = "../assets/UI/Main-StartBtn1.png")] private var StartButton:Class;			//Button Graphic
+		[Embed(source = "../../assets/backgrounds/Main-Style2BG.png")] private var Background:Class;			//Background for the title screen
+		[Embed(source = "../../assets/UI/Main-StartBtn1.png")] private var StartButton:Class;			//Button Graphic
 		
 		FlxG.debug;
 		

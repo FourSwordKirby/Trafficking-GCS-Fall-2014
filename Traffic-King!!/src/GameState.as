@@ -2,10 +2,6 @@ package
 {
 	import org.flixel.*;
 	
-	/**
-	 * ...
-	 * @author Mountain Dew
-	 */
 	public class GameState extends FlxState 
 	{	
 		/*Represents the map itself*/
