@@ -37,7 +37,7 @@ package States {
 			add(MouseRectangle);
 			
 			/*sets the camera to follow the mouse */
-			FlxG.camera.setBounds(0, 0, map.game_map.width, map.game_map.height);
+			FlxG.camera.setBounds(0, 0, map.getMapWidth(), map.getMapHeight());
 			FlxG.camera.follow(MouseRectangle);
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
 												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
