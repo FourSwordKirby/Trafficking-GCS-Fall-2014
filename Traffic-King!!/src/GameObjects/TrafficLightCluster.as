@@ -2,7 +2,7 @@ package GameObjects
 {
 	import org.flixel.*;
 	
-	public class TrafficLightGroup extends FlxGroup
+	public class TrafficLightCluster extends FlxGroup
 	{
 		private var NorthSouthLights:FlxGroup;
 		private var EastWestLights:FlxGroup;
@@ -14,7 +14,7 @@ package GameObjects
 		private var arrangement:int;
 		private var timer:int;
 		
-		public function TrafficLightGroup(X:int, Y:int, arrangement:int, frequency:int)
+		public function TrafficLightCluster(X:int, Y:int, arrangement:int, frequency:int)
 		{
 			this.position = new FlxPoint(X, Y);
 			this.arrangement = arrangement;
