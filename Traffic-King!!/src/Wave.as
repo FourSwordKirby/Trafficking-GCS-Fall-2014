@@ -5,24 +5,44 @@ package
 	 * ...
 	 * @author Mountain Dew
 	 */
-	public class Wave 
+	public class Wave extends FlxBasic
 	{
 		//private var objective_score:int;
 		private var vehicles:Array; //Array of vehicle types
-		private var time_limit:int;
 		private var spawn_rate:Array;
+		private var time_limit:int;
 		
 		private var map:Map;
 		
 		private var timer:int;
 		private var score:int;
+		private var status:int; //0: Not started, 1: In progress, 2: Finished, 3: Failed
 		
-		public function Wave(time_limit, spawn_rate)
+		public function Wave(vehicles, spawn_rate, time_limit)
 		{
-			this.vehicles = [];
+			this.vehicles = vehicles;
+			this.spawn_rate = spawn_rate;
 			this.time_limit = time_limit;
 			
+			//Hardcode in map here
 			
+			this.timer = time_limit;
+			this.score = 0;
+			this.status = -1;
+			
+			
+		}
+		
+		override public function update()
+		{
+			if (this.map.vehicles.length == 0)
+			{
+				this.status = 1;
+				
+			}
+			else {
+			}
+				
 		}
 		
 	}

@@ -1,3 +1,4 @@
+import Maps.Map;
 package  
 {
 	import org.flixel.*;

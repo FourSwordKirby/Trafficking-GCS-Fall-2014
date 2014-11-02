@@ -1,24 +1,22 @@
 package States {
 	import flash.display.NativeMenu;
 	import GameObjects.TrafficLight;
-	import GameObjects.TrafficLightGroup;
+	import GameObjects.TrafficLightCluster;
 	import GameObjects.VehicleSpawner;
+	import Maps.PittMap;
 	import mx.core.FlexSprite;
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
 	public class PittSetupState extends SetupState
-	{
-		/*Embedding outside text assets for use (this includes tilemaps etc.) */
-		[Embed(source = '../../assets/maplayouts/map1.csv', mimeType = 'application/octet-stream')] private var Map1_MapData:Class;	//data for the map layout
-		
+	{	
 		/*Embedding art assets for use */
 		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
-		[Embed(source = "../../assets/tiles/Road Tiles No Edges.png")] private var Tiles:Class;
 		
 		FlxG.debug;							//allows debug messages to appear
 		
 		public function PittSetupState()
 		{
+			this.map = new PittMap();
 			super("Pitt", "1");
 		}
 		
@@ -26,24 +24,13 @@ package States {
 		{
 			FlxG.mouse.show();
 			
-			/*Generates the level*/
-			map = new FlxTilemap();
-			map.loadMap(new Map1_MapData, Tiles, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
-			add(map);
-			
+			add(this.map.create());
 			super.create();
-			
-			var trafficLights:TrafficLightGroup = new TrafficLightGroup(20, 20, Parameters.ARRANGEMENT_NESW, 200);
-			add(trafficLights);
-			
-			var vehicleSpawner:VehicleSpawner = new VehicleSpawner(40, 20, this);
-			vehicleSpawner.reinitialize(["car", "car", "car"], 100);
-			vehicleSpawner.startSpawning();
-			add(vehicleSpawner);
 		}
 		
 		override public function update():void
 		{	
+			in_setup = false;
 			super.update();
 		}
 		/*

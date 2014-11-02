@@ -61,19 +61,19 @@ package
 			london_button.onOut = function() : void {london_button.loadGraphic(LondonButton)};
 			add(london_button);
 			
-			paris_button = new FlxButton(50, 400, "", BeginGame);
+			paris_button = new FlxButton(50, 300, "", BeginGame);
 			paris_button.loadGraphic(ParisButton);
 			paris_button.onOver = function() : void {paris_button.loadGraphic(ParisButtonOn)}
 			paris_button.onOut = function() : void {paris_button.loadGraphic(ParisButton)};
 			add(paris_button);
 			
-			tokyo_button = new FlxButton(250, 400, "", BeginGame);
+			tokyo_button = new FlxButton(250, 300, "", BeginGame);
 			tokyo_button.loadGraphic(TokyoButton);
 			tokyo_button.onOver = function() : void {tokyo_button.loadGraphic(TokyoButtonOn)}
 			tokyo_button.onOut = function() : void {tokyo_button.loadGraphic(TokyoButton)};
 			add(tokyo_button);
 			
-			beijing_button = new FlxButton(450, 400, "", BeginGame);
+			beijing_button = new FlxButton(450, 300, "", BeginGame);
 			beijing_button.loadGraphic(BeijingButton);
 			beijing_button.onOver = function() : void {beijing_button.loadGraphic(BeijingButtonOn)}
 			beijing_button.onOut = function() : void {beijing_button.loadGraphic(BeijingButton)};

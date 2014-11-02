@@ -1,15 +1,14 @@
 package States {
 	import flash.display.NativeMenu;
-	import GameObjects.TrafficLight;
-	import GameObjects.TrafficLightGroup;
-	import GameObjects.VehicleSpawner;
-	import mx.core.FlexSprite;
+	import GameObjects.*;
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
+	import Maps.*;
+	
 	public class SetupState extends FlxState
 	{
 		/*Represents the map itself*/
-		public var map:FlxTilemap;
+		public var map:Map;
 
 		/*used to make the camera follow the mouse*/
 		protected var MouseRectangle:FlxObject;
@@ -22,7 +21,7 @@ package States {
 		/*used to indicate whether we are setting up on the map or not*/
 		protected var in_setup:Boolean;
 		
-		public function SetupState(level_name, wave_name)
+		public function SetupState(level_name:String, wave_name:String)
 		{
 			this.level_name = level_name;
 			this.wave_name = wave_name;
@@ -38,7 +37,7 @@ package States {
 			add(MouseRectangle);
 			
 			/*sets the camera to follow the mouse */
-			FlxG.camera.setBounds(0, 0, map.width, map.height);
+			FlxG.camera.setBounds(0, 0, map.game_map.width, map.game_map.height);
 			FlxG.camera.follow(MouseRectangle);
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
 												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
@@ -47,7 +46,7 @@ package States {
 		
 		override public function update():void
 		{
-			if (in_setup)
+			if (!in_setup)
 			{
 				/*updates the position of the mouse*/
 				MouseRectangle.x = FlxG.mouse.x;

@@ -25,7 +25,7 @@ package States {
 			add(background_sprite);	
 			
 			/*Initializes and adds the start button to the game*/
-			start_button = new FlxButton(400, 400, "", SelectMap);
+			start_button = new FlxButton(400, 500, "", SelectMap);
 			start_button.loadGraphic(StartButton);
 			add(start_button);											//This adds the button to the game world
 			
