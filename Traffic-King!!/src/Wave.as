@@ -24,25 +24,31 @@ package
 			this.spawn_rate = spawn_rate;
 			this.time_limit = time_limit;
 			
-			//Hardcode in map here
+			
 			
 			this.timer = time_limit;
+			this.vehicles_left = this.vehicles.length;
 			this.score = 0;
-			this.status = -1;
-			
-			
+			this.status = -1;	
+		}
+		
+		
+		public function startWave() {
+			this.status = 0;
 		}
 		
 		override public function update()
 		{
-			if (this.map.vehicles.length == 0)
+			if (this.vehicles_left == 0)
 			{
-				this.status = 1;
-				
+				this.status = 2;
+			}
+			else if (timer == 0) {
+				this.status = 3;
 			}
 			else {
+				this.timer--;
 			}
-				
 		}
 		
 	}
