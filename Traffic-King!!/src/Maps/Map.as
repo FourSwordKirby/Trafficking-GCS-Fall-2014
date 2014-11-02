@@ -29,6 +29,16 @@ package Maps {
 			
 			return map_group;
 		}
+		
+		public function getMapWidth():int
+		{
+			return this.game_map.width;
+		}
+		
+		public function getMapHeight():int
+		{
+			return this.game_map.width;
+		}
 	}
 
 }
