@@ -58,6 +58,53 @@ package Graph
 		/* We return an edge list detailing the shortest path from vertex a to vertex b. If a and b are not connected
 		 * we return null 
 		 */
+		public function getAllShortestPaths(a:Vertex):ArrayList 
+		{
+			var search_queue:PriorityQueue = new PriorityQueue();
+			var neighbor_edges:ArrayList = this.getNeighbors(a);
+					
+			for (var i:int = 0; i < neighbor_edges.length; i++) 
+			{
+				var neighbor_edge:DirectedEdge = (DirectedEdge) (neighbor_edges.getItemAt(i));
+				var distance = neighbor_edge.getWeight();
+				
+				frontier.addObject(new Tuple(neighbor_edge, distance), distance);
+			}
+			
+			return getFollowList(searchQueue, new ArrayList(), new ArrayList());
+		}
+		
+		private function getFollowList(frontier:PriorityQueue, follow_list:ArrayList, observed_vertices:ArrayList):ArrayList
+		{
+			while (!frontier.isEmpty()) 
+			{
+				var edge_and_distance:Tuple = frontier.removeSmallest();
+				var edge:DirectedEdge = edge_and_distance[0];
+				var destination_vertex:Vertex = edge.getDestination();
+				var distance:int = edge_and_distance[1];
+				
+				if (observed_vertices.getItemIndex(destination_vertex) == -1) {
+					follow_list.addItem(edge);
+					observed_vertices.addItem(destination_vertex);
+					
+					var neighbor_edges:ArrayList = this.getNeighbors(destination_vertex);
+					
+					for (var i:int = 0; i < neighbor_edges.length; i++) 
+					{
+						var neighbor_edge:DirectedEdge = (DirectedEdge) (neighbor_edges.getItemAt(i));
+						var new_distance = distance + neighbor_edge.getWeight();
+						
+						frontier.addObject(new Tuple(neighbor_edge, new_distance), new_distance);
+					}
+				}
+			}
+			
+			return follow_list;
+		}
+		
+		/* We return an edge list detailing the shortest path from vertex a to vertex b. If a and b are not connected
+		 * we return null 
+		 */
 		public function getShortestPath(a:Vertex, b:Vertex):ArrayList 
 		{
 			if (a.equals(b))
@@ -74,11 +121,12 @@ package Graph
 		* Implements BFS on our graph. We look for soughtVertex from the vertices
 		* stored in the searchQueue
 		*/
-		private function findDestination(destination:Vertex, current_distance:int, frontier:PriorityQueue, observed_vertices:ArrayList):ArrayList
+		private function findDestination2(destination:Vertex, current_distance:int, frontier:PriorityQueue, observed_vertices:ArrayList):ArrayList
 		{
 			while (!frontier.isEmpty()) 
 			{
 				var vertex_seeker:Vertex = (Vertex) frontier.removeSmallest();
+				
 				observed_vertices.addItem(vertexSeeker);
 				
 				var potential_edges:ArrayList = this.getNeighbors(vertex_seeker);

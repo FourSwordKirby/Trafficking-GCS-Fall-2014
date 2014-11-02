@@ -20,7 +20,7 @@ package
 			this.map = map;
 		}
 		
-		public function getVehciles():FlxGroup
+		public function getVehicles():FlxGroup
 		{
 			return vehicles;
 		}

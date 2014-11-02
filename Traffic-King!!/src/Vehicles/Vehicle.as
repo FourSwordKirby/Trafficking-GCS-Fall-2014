@@ -80,7 +80,7 @@ package Vehicles
 					break;
 			}
 			
-			for each (var vehicle:Vehicle in game.getVehciles().members)
+			for each (var vehicle:Vehicle in game.getVehicles().members)
 			{
 				if (current_road.equals(vehicle.current_road))
 				{
