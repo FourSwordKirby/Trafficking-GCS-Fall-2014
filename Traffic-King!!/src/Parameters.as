@@ -27,5 +27,14 @@ package
 		public static const ARRANGEMENT_ESW:int = 2;
 		public static const ARRANGEMENT_SWN:int = 3;
 		public static const ARRANGEMENT_WNE:int = 4;
+		
+		//These specify the status of the wave
+		public static const WAVE_NOT_STARTED:int = 0;
+		public static const WAVE_IN_PROGRESS:int = 1;
+		public static const WAVE_COMPLETED:int = 2;
+		public static const WAVE_FAILED:int = 3;
+		
+		//Parameters for locations on the pittsburgh map
+		public static const PITTSBURGH_BASE:String = "Base";
 	}
 }

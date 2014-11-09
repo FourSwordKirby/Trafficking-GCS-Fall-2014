@@ -1,5 +1,0 @@
-Get the graph working.
-
-Figure out and organize the state structure.
-
-Need to implement wave & map dealios

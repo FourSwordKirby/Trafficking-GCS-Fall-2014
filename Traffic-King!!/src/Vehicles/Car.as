@@ -12,7 +12,7 @@ package Vehicles {
 		public var direction:String = "";
 		public var moving:Boolean;
 		
-		//the end destination for the care
+		//the end destination for the car
 		public var destination;
 		
 		public function Car(X:int,Y:int)//,destination:Vertex,game:GameState) 

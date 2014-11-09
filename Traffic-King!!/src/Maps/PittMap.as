@@ -16,7 +16,7 @@ package Maps
 			this.game_map.loadMap(new Pitt_MapData, Tiles, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 			
 			traffic_light_group.add(new TrafficLightCluster(20, 20, Parameters.ARRANGEMENT_NESW, 200));
-			buildings.add(new Buildings(50, 50, "BB"));
+			building_group.add(new Buildings(50, 50, "BB"));
 			/*
 			 * 			var vehicleSpawner:VehicleSpawner = new VehicleSpawner(40, 20, this);
 			vehicleSpawner.reinitialize(["car", "car", "car"], 100);

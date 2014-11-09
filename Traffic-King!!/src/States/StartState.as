@@ -1,6 +1,8 @@
 package States {
+	import flash.utils.Dictionary;
 	import mx.core.FlexSprite;
 	import org.flixel.*;
+	import Waves.PittWave1;
 
 	public class StartState extends FlxState
 	{
@@ -34,7 +36,7 @@ package States {
 		
 		private function SelectMap(): void 
 		{
-			FlxG.switchState(new MapSelectState);			//switches the current state to the map select screen
+			FlxG.switchState(new MapSelectState)//switches the current state to the map select screen
 		}
 	}
 }

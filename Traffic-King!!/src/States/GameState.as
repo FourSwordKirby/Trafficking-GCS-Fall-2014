@@ -1,6 +1,6 @@
+import Waves.Wave;
 import Maps.Map;
-package  
-{
+package States {
 	import org.flixel.*;
 	
 	public class GameState extends FlxState 

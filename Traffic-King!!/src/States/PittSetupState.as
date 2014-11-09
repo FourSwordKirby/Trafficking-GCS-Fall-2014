@@ -7,16 +7,17 @@ package States {
 	import mx.core.FlexSprite;
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
+	import Waves.Wave;
+	
 	public class PittSetupState extends SetupState
 	{	
 		/*Embedding art assets for use */
 		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
-		
 		FlxG.debug;							//allows debug messages to appear
 		
-		public function PittSetupState()
+		public function PittSetupState(wave:Wave)
 		{
-			this.map = new PittMap();
+			this.map = wave.getMap();
 			super("Pitt", "1");
 		}
 		

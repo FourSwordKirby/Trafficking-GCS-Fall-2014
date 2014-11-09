@@ -6,6 +6,8 @@ package Vehicles
 	import mx.collections.ArrayList;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
+	
+	import States.GameState;
 	/**
 	 * ...
 	 * @author sophia
