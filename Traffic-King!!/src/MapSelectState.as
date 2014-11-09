@@ -43,37 +43,37 @@ package
 			add(background_sprite);	
 			
 			/*Initializes the various map buttons and adds them to the game*/
-			pitt_button = new FlxButton(50, 200, "", BeginGame);
+			pitt_button = new FlxButton(75, 181, "", BeginGame);
 			pitt_button.loadGraphic(PittButton);
 			pitt_button.onOver = function() : void {pitt_button.loadGraphic(PittButtonOn)};
 			pitt_button.onOut = function() : void {pitt_button.loadGraphic(PittButton)};
 			add(pitt_button);
 			
-			new_york_button = new FlxButton(250, 200, "", BeginGame);
+			new_york_button = new FlxButton(250, 181, "", BeginGame);
 			new_york_button.loadGraphic(NewYorkButton);
 			new_york_button.onOver = function() : void {new_york_button.loadGraphic(NewYorkButtonOn)}
 			new_york_button.onOut = function() : void {new_york_button.loadGraphic(NewYorkButton)};
 			add(new_york_button);
 			
-			london_button = new FlxButton(450, 200, "", BeginGame);
+			london_button = new FlxButton(417, 181, "", BeginGame);
 			london_button.loadGraphic(LondonButton);
 			london_button.onOver = function() : void {london_button.loadGraphic(LondonButtonOn)}
 			london_button.onOut = function() : void {london_button.loadGraphic(LondonButton)};
 			add(london_button);
 			
-			paris_button = new FlxButton(50, 300, "", BeginGame);
+			paris_button = new FlxButton(75, 235, "", BeginGame);
 			paris_button.loadGraphic(ParisButton);
 			paris_button.onOver = function() : void {paris_button.loadGraphic(ParisButtonOn)}
 			paris_button.onOut = function() : void {paris_button.loadGraphic(ParisButton)};
 			add(paris_button);
 			
-			tokyo_button = new FlxButton(250, 300, "", BeginGame);
+			tokyo_button = new FlxButton(250, 235, "", BeginGame);
 			tokyo_button.loadGraphic(TokyoButton);
 			tokyo_button.onOver = function() : void {tokyo_button.loadGraphic(TokyoButtonOn)}
 			tokyo_button.onOut = function() : void {tokyo_button.loadGraphic(TokyoButton)};
 			add(tokyo_button);
 			
-			beijing_button = new FlxButton(450, 300, "", BeginGame);
+			beijing_button = new FlxButton(417, 235, "", BeginGame);
 			beijing_button.loadGraphic(BeijingButton);
 			beijing_button.onOver = function() : void {beijing_button.loadGraphic(BeijingButtonOn)}
 			beijing_button.onOut = function() : void {beijing_button.loadGraphic(BeijingButton)};
