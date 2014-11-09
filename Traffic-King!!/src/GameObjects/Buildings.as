@@ -21,6 +21,8 @@ package GameObjects
 		[Embed(source = "/../assets/gfx/Rectangular Building Verdigris.PNG")] private static var RectVerde:Class;
 		[Embed(source = "/../assets/gfx/Skinny Building without Door.PNG")] private static var Skinny:Class;
 		[Embed(source = "/../assets/gfx/Skinny Building with Door.PNG")] private static var SkinnyDoor:Class;
+		[Embed(source = "/../assets/gfx/Bush.PNG")] private static var Bush:Class;
+		[Embed(source = "/../assets/gfx/Tree.PNG")] private static var Tree:Class;
 		
 		//give Buildings it's x and y position, and a string representing the image you wanted loaded.
 		public function Buildings(X:int, Y:int, str:String)
@@ -69,7 +71,13 @@ package GameObjects
 					break;	
 				case "SkinnyDoor":
 					this.loadGraphic(SkinnyDoor);
-					break;		
+					break;	
+				case "Bush":
+					this.loadGraphic(Bush);
+					break;	
+				case "Tree":
+					this.loadGraphic(Tree);
+					break;	
 			}
 			
 		}
