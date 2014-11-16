@@ -53,13 +53,6 @@ package Maps
 			building_group.add(new Buildings(250, 660, "RectCopp"));
 			building_group.add(new Buildings(250, 710, "RectVerde"));
 			building_group.add(new Buildings(250, 760, "RectBeige"));
-			
-			/*
-			 * 			var vehicleSpawner:VehicleSpawner = new VehicleSpawner(40, 20, this);
-			vehicleSpawner.reinitialize(["car", "car", "car"], 100);
-			vehicleSpawner.startSpawning();
-			add(vehicleSpawner);
-			*/
 		}
 		
 	}

@@ -1,6 +1,7 @@
 package States {
 	import flash.display.NativeMenu;
 	import GameObjects.*;
+	import GUI.SetupMenu;
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
 	import Maps.*;
@@ -11,19 +12,19 @@ package States {
 	public class SetupState extends FlxState
 	{
 		/*Important information about the current level*/
-		protected var current_wave:Wave;
+		public var current_wave:Wave;
 		public var map:Map;
 		
 		/*used to make the camera follow the mouse*/
 		protected var MouseRectangle:FlxObject;
 		
 		/*Components of the menu for the setup part of the game*/
-//		private var menu:Menu;
+		public var setup_menu:SetupMenu;
 		protected var level_name:String;
 		protected var wave_name:String;
 		
 		/*used to indicate whether we are setting up on the map or not*/
-		protected var in_setup:Boolean;
+		public var in_setup:Boolean;
 		
 		public function SetupState(wave:Wave)
 		{
@@ -31,6 +32,9 @@ package States {
 			this.map = current_wave.getMap();
 			this.level_name = "Pitt";
 			this.wave_name = "1";
+			
+			this.in_setup = false;
+			this.setup_menu = new SetupMenu(this);
 		}
 		
 		FlxG.debug;							//allows debug messages to appear
@@ -48,26 +52,26 @@ package States {
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
 												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
 			
+			//Need to crease the menu for the setup state
+			
 			//Here we create the actual map
 			add(this.map.create());
+			add(this.setup_menu);
+			
 			super.create();
 		}
 		
 		override public function update():void
 		{
-			if (!in_setup)
+			if (in_setup)
 			{
 				/*updates the position of the mouse*/
 				MouseRectangle.x = FlxG.mouse.x;
 				MouseRectangle.y = FlxG.mouse.y;
 			}
 			
-			if (FlxG.keys.justPressed("SPACE"))
-			{
-				FlxG.switchState(new GameState(new PittWave1));	// have to make this load in the instance of the new wave
-				return;
-			}
-			super.update();
+			setup_menu.update();
+			//super.update();
 		}
 	}
 }

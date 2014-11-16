@@ -13,9 +13,12 @@ package Waves {
 		protected var map:Map;
 		protected var timer:int;
 		protected var score:int;		
-		public var spawner_times:Dictionary;	//This is a dictionary of spawntime schedules
+		protected var spawner_times:Dictionary;	//This is a dictionary of spawntime schedules
 		
 		protected var status:int;
+		
+		protected var wave_map_name:String;
+		protected var wave_name:String;
 		
 		public function Wave()
 		{
@@ -36,6 +39,20 @@ package Waves {
 			return map;
 		}
 		
-	}
+		public function getAllSpawnSchedules():Dictionary
+		{
+			return (this.spawner_times);
+		}
+		
+		public function getWaveMapName():String
+		{
+			return this.wave_map_name;
+		}
+		
+		public function getWaveName():String
+		{
+			return this.wave_name;
+		}
 
+	}
 }
