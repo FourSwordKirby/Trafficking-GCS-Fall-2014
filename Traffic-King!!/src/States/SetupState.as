@@ -4,6 +4,7 @@ package States {
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
 	import Maps.*;
+	import Vehicles.Car;
 	
 	public class SetupState extends FlxState
 	{
@@ -40,7 +41,11 @@ package States {
 			FlxG.camera.setBounds(0, 0, map.getMapWidth(), map.getMapHeight());
 			FlxG.camera.follow(MouseRectangle);
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
-												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
+												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);	
+												
+			
+			this.add(new Car(50, 50));
+						
 			super.create();
 		}
 		

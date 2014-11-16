@@ -3,7 +3,7 @@ package Vehicles {
 	import Graph.Vertex;
 	import org.flixel.*;
 
-	public class Car extends FlxSprite
+	public class Car extends Vehicle
 	{
 		/*Embedding art assets for use */
 		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
@@ -20,7 +20,7 @@ package Vehicles {
 			/*
 			super(X, Y, 20, new Vertex(20, 20),game);
 			*/
-			super(X, Y);
+			super(X, Y, 5);
 			loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 		}
 		

@@ -27,19 +27,18 @@ package Vehicles
 		/* this is the game state that the car is in, used to make the car stop if cars in front
 		 * of it are stopped etc.
 		 */
-		private var game:GameState;
 		
-		public function Vehicle(X:int, Y:int, maxSpeed:int,destination:Vertex, game:GameState) 
+		public function Vehicle(X:int, Y:int, maxSpeed:int)//destination:Vertex) 
 		{
 			super(X, Y); 
 			this.maxVelocity.x = maxSpeed;
 			this.maxVelocity.y = maxSpeed;
-			this.destination = destination;
+			//this.destination = destination;
 			this.direction = Parameters.DIRECTION_SOUTH;
+			
 			
 			/* the car upon initilization will generate the path it needs to travel?
 			this.path = */
-			this.game = game;
 		}
 		
 		public function isStopped():Boolean
@@ -80,7 +79,7 @@ package Vehicles
 					break;
 			}
 			
-			for each (var vehicle:Vehicle in game.getVehicles().members)
+			/*for each (var vehicle:Vehicle in game.getVehicles().members)
 			{
 				if (current_road.equals(vehicle.current_road))
 				{
@@ -104,7 +103,7 @@ package Vehicles
 							break;
 					}
 				}
-			}
+			}*/
 			
 			
 		}

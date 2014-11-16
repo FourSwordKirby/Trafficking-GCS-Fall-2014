@@ -15,6 +15,11 @@ package Graph
 		{
 			return (this.x == v.x && this.y == v.y);
 		}
+		
+		public function distanceTo(v:Vertex):Number
+		{
+			return Math.sqrt(Math.pow(v.x - this.x, 2) + Math.pow(v.y - this.y, 2));
+		}
 	}
 
 }

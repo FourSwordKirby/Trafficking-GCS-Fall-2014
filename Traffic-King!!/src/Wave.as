@@ -24,7 +24,7 @@ package
 			this.spawn_rate = spawn_rate;
 			this.time_limit = time_limit;
 			
-			
+			//Create or put in map here
 			
 			this.timer = time_limit;
 			this.vehicles_left = this.vehicles.length;
@@ -32,12 +32,11 @@ package
 			this.status = -1;	
 		}
 		
-		
 		public function startWave() {
 			this.status = 0;
 		}
 		
-		override public function update()
+		/*override public function update()
 		{
 			if (this.vehicles_left == 0)
 			{
@@ -49,7 +48,7 @@ package
 			else {
 				this.timer--;
 			}
-		}
+		}*/
 		
 	}
 

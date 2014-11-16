@@ -10,10 +10,11 @@ package Graph
 		private var destination:Vertex;
 		private var weight:int;
 
-		public function DirectedEdge(source:Vertex, destination:Vertex) 
+		public function DirectedEdge(source:Vertex, destination:Vertex, weight:int) 
 		{
 			this.source = source;
 			this.destination = destination;
+			this.weight = weight;
 		}
 		
 		public function equals(edge:DirectedEdge):Boolean

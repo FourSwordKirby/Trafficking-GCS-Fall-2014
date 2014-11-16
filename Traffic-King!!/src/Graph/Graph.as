@@ -7,17 +7,19 @@ package Graph
 	 * ...
 	 * @author Mountain Dew
 	 */
+	
+	/* vertex_list contains all vertices in the graph */
+	/* neighbor_list is an array of arrays, where the i-th inner array contains all out-edges of the
+	 * i-th vertex */
 	public class Graph 
 	{
 		private var vertex_list:ArrayList;
 		private var neighbor_list:ArrayList;
-		private var edge_list:ArrayList;
 		
 		public function Graph() 
 		{
 			vertex_list = new ArrayList();
 			neighbor_list = new ArrayList();
-			edge_list = new ArrayList();
 		}
 		
 		public function addVertex(v:Vertex)
@@ -26,23 +28,65 @@ package Graph
 			neighbor_list.addItem(new ArrayList());
 		}
 		
+		private function getItemIndexByVertex(list:ArrayList, v:Vertex) {
+			for (var i:int = 0; i < list.length; i++) {
+				if (v.equals(list[i])) {
+					return i;
+				}
+			}
+			
+			return -1;
+		}
+		
+		private function getItemIndexByEdge(list:ArrayList, e:DirectedEdge) {
+			for (var i:int = 0; i < list.length; i++) {
+				if (v.equals(list[i])) {
+					return i;
+				}
+			}
+			
+			return -1;
+		}
+		
 		public function addDirectedEdge(edge:DirectedEdge)
 		{
-			var source_index:int = vertex_list.getItemIndex(edge.getSource());	
+			//Add source to vertex_list
+			var source:Vertex = edge.getSource();
+			var source_index:int = getItemIndexByVertex(vertex_list, source);
 			if (source_index != -1)
 			{
 				var neighbors:ArrayList = (ArrayList) (neighbor_list.getItemAt(source_index));
-				if (neighbors.getItemIndex(edge.getDestination()) == -1)
-				{
-					neighbors.addItem(edge);
-				}
 			}
-			edge_list.addItem(edge);
+			else {
+				vertex_list.addItem(source);
+				var neighbors:ArrayList = new ArrayList();
+				neighbors_list.addItem(neighbors);
+			}
+			
+			//Add edge to subarray of neighbors_list
+			var edge_index:int = getItemIndexByEdge(neighbors, edge);
+			if (edge_index == -1)
+			{
+				neighbors.addItem(edge);
+			}
+			else {
+				neighbors[edge_index] = edge;
+			}
+			
+			//Add source to vertex_list
+			var destination:Vertex = edge.getDestination();
+			var destination_index:int = getItemIndexByVertex(vertex_list, destination);
+			if (destination_index != -1)
+			{
+				vertex_list.addItem(destination);
+				var neighbors:ArrayList = new ArrayList();
+				neighbors_list.addItem(neighbors);
+			}
 		}
 		
 		public function getNeighbors(v:Vertex):ArrayList
 		{
-			var source_index:int = vertex_list.getItemIndex(v1);	
+			var source_index:int = vertex_list.getItemIndexByVertex(v);	
 			if (source_index != -1)
 			{
 				return new ArrayList((ArrayList) (neighbor_list.getItemAt(source_index)).toArray());
@@ -55,51 +99,61 @@ package Graph
 			return new ArrayList(vertex_list.toArray());
 		}
 		
-		/* We return an edge list detailing the shortest path from vertex a to vertex b. If a and b are not connected
-		 * we return null 
-		 */
-		public function getAllShortestPaths(a:Vertex):ArrayList 
-		{
-			var search_queue:PriorityQueue = new PriorityQueue();
-			var neighbor_edges:ArrayList = this.getNeighbors(a);
-					
-			for (var i:int = 0; i < neighbor_edges.length; i++) 
-			{
-				var neighbor_edge:DirectedEdge = (DirectedEdge) (neighbor_edges.getItemAt(i));
-				var distance = neighbor_edge.getWeight();
-				
-				frontier.addObject(new Tuple(neighbor_edge, distance), distance);
-			}
-			
-			return getFollowList(searchQueue, new ArrayList(), new ArrayList());
-		}
-		
-		private function getFollowList(frontier:PriorityQueue, follow_list:ArrayList, observed_vertices:ArrayList):ArrayList
+		/**
+		* Implements A-star on our graph with a Euclidean distance heuristic. We look for soughtVertex from the vertices
+		* stored in the searchQueue
+		*/
+		private function findDestination(final_destination:Vertex, frontier:PriorityQueue, 
+										  observed_vertices:ArrayList,
+										  follow_list:ArrayList):Tuple
 		{
 			while (!frontier.isEmpty()) 
 			{
-				var edge_and_distance:Tuple = frontier.removeSmallest();
-				var edge:DirectedEdge = edge_and_distance[0];
-				var destination_vertex:Vertex = edge.getDestination();
-				var distance:int = edge_and_distance[1];
+				var vertex_edge_and_distance:Tuple = frontier.removeSmallest();
+				var destination_vertex = vertex_edge_and_distance[0];
+				var edge:DirectedEdge = vertex_edge_and_distance[1];
+				var distance:Number = vertex_edge_and_distance[2];
 				
-				if (observed_vertices.getItemIndex(destination_vertex) == -1) {
+				if (getItemIndexByVertex(observed_vertices, destination_vertex) == -1) {
 					follow_list.addItem(edge);
 					observed_vertices.addItem(destination_vertex);
 					
-					var neighbor_edges:ArrayList = this.getNeighbors(destination_vertex);
-					
-					for (var i:int = 0; i < neighbor_edges.length; i++) 
-					{
-						var neighbor_edge:DirectedEdge = (DirectedEdge) (neighbor_edges.getItemAt(i));
-						var new_distance = distance + neighbor_edge.getWeight();
+					if (final_destination.equals(destination_vertex)) {
+						return new Tuple(observed_vertices, follow_list);
+					}
+					else {
+						var neighbor_edges:ArrayList = this.getNeighbors(destination_vertex);
+						var path_distance:Number = distance - final_destination.distanceTo(destination_vertex);
 						
-						frontier.addObject(new Tuple(neighbor_edge, new_distance), new_distance);
+						for (var i:int = 0; i < neighbor_edges.length; i++) 
+						{
+							var neighbor_edge:DirectedEdge = (DirectedEdge) (neighbor_edges.getItemAt(i));
+							var new_destination_vertex = neighbor_edge.getDestination();
+							var new_distance:Number = path_distance + neighbor_edge.getWeight() + final_destination.distanceTo(new_destination_Vertex);
+							
+							frontier.addObject(new Tuple(new_destination_vertex, neighbor_edge, new_distance), new_distance);
+						}
 					}
 				}
 			}
 			
-			return follow_list;
+			return new Tuple(null, null);
+		}
+		
+		private function getPathFromFollowList(observed_vertices:ArrayList, follow_list:ArrayList):ArrayList
+		{
+			var check_index:int;
+			var path = new ArrayList();
+			var edge = follow_list[follow_list.length - 1];
+			
+			while (edge != null) {
+				path.push(edge);
+				source = edge.getSource();
+				check_index = getItemIndexByVertex(observed_vertices, source);
+				edge = follow_list[check_index];
+			}
+			
+			return path.reverse();
 		}
 		
 		/* We return an edge list detailing the shortest path from vertex a to vertex b. If a and b are not connected
@@ -107,46 +161,23 @@ package Graph
 		 */
 		public function getShortestPath(a:Vertex, b:Vertex):ArrayList 
 		{
-			if (a.equals(b))
+			if (b.equals(a))
 				return null;
 			else 
 			{
 				var search_queue:PriorityQueue = new PriorityQueue();
-				search_queue.addObject(a, 0);
-				return findDestination(b, 0, searchQueue, new ArrayList());
-			}
-		}
-	
-		/**
-		* Implements BFS on our graph. We look for soughtVertex from the vertices
-		* stored in the searchQueue
-		*/
-		private function findDestination2(destination:Vertex, current_distance:int, frontier:PriorityQueue, observed_vertices:ArrayList):ArrayList
-		{
-			while (!frontier.isEmpty()) 
-			{
-				var vertex_seeker:Vertex = (Vertex) frontier.removeSmallest();
+				var distance = b.distanceTo(a);
+				search_queue.addObject(new Tuple(a, null, distance), b.distanceTo(a));
+				var result = findDestination(b, searchQueue, new ArrayList());
+				var observed_vertices = result[0];
+				var follow_list = result[1]
 				
-				observed_vertices.addItem(vertexSeeker);
-				
-				var potential_edges:ArrayList = this.getNeighbors(vertex_seeker);
-				/*
-				* searches the current array of edges for one that leads to our sought
-				* after vertex
-				*/
-				for (var i:int = 0; i < potential_edges.length; i++) 
-				{
-					var considered_edge:DirectedEdge = (DirectedEdge) (potential_edges.getItemAt(i));
-					if (destination.equals(considered_edge.getDestination))
-						return current_distance + considered_edge.getWeight();
-					/*
-					* if the current vertex we are considering is not the one we
-					* are looking for we make sure to check his list of neighbors
-					* at some point
-					*/
-					if(observed_vertices.getItemIndex(considered_edge.getSource()) == -1)
-						frontier.enqueue(considered_vertex);
-				}				
+				if (follow_list != null) {
+					getPathFromFollowList(observed_vertices, follow_list);
+				}
+				else {
+					return null;
+				}
 			}
 		}
 	}
