@@ -1,0 +1,10 @@
+Extending time permitted in a level.
+Slow time down during a level (to micromanage cars, possibly.)
+Reverse time e.g., undo button.
+Change the rate of car spawning.
+Change the behavior of spawned cars.
+Change one-way roads to two-way roads or vice versa.
+Build additional roads, traffic lights enter/exit points, etc.
+'Insurance' in case collision/roadblocks occur.
+
+Maybe money can be collected to make your own city?
