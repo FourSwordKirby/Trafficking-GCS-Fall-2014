@@ -83,7 +83,8 @@ package States {
 		}
 		
 		private function BeginGame(): void 
-		{
+		{    
+			 //FlxG.switchState(new TransitionState(new PittWave1));
 			FlxG.switchState(new SetupState(new PittWave1));			//switches the current state to the overworld map.
 		}
 	}
