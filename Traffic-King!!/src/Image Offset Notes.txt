@@ -1,0 +1,19 @@
+570 down, 48 across for help button
+
+254 down, 35 across for traffic level info
+254 down, 215 across for time level info
+337 down, 215 across for map level info
+254 down, 394 across for money level info
+340 down, 394 across for shop level info
+425 down, 394 across for info level info
+
+DONE:
+
+181 down, 75 across for Pittsburgh map select icon
+181 down, 250 across for New York map select icon
+181 down, 417 across for London map select icon
+235 down, 75 across for Paris map select icon
+235 down, 250 across for Beijing map select icon
+235 down, 417 across for Tokyo map select icon
+
+Flixel buttons use (across, down) as parameter order.

@@ -2,35 +2,38 @@ package GameObjects
 {
 	import org.flixel.*;
 	import Vehicles.Car;
+	import Waves.SpawnSchedule;
 
 	public class VehicleSpawner extends FlxBasic
 	{
+		private var location_name:String;	//used to assist with dictionaries
+		
 		private var vehicles:Array;
-		private var spawn_rate:int;
 		private var position:FlxPoint;
 		private var game_state:FlxState;
 		
-		//spawning variable is inherited active variable
+		private var spawn_schedule:SpawnSchedule;
+		
 		private var timer:int;
-		private var to_spawn_index:int;
 
-		public function VehicleSpawner(X:int, Y:int, game_state:FlxState) {
+		public function VehicleSpawner(X:int, Y:int, location_name:String) 
+		{
+			this.location_name = location_name;
+			
 			this.vehicles = []; //Array of vehicles to spawn
 			this.spawn_rate = 0; //Time between spawns
 			this.position = new FlxPoint(X, Y); //Position of vehicle spawner
-			this.game_state = game_state;
 			
 			this.active = false; //Whether vehicle spawner is going to spawn vehicles or not
 			this.timer = 0; //Time left to spawn
 			this.to_spawn_index = 0; //Next index to spawn in vehicles
 		}
 		
-		public function getVehicles():Array {
-			return this.vehicles;
-		}
-		
-		public function getSpawnRate():int {
-			return this.spawn_rate;
+		/*This function MUST be called before starting the game because it starts spawning the cars*/
+		public function initSpawner(game_state:FlxState):void
+		{
+			this.game_state = game_state;
+			active = true;
 		}
 		
 		public function getPosition():FlxPoint {
@@ -43,10 +46,6 @@ package GameObjects
 		
 		public function getTimer():int {
 			return this.timer;
-		}
-		
-		public function getToSpawnIndex():int {
-			return this.to_spawn_index;
 		}
 		
 		//Sets the next wave's vehicles and spawn rates during setup phase

@@ -40,7 +40,7 @@ package Graph
 		
 		private function getItemIndexByEdge(list:ArrayList, e:DirectedEdge) {
 			for (var i:int = 0; i < list.length; i++) {
-				if (v.equals(list[i])) {
+				if (e.equals(list[i])) {
 					return i;
 				}
 			}
@@ -60,7 +60,7 @@ package Graph
 			else {
 				vertex_list.addItem(source);
 				var neighbors:ArrayList = new ArrayList();
-				neighbors_list.addItem(neighbors);
+				neighbor_list.addItem(neighbors);
 			}
 			
 			//Add edge to subarray of neighbors_list
@@ -80,13 +80,13 @@ package Graph
 			{
 				vertex_list.addItem(destination);
 				var neighbors:ArrayList = new ArrayList();
-				neighbors_list.addItem(neighbors);
+				neighbor_list.addItem(neighbors);
 			}
 		}
 		
 		public function getNeighbors(v:Vertex):ArrayList
 		{
-			var source_index:int = vertex_list.getItemIndexByVertex(v);	
+			var source_index:int = getItemIndexByVertex(vertex_list, v);	
 			if (source_index != -1)
 			{
 				return new ArrayList((ArrayList) (neighbor_list.getItemAt(source_index)).toArray());
@@ -105,11 +105,11 @@ package Graph
 		*/
 		private function findDestination(final_destination:Vertex, frontier:PriorityQueue, 
 										  observed_vertices:ArrayList,
-										  follow_list:ArrayList):Tuple
+										  follow_list:ArrayList):ArrayList
 		{
 			while (!frontier.isEmpty()) 
 			{
-				var vertex_edge_and_distance:Tuple = frontier.removeSmallest();
+				var vertex_edge_and_distance = (ArrayList) (frontier.removeSmallest());
 				var destination_vertex = vertex_edge_and_distance[0];
 				var edge:DirectedEdge = vertex_edge_and_distance[1];
 				var distance:Number = vertex_edge_and_distance[2];
@@ -119,7 +119,10 @@ package Graph
 					observed_vertices.addItem(destination_vertex);
 					
 					if (final_destination.equals(destination_vertex)) {
-						return new Tuple(observed_vertices, follow_list);
+						var result = new ArrayList;
+						result.add(observed_vertices);
+						result.add(follow_list);
+						return result;
 					}
 					else {
 						var neighbor_edges:ArrayList = this.getNeighbors(destination_vertex);
@@ -129,19 +132,27 @@ package Graph
 						{
 							var neighbor_edge:DirectedEdge = (DirectedEdge) (neighbor_edges.getItemAt(i));
 							var new_destination_vertex = neighbor_edge.getDestination();
-							var new_distance:Number = path_distance + neighbor_edge.getWeight() + final_destination.distanceTo(new_destination_Vertex);
+							var new_distance:Number = path_distance + neighbor_edge.getWeight() + final_destination.distanceTo(new_destination_vertex);
 							
-							frontier.addObject(new Tuple(new_destination_vertex, neighbor_edge, new_distance), new_distance);
+							var result = new ArrayList;
+							result.add(new_destination_vertex);
+							result.add(neighbor_edge);
+							result.add(new_distance);
+							frontier.addObject(result, new_distance);
 						}
 					}
 				}
 			}
 			
-			return new Tuple(null, null);
+			var result = new ArrayList;
+			result.add(null);
+			result.add(null);
+			return result;
 		}
 		
 		private function getPathFromFollowList(observed_vertices:ArrayList, follow_list:ArrayList):ArrayList
 		{
+			var source:Vertex;
 			var check_index:int;
 			var path = new ArrayList();
 			var edge = follow_list[follow_list.length - 1];
@@ -167,13 +178,17 @@ package Graph
 			{
 				var search_queue:PriorityQueue = new PriorityQueue();
 				var distance = b.distanceTo(a);
-				search_queue.addObject(new Tuple(a, null, distance), b.distanceTo(a));
-				var result = findDestination(b, searchQueue, new ArrayList());
+				var initial = new ArrayList;
+				initial.add(a);
+				initial.add(null);
+				initial.add(distance);
+				search_queue.addObject(initial, b.distanceTo(a));
+				var result = findDestination(b, search_queue, new ArrayList(), new ArrayList());
 				var observed_vertices = result[0];
 				var follow_list = result[1]
 				
 				if (follow_list != null) {
-					getPathFromFollowList(observed_vertices, follow_list);
+					return getPathFromFollowList(observed_vertices, follow_list);
 				}
 				else {
 					return null;

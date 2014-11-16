@@ -7,17 +7,18 @@ package States {
 	import mx.core.FlexSprite;
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
+	import Waves.Wave;
+	
 	public class PittSetupState extends SetupState
 	{	
 		/*Embedding art assets for use */
 		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
-		
 		FlxG.debug;							//allows debug messages to appear
 		
-		public function PittSetupState()
+		public function PittSetupState(wave:Wave)
 		{
-			this.map = new PittMap();
-			super("Pitt", "1");
+			this.map = wave.getMap();
+			super(wave);
 		}
 		
 		override public function create():void 
@@ -31,6 +32,12 @@ package States {
 		override public function update():void
 		{	
 			in_setup = false;
+			
+			if (FlxG.keys.justPressed("SPACE"))
+			{
+				FlxG.switchState(new GameState(this.wave));
+			}
+			
 			super.update();
 		}
 		/*

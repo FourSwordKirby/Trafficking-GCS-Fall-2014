@@ -1,11 +1,11 @@
-package  
+/*package  
 {
-	import flash.display.LineScaleMode;
+	import flash.display.LineScaleMode;*/
 	/**
 	 * ...
 	 * @author Mountain Dew
 	 */
-	public class Wave extends FlxBasic
+	/*public class Wave extends FlxBasic
 	{
 		//private var objective_score:int;
 		private var vehicles:Array; //Array of vehicle types
@@ -34,7 +34,7 @@ package
 		
 		public function startWave() {
 			this.status = 0;
-		}
+		}*/
 		
 		/*override public function update()
 		{
@@ -50,6 +50,6 @@ package
 			}
 		}*/
 		
-	}
+	/*}
 
-}
+}*/

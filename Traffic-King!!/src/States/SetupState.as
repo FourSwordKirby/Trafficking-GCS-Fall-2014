@@ -4,13 +4,16 @@ package States {
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
 	import Maps.*;
-	import Vehicles.Car;
+	import Waves.PittWave1;
+	import Waves.Wave;
+	import mx.utils.*;
 	
 	public class SetupState extends FlxState
 	{
-		/*Represents the map itself*/
+		/*Important information about the current level*/
+		protected var current_wave:Wave;
 		public var map:Map;
-
+		
 		/*used to make the camera follow the mouse*/
 		protected var MouseRectangle:FlxObject;
 		
@@ -22,10 +25,12 @@ package States {
 		/*used to indicate whether we are setting up on the map or not*/
 		protected var in_setup:Boolean;
 		
-		public function SetupState(level_name:String, wave_name:String)
+		public function SetupState(wave:Wave)
 		{
-			this.level_name = level_name;
-			this.wave_name = wave_name;
+			this.current_wave = wave;
+			this.map = current_wave.getMap();
+			this.level_name = "Pitt";
+			this.wave_name = "1";
 		}
 		
 		FlxG.debug;							//allows debug messages to appear
@@ -41,11 +46,10 @@ package States {
 			FlxG.camera.setBounds(0, 0, map.getMapWidth(), map.getMapHeight());
 			FlxG.camera.follow(MouseRectangle);
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
-												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);	
-												
+												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
 			
-			this.add(new Car(50, 50));
-						
+			//Here we create the actual map
+			add(this.map.create());
 			super.create();
 		}
 		
@@ -56,6 +60,12 @@ package States {
 				/*updates the position of the mouse*/
 				MouseRectangle.x = FlxG.mouse.x;
 				MouseRectangle.y = FlxG.mouse.y;
+			}
+			
+			if (FlxG.keys.justPressed("SPACE"))
+			{
+				FlxG.switchState(new GameState(new PittWave1));	// have to make this load in the instance of the new wave
+				return;
 			}
 			super.update();
 		}

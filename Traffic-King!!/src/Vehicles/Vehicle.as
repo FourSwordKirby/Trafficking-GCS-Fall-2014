@@ -6,6 +6,8 @@ package Vehicles
 	import mx.collections.ArrayList;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxSprite;
+	
+	import States.GameState;
 	/**
 	 * ...
 	 * @author sophia
@@ -20,7 +22,7 @@ package Vehicles
 		
 		private var destination:FlxPoint;
 		
-		//this is an arraylist of edges that details the path the car is following to get to it's destination.
+		//this is an arraylist of edges that details the path the car is following to get to its destination.
 		private var planned_path:ArrayList;
 		private var current_road:DirectedEdge;
 		

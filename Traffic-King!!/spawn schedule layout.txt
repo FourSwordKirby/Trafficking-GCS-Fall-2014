@@ -1,0 +1,10 @@
+time_limit:int
+vehiclesarray
+spawn_ratearray
+
+spawner a:
+Time: 		Vehicle Spawned
+0:00		car a -> b
+2:00 		bus e -> a
+2:30 		car a -> e
+...
