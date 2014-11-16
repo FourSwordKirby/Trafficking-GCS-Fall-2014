@@ -6,7 +6,7 @@ package
 	import mx.core.FlexSprite;
 	import org.flixel.*;
 
-	public class HelpState extends FlxState
+	public class Help extends FlxState
 	{
 		/*Embedding art assets for use */
 

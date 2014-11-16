@@ -13,7 +13,7 @@ package Vehicles {
 		public var moving:Boolean;
 		
 		//the end destination for the car
-		public var destination;
+		public var destination:Vertex;
 		
 		public function Car(X:int,Y:int)//,destination:Vertex,game:GameState) 
 		{
