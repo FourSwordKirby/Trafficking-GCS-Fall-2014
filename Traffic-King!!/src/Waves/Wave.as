@@ -31,22 +31,6 @@ package Waves {
 			this.status = Parameters.WAVE_IN_PROGRESS;
 		}
 		
-		/*
-		public function update()
-		{
-			if (this.vehicles_left == 0)
-			{
-				this.status = Parameters.WAVE_COMPLETED;
-			}
-			else if (timer == 0) {
-				this.status = Parameters.WAVE_FAILED;
-			}
-			else {
-				this.timer--;
-			}
-		}
-		*/
-		
 		public function getMap():Map
 		{
 			return map;

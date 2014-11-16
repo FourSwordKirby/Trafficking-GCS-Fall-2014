@@ -18,7 +18,7 @@ package States {
 		public function PittSetupState(wave:Wave)
 		{
 			this.map = wave.getMap();
-			super("Pitt", "1");
+			super(wave);
 		}
 		
 		override public function create():void 
@@ -32,6 +32,12 @@ package States {
 		override public function update():void
 		{	
 			in_setup = false;
+			
+			if (FlxG.keys.justPressed("SPACE"))
+			{
+				FlxG.switchState(new GameState(this.wave));
+			}
+			
 			super.update();
 		}
 		/*
