@@ -35,9 +35,9 @@ package States {
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
 												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
 
-			for (var k in current_wave.spawner_times) 
+			for (var k in current_wave.getAllSpawnSchedules()) 
 			{
-				(SpawnSchedule)(current_wave.spawner_times[k]).initSpawnSchedule(this);
+				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).initSpawnSchedule(this);
 			}
 
 			add(this.map.create());
@@ -62,9 +62,9 @@ package States {
 			}
 			*/
 			
-			for (var k in current_wave.spawner_times) 
+			for (var k in current_wave.getAllSpawnSchedules()) 
 			{
-				(SpawnSchedule)(current_wave.spawner_times[k]).update();
+				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).update();
 			}
 
 			super.update();
