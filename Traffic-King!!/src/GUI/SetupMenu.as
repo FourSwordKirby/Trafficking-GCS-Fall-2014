@@ -156,7 +156,7 @@ package GUI {
 		
 		private function startGame():void
 		{
-			FlxG.switchState(new GameState(new PittWave1));	// have to make this load in the instance of the new wave
+			FlxG.switchState(new TransitionState(new PittWave1));	// have to make this load in the instance of the new wave
 			return;
 		}
 		
