@@ -30,7 +30,7 @@ package Vehicles
 		 * of it are stopped etc.
 		 */
 		
-		public function Vehicle(X:int, Y:int, maxSpeed:int)//destination:Vertex) 
+		public function Vehicle(X:int, Y:int,/*path:Array,*/maxSpeed:int)//destination:Vertex) 
 		{
 			super(X, Y); 
 			this.maxVelocity.x = maxSpeed;
@@ -65,7 +65,7 @@ package Vehicles
 		
 		public override function update():void
 		{
-			switch (this.direction)
+			/*switch (this.direction)
 			{
 				case Parameters.DIRECTION_NORTH:
 					this.acceleration.y = -2;
@@ -79,7 +79,7 @@ package Vehicles
 				case Parameters.DIRECTION_WEST:
 					this.acceleration.x = -2;
 					break;
-			}
+			}*/
 			
 			/*for each (var vehicle:Vehicle in game.getVehicles().members)
 			{

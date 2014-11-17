@@ -15,12 +15,12 @@ package Vehicles {
 		//the end destination for the car
 		public var destination:Vertex;
 		
-		public function Car(X:int,Y:int)//,destination:Vertex,game:GameState) 
+		public function Car(X:int,Y:int /*path:Array*/)//,destination:Vertex,game:GameState) 
 		{
 			/*
 			super(X, Y, 20, new Vertex(20, 20),game);
 			*/
-			super(X, Y, 5);
+			super(X, Y,/*path,*/5);
 			loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 		}
 		

@@ -2,6 +2,7 @@ package Maps
 {
 	import org.flixel.*;
 	import GameObjects.*;
+	import Graph.*;
 	
 	public class PittMap extends Map 
 	{
@@ -53,6 +54,12 @@ package Maps
 			building_group.add(new Buildings(250, 660, "RectCopp"));
 			building_group.add(new Buildings(250, 710, "RectVerde"));
 			building_group.add(new Buildings(250, 760, "RectBeige"));
+			
+			this.graph = new Graph();
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(10, 10), new Vertex(60, 10), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(10, 10), new Vertex(10, 50), 40));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(60, 50), new Vertex(10, 50), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(60, 10), new Vertex(60, 50), 40));
 		}
 		
 	}
