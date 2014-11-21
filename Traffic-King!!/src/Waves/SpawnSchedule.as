@@ -1,6 +1,7 @@
 package Waves 
 {
 	import flash.utils.Dictionary;
+	import Graph.Graph;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxPath;
 	import org.flixel.FlxState;
@@ -21,15 +22,8 @@ package Waves
 			
 			var vertices:Array = map.graph.getVertices();
 			
-			var path1:Array = map.graph.getShortestPath(vertices[0], vertices[vertices.length-1]);
-			spawn_times[0] = new Car(path1[0].getSource().x, path1[0].getSource().y);
-			
-			var path1node:Array = [new FlxPoint(path1[0].getSource().x, path1[0].getSource().y)];
-			for (var i:int = 0; i < path1.length; i++)
-			{
-				path1node.push(new FlxPoint(path1[i].getDestination().x, path1[i].getDestination().y));
-			}
-			spawn_times[0].followPath(new FlxPath(path1node));
+			var path1:Array = map.graph.getShortestEdgePath(vertices[0], vertices[vertices.length-1]);
+			spawn_times[0] = new Car(path1, map.graph.getVertexPathFromEdgePath(path1));
 			
 			//spawn_times[0] = new Car(10, 10);
 			//spawn_times[20] = new Car(20, 10);
