@@ -8,22 +8,36 @@ package Vehicles {
 		/*Embedding art assets for use */
 		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
 		
-		//variables that describe the vehicles movement
-		public var direction:String = "";
-		public var moving:Boolean;
-		
-		//the end destination for the car
-		public var destination:Vertex;
-		
 		public function Car(X:int,Y:int /*path:Array*/)//,destination:Vertex,game:GameState) 
 		{
 			/*
 			super(X, Y, 20, new Vertex(20, 20),game);
 			*/
-			super(X, Y,/*path,*/5);
-			loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
+			super(X, Y,/*path,*/400);
+			loadRotatedGraphic(CarSprite, 16, -1, true, true);// Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
+//			loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 		}
 		
+		override public function update():void
+		{
+			super.update();
+			
+			switch (this.direction)
+			{
+				case Parameters.DIRECTION_NORTH:
+					this.angle = 0;
+					break;
+				case Parameters.DIRECTION_EAST:
+					this.angle = 90;
+					break;
+				case Parameters.DIRECTION_SOUTH:
+					this.angle = 180;
+					break;
+				case Parameters.DIRECTION_WEST:
+					this.angle = 270;
+					break;
+			}
+		}
 		//override public function 
 		//implement a graph interface?
 /*		

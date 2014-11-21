@@ -74,7 +74,6 @@ package States {
 		{
 			return active_vehicles;
 		}
-		
 	}
 
 }

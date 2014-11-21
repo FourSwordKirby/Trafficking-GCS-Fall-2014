@@ -22,13 +22,13 @@ package Graph
 			neighbor_list = [];
 		}
 		
-		public function addVertex(v:Vertex)
+		public function addVertex(v:Vertex):void
 		{
 			vertex_list.push(v);
 			neighbor_list.push([]);
 		}
 		
-		private function getItemIndexByVertex(list:Array, v:Vertex) {
+		private function getItemIndexByVertex(list:Array, v:Vertex):int {
 			for (var i:int = 0; i < list.length; i++) {
 				if (v.equals(list[i])) {
 					return i;
@@ -38,7 +38,7 @@ package Graph
 			return -1;
 		}
 		
-		private function getItemIndexByEdge(list:Array, e:DirectedEdge) {
+		private function getItemIndexByEdge(list:Array, e:DirectedEdge):int {
 			for (var i:int = 0; i < list.length; i++) {
 				if (e.equals(list[i])) {
 					return i;
@@ -48,7 +48,7 @@ package Graph
 			return -1;
 		}
 		
-		public function addDirectedEdge(edge:DirectedEdge)
+		public function addDirectedEdge(edge:DirectedEdge):void
 		{
 			trace(1);
 			//Add source to vertex_list
@@ -104,6 +104,8 @@ package Graph
 		/**
 		* Implements A-star on our graph with a Euclidean distance heuristic. We look for soughtVertex from the vertices
 		* stored in the searchQueue
+		* 
+		* Returns a tuple with the observed vertices as the 1st element and the follow list as the 2nd.
 		*/
 		private function findDestination(final_destination:Vertex, frontier:PriorityQueue, 
 										  observed_vertices:Array,

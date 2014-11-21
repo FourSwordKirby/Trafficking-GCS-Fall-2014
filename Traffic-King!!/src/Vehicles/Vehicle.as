@@ -17,10 +17,9 @@ package Vehicles
 		private var stopped:Boolean;
 		private static var follow_distance:int;
 
-		private var location:FlxPoint;
-		private var direction:int;
-		
-		private var destination:FlxPoint;
+		protected var location:FlxPoint;
+		protected var direction:int;
+		public var destination:Vertex;
 		
 		//this is an arraylist of edges that details the path the car is following to get to its destination.
 		private var planned_path:ArrayList;
@@ -65,6 +64,22 @@ package Vehicles
 		
 		public override function update():void
 		{
+			if (this.velocity.x > 0)
+			{
+				this.direction = Parameters.DIRECTION_EAST;
+			}
+			if (this.velocity.x < 0)
+			{
+				this.direction = Parameters.DIRECTION_WEST;
+			}
+			if (this.velocity.y > 0)
+			{
+				this.direction = Parameters.DIRECTION_SOUTH;
+			}
+			if (this.velocity.y < 0)
+			{
+				this.direction = Parameters.DIRECTION_NORTH;
+			}
 			/*switch (this.direction)
 			{
 				case Parameters.DIRECTION_NORTH:

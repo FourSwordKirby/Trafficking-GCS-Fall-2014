@@ -16,21 +16,21 @@ package GUI {
 		[Embed(source = "../../assets/UI/LevelInfo-5TokyoBG.png")] private var TokyoBackground:Class;	
 		[Embed(source = "../../assets/UI/LevelInfo-6BeijingBG.png")] private var BeijingBackground:Class;	
 		
-		[Embed(source = "../../assets/UI/LevelInfo-1Traffics2.png")] private var TrafficButton:Class;	
-		[Embed(source = "../../assets/UI/LevelInfo-2TimeLimit2.png")] private var TimeLimitButton:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-3Map2.png")] private var MapButton:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-4Money2.png")] private var MoneyButton:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-5Shop2.png")] private var ShopButton:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-6Info2.png")] private var InfoButton:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-BeginBtn2.png")] private var BeginButton:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-1Traffics1.png")] private var TrafficButton:Class;	
+		[Embed(source = "../../assets/UI/LevelInfo-2TimeLimit1.png")] private var TimeLimitButton:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-3Map1.png")] private var MapButton:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-4Money1.png")] private var MoneyButton:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-5Shop1.png")] private var ShopButton:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-6Info1.png")] private var InfoButton:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-BeginBtn1.png")] private var BeginButton:Class;
 		
-		[Embed(source = "../../assets/UI/LevelInfo-1Traffics1.png")] private var TrafficButtonOn:Class;	
-		[Embed(source = "../../assets/UI/LevelInfo-2TimeLimit1.png")] private var TimeLimitButtonOn:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-3Map1.png")] private var MapButtonOn:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-4Money1.png")] private var MoneyButtonOn:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-5Shop1.png")] private var ShopButtonOn:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-6Info1.png")] private var InfoButtonOn:Class;
-		[Embed(source = "../../assets/UI/LevelInfo-BeginBtn1.png")] private var BeginButtonOn:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-1Traffics2.png")] private var TrafficButtonOn:Class;	
+		[Embed(source = "../../assets/UI/LevelInfo-2TimeLimit2.png")] private var TimeLimitButtonOn:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-3Map2.png")] private var MapButtonOn:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-4Money2.png")] private var MoneyButtonOn:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-5Shop2.png")] private var ShopButtonOn:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-6Info2.png")] private var InfoButtonOn:Class;
+		[Embed(source = "../../assets/UI/LevelInfo-BeginBtn2.png")] private var BeginButtonOn:Class;
 		
 		/*Embedded return button asset for us to use*/
 		[Embed(source = "../../assets/UI/Back Button Small.png")] private var ReturnButton:Class;

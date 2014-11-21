@@ -56,10 +56,13 @@ package Maps
 			building_group.add(new Buildings(250, 760, "RectBeige"));
 			
 			this.graph = new Graph();
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(10, 10), new Vertex(60, 10), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(10, 10), new Vertex(10, 50), 40));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(60, 50), new Vertex(10, 50), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(60, 10), new Vertex(60, 50), 40));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 75), new Vertex(375, 75), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 75), new Vertex(425, 75), 40));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 75), new Vertex(425, 125), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 125), new Vertex(425, 375), 40));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 375), new Vertex(425, 425), 40));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 425), new Vertex(375, 425), 40));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 425), new Vertex(0, 425), 40));
 		}
 		
 	}

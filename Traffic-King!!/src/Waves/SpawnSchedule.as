@@ -1,6 +1,5 @@
 package Waves 
 {
-	import GameObjects.VehicleSpawner;
 	import flash.utils.Dictionary;
 	import org.flixel.FlxPoint;
 	import org.flixel.FlxPath;
@@ -20,12 +19,13 @@ package Waves
 		{
 			spawn_times = new Dictionary();
 			
-			var vertices = map.graph.getVertices();
+			var vertices:Array = map.graph.getVertices();
 			
-			var path1 = map.graph.getShortestPath(vertices[0], vertices[3]);
+			var path1:Array = map.graph.getShortestPath(vertices[0], vertices[vertices.length-1]);
 			spawn_times[0] = new Car(path1[0].getSource().x, path1[0].getSource().y);
-			var path1node = [new FlxPoint(path1[0].getSource().x, path1[0].getSource().y)];
-			for (var i = 0; i < path1.length; i++)
+			
+			var path1node:Array = [new FlxPoint(path1[0].getSource().x, path1[0].getSource().y)];
+			for (var i:int = 0; i < path1.length; i++)
 			{
 				path1node.push(new FlxPoint(path1[i].getDestination().x, path1[i].getDestination().y));
 			}
@@ -42,7 +42,8 @@ package Waves
 			active = true;
 		}
 		
-		public function update():void 
+		/*Want to change it later to return the vehicle to be spawned? (pushes responsibility to game state*/
+		public function update():void
 		{
 			if (spawn_times[timer] != null)
 			{
