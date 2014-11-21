@@ -1,5 +1,6 @@
 package GameObjects
 {
+	import Graph.Vertex;
 	import org.flixel.*;
     import flash.events.MouseEvent;
 	
@@ -20,6 +21,8 @@ package GameObjects
 		private var arrangement:int;
 		private var timer:int;
 		private var traffic_button:FlxButton;
+		private var NSvertices:Array; //North/South vertices that our TrafficLightCluster effects
+		private var EWvertices:Array; //East/West ""
 		
 		public function TrafficLightCluster(X:int, Y:int, arrangement:int, frequency:int)
 		{
@@ -35,6 +38,8 @@ package GameObjects
 			
 			this.NorthSouthLights = new FlxGroup();
 			this.EastWestLights = new FlxGroup();
+			this.NSvertices = [];
+			this.EWvertices = [];
 			
 			var light:TrafficLight;
 			switch (arrangement)
@@ -140,37 +145,13 @@ package GameObjects
 		
 		override public function update():void
 		{
-			/*if onYellow 
-			{
-				if (timer == Parameters.LIGHT_YELLOW_TRANSITION_TIME)
-				else
-			}
-			else 
-			{
-				if (timer < frequency && timer == frequency - Parameters.LIGHT_YELLOW_TRANSITION_TIME)
-				{
-					if ((TrafficLight) (NorthSouthLights.members[0]).getColor() == Parameters.LIGHT_GREEN)
-						NorthSouthLights.callAll("changeColor");
-					else
-						EastWestLights.callAll("changeColor");
-				}
-			
-				if (timer == frequency)
-				{
-					NorthSouthLights.callAll("changeColor");
-					EastWestLights.callAll("changeColor");
-					timer = 0;
-					onCoolDown = true;
-				}
-			}
-			if (timer == (Parameters.LIGHT_YELLOW_TRANSITION_TIME + 1))
-				onCoolDown = false;*/
 			if (onYellow) 
 			{
 				if (timer == Parameters.LIGHT_YELLOW_TRANSITION_TIME)
 				{
 					NorthSouthLights.callAll("changeColor");
 					EastWestLights.callAll("changeColor");
+					toggleVertices;
 					timer = 0;
 					onYellow = false;
 					onCoolDown = true;
@@ -205,6 +186,38 @@ package GameObjects
 				timer = 0;
 				onYellow = true;
 				onCoolDown = true;
+			}
+		}
+		
+		public function getNSvertices():Array
+		{
+			return NSvertices;
+		}
+		
+		public function addNSvertices(v:Vertex):void
+		{
+			this.NSvertices.push(v);
+		}
+		
+		public function getEWvertices():Array
+		{
+			return EWvertices;
+		}
+		
+		public function addEWvertices(v:Vertex):void
+		{
+			this.EWvertices.push(v);
+		}
+		
+		public function toggleVertices():void
+		{
+			for (var i:int = 0; i < this.NSvertices.length; i++)
+			{
+				this.NSvertices[i].switchTerminal(); 
+			}
+			for (var j:int = 0; j < this.EWvertices.length; j++)
+			{
+				this.EWvertices[j].switchTerminal();	
 			}
 		}
 	}

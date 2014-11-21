@@ -10,7 +10,7 @@ package Vehicles {
 		
 		public function Car(edge_path:Array,vertex_path:Array) 
 		{
-			super((DirectedEdge)(edge_path[0]).getSource().x, (DirectedEdge)(edge_path[0]).getSource().y, 400);
+			super((DirectedEdge)(edge_path[0]).getSource().x - 25, (DirectedEdge)(edge_path[0]).getSource().y - 25, 400);
 			this.planned_path = edge_path;
 			
 			this.followPath(new FlxPath(vertex_path), 100, PATH_FORWARD,true);
