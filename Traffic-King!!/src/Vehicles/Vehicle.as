@@ -22,8 +22,8 @@ package Vehicles
 		public var destination:Vertex;
 		
 		//this is an arraylist of edges that details the path the car is following to get to its destination.
-		private var planned_path:ArrayList;
-		private var current_road:DirectedEdge;
+		protected var planned_path:Array;
+		protected var current_road:DirectedEdge;
 		
 		/* this is the game state that the car is in, used to make the car stop if cars in front
 		 * of it are stopped etc.
@@ -64,22 +64,6 @@ package Vehicles
 		
 		public override function update():void
 		{
-			if (this.velocity.x > 0)
-			{
-				this.direction = Parameters.DIRECTION_EAST;
-			}
-			if (this.velocity.x < 0)
-			{
-				this.direction = Parameters.DIRECTION_WEST;
-			}
-			if (this.velocity.y > 0)
-			{
-				this.direction = Parameters.DIRECTION_SOUTH;
-			}
-			if (this.velocity.y < 0)
-			{
-				this.direction = Parameters.DIRECTION_NORTH;
-			}
 			/*switch (this.direction)
 			{
 				case Parameters.DIRECTION_NORTH:

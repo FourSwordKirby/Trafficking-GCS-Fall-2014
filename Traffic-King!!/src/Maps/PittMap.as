@@ -57,7 +57,103 @@ package Maps
 			
 			this.graph = new Graph();
 			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 75), new Vertex(675, 75), 325));
+			/* 1st row */
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 75), new Vertex(700, 75), 300));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(700, 125), new Vertex(1000, 125), 300));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 0), new Vertex(625, 50), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 50), new Vertex(675, 0), 50));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(600, 75), new Vertex(450, 75), 150));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(450, 125), new Vertex(600, 125), 150));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 125), new Vertex(350, 125), 350));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 75), new Vertex(0, 75), 350));
+			
+			
+			/* 1st row 1st col */
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(450, 75), new Vertex(425, 75), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 125), new Vertex(425, 75), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 125), new Vertex(450, 125), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 75), new Vertex(375, 75), 50));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 125), new Vertex(375, 125), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 75), new Vertex(375, 125), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 75), new Vertex(350, 75), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 150), new Vertex(375, 125), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 125), new Vertex(425, 125), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 125), new Vertex(375, 150), 25));
+			
+			
+			/* 1st row 2nd col */
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(700, 75), new Vertex(675, 75), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 125), new Vertex(675, 75), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 125), new Vertex(700, 125), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 50), new Vertex(625, 75), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 75), new Vertex(625, 75), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 75), new Vertex(675, 50), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(600, 125), new Vertex(625, 125), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 75), new Vertex(625, 125), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 75), new Vertex(600, 75), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 150), new Vertex(675, 125), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 125), new Vertex(675, 125), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 125), new Vertex(625, 150), 25));
+			
+			
+			/* 2nd row */
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 150), new Vertex(375, 350), 200));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 350), new Vertex(425, 150), 200));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 150), new Vertex(625, 350), 200));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 350), new Vertex(675, 150), 200));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 375), new Vertex(0, 375), 350));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 425), new Vertex(350, 425), 350));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(600, 375), new Vertex(450, 375), 150));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(450, 425), new Vertex(600, 425), 150));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 375), new Vertex(700, 375), 300));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(700, 425), new Vertex(1000, 425), 300));
+			
+			
+			/* 2nd row 1st col */
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(450, 375), new Vertex(425, 375), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 425), new Vertex(425, 375), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 425), new Vertex(450, 425), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 350), new Vertex(375, 375), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 375), new Vertex(375, 375), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 375), new Vertex(425, 350), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 425), new Vertex(375, 425), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 375), new Vertex(375, 425), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 375), new Vertex(350, 375), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 450), new Vertex(375, 425), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 425), new Vertex(425, 425), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 425), new Vertex(375, 450), 25));
+			
+			
+			/* 2nd row 2nd col */
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(700, 375), new Vertex(675, 375), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 425), new Vertex(675, 375), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 425), new Vertex(700, 425), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 350), new Vertex(625, 375), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 375), new Vertex(625, 375), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 375), new Vertex(675, 350), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(600, 425), new Vertex(625, 425), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 375), new Vertex(625, 425), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 375), new Vertex(600, 375), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 425), new Vertex(675, 425), 50));
 			
 			
 			/*graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 125), new Vertex(350, 125), 350));
@@ -65,7 +161,7 @@ package Maps
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 125), new Vertex(375, 150), 25));*/
 			
 			/*graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 75), new Vertex(375, 75), 375));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 75), new Vertex(425, 75), 40));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 75), new Vertex(425, 75), 50));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 75), new Vertex(425, 125), 50));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 125), new Vertex(425, 375), 250));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 375), new Vertex(425, 425), 50));

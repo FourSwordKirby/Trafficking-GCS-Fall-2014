@@ -1,8 +1,8 @@
 package Graph 
 {
 	import mx.collections.ArrayList;
-	//import mx.managers.layoutClasses.PriorityQueue;
 	import mx.utils.ArrayUtil;
+	import org.flixel.*;
 	/**
 	 * ...
 	 * @author Mountain Dew
@@ -165,7 +165,7 @@ package Graph
 		/* We return an edge list detailing the shortest path from vertex a to vertex b. If a and b are not connected
 		 * we return null 
 		 */
-		public function getShortestPath(a:Vertex, b:Vertex):Array
+		public function getShortestEdgePath(a:Vertex, b:Vertex):Array
 		{
 			if (b.equals(a))
 				return null;
@@ -186,6 +186,16 @@ package Graph
 					return null;
 				}
 			}
+		}
+		
+		public function getVertexPathFromEdgePath(edge_path:Array):Array
+		{
+			var vertex_path:Array = [new FlxPoint((DirectedEdge)(edge_path[0]).getSource().x, (DirectedEdge)(edge_path[0]).getSource().y)];
+			for (var i:int = 0; i < edge_path.length; i++)
+			{
+				vertex_path.push(new FlxPoint((DirectedEdge)(edge_path[i]).getDestination().x, (DirectedEdge)(edge_path[i]).getDestination().y));
+			}
+			return vertex_path;
 		}
 	}
 }

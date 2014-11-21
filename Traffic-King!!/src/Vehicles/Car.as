@@ -1,6 +1,6 @@
 package Vehicles {
 	import flash.net.NetStreamMulticastInfo;
-	import Graph.Vertex;
+	import Graph.*;
 	import org.flixel.*;
 
 	public class Car extends Vehicle
@@ -8,36 +8,28 @@ package Vehicles {
 		/*Embedding art assets for use */
 		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
 		
-		public function Car(X:int,Y:int /*path:Array*/)//,destination:Vertex,game:GameState) 
+		public function Car(edge_path:Array,vertex_path:Array) 
 		{
-			/*
-			super(X, Y, 20, new Vertex(20, 20),game);
-			*/
-			super(X, Y,/*path,*/400);
+			super((DirectedEdge)(edge_path[0]).getSource().x, (DirectedEdge)(edge_path[0]).getSource().y, 400);
+			this.planned_path = edge_path;
+			
+			this.followPath(new FlxPath(vertex_path), 100, PATH_FORWARD,true);
+			
 			loadRotatedGraphic(CarSprite, 16, -1, true, true);// Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
-//			loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
+			//loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 		}
 		
 		override public function update():void
 		{
 			super.update();
 			
-			switch (this.direction)
+			if (this.pathSpeed == 0)
 			{
-				case Parameters.DIRECTION_NORTH:
-					this.angle = 0;
-					break;
-				case Parameters.DIRECTION_EAST:
-					this.angle = 90;
-					break;
-				case Parameters.DIRECTION_SOUTH:
-					this.angle = 180;
-					break;
-				case Parameters.DIRECTION_WEST:
-					this.angle = 270;
-					break;
+				this.velocity.x = 0;
+				this.velocity.y = 0;
 			}
 		}
+		
 		//override public function 
 		//implement a graph interface?
 /*		
