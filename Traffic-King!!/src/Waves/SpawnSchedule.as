@@ -22,7 +22,7 @@ package Waves
 			var vertices:Array = map.graph.getVertices();
 			
 			var path1:Array = map.graph.getShortestPath(vertices[0], vertices[vertices.length-1]);
-			spawn_times[0] = new Car(path1[0].getSource().x, path1[0].getSource().y);
+			spawn_times[0] = new Car(path1[0].getSource().x - 25, path1[0].getSource().y - 25);
 			
 			var path1node:Array = [new FlxPoint(path1[0].getSource().x, path1[0].getSource().y)];
 			for (var i:int = 0; i < path1.length; i++)
