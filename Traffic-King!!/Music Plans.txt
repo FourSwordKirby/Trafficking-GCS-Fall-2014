@@ -25,3 +25,13 @@ Level: Beijing
 http://opengameart.org/content/its-my-world
 
 
+Sound effects:
+
+Car reaches destination:
+http://www.downloadfreesound.com/8-bit-sound-effects/ (Beep1, Beep2, Beep16)
+
+Car puttering:
+http://www.downloadfreesound.com/8-bit-sound-effects/ (Broken_Robot5)
+
+Car crash:
+http://www.downloadfreesound.com/8-bit-sound-effects/ (Explosion2, Explosion9, Explosion10)
