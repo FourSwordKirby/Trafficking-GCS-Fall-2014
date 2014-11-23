@@ -23,6 +23,7 @@ package States {
 		[Embed(source = "../../assets/UI/Menu-ParisBtn2.png")] private var ParisButtonOn:Class;	
 		[Embed(source = "../../assets/UI/Menu-TokyoBtn2.png")] private var TokyoButtonOn:Class;	
 		[Embed(source = "../../assets/UI/Menu-BJBtn2.png")] private var BeijingButtonOn:Class;	
+		[Embed(source = "../../assets/music/honey-bear-loop.mp3")] private var MapMusic:Class;
 		
 		/*Buttons for the start menu*/
 		private var pitt_button:FlxButton;	
@@ -80,13 +81,14 @@ package States {
 			beijing_button.onOut = function() : void {beijing_button.loadGraphic(BeijingButton)};
 			add(beijing_button);
 			
+			FlxG.playMusic(MapMusic); 
+			
 			super.create();	//super method that takes care of the rest
 		}
 		
 		private function BeginGame(): void 
 		{    
 			 //FlxG.switchState(new TransitionState(new PittWave1));
-			 
 			var wave:PittWave1 = new PittWave1();
 			FlxG.switchState(new SetupState(wave, new Player()));			//switches the current state to the overworld map.
 		}

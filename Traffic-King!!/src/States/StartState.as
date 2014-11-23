@@ -9,7 +9,7 @@ package States {
 		/*Embedding art assets for use */
 		[Embed(source = "../../assets/backgrounds/Main-Style2BG.png")] private var Background:Class;			//Background for the title screen
 		[Embed(source = "../../assets/UI/Main-StartBtn1.png")] private var StartButton:Class;			//Button Graphic
-		
+		[Embed(source = "../../assets/music/The Village MSX_mp3.mp3")] private var StartMusic:Class;
 		FlxG.debug;
 		
 		/*Buttons for the start menu*/
@@ -30,12 +30,13 @@ package States {
 			start_button = new FlxButton(400, 500, "", SelectMap);
 			start_button.loadGraphic(StartButton);
 			add(start_button);											//This adds the button to the game world
-			
+			FlxG.playMusic(StartMusic);
 			super.create();	//super method that takes care of the rest
 		}
 		
 		private function SelectMap(): void 
 		{
+			FlxG.music.stop();
 			FlxG.switchState(new MapSelectState)//switches the current state to the map select screen
 		}
 	}

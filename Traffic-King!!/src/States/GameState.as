@@ -8,6 +8,13 @@ package States {
 	
 	public class GameState extends FlxState 
 	{	
+		[Embed(source = "../../assets/music/DayAndNight.mp3")] private var PittMusic:Class;
+		[Embed(source = "../../assets/music/Dancing on the Street NES.mp3")] private var NYMusic:Class;
+		[Embed(source = "../../assets/music/Investigating a crime at night midi.mp3")] private var LondonMusic:Class;
+		[Embed(source = "../../assets/music/On the way to work.mp3")] private var ParisMusic:Class;
+		[Embed(source = "../../assets/music/i++.mp3")] private var TokyoMusic:Class;
+		[Embed(source = "../../assets/music/It's my world.mp3")] private var BeijingMusic:Class;
+
 		/*Important information about the current level*/
 		protected var current_wave:Wave;
 		public var map:Map;
@@ -16,6 +23,8 @@ package States {
 		public var active_vehicles:Array;
 		
 		public var player:Player;
+		
+		private var timer:int;
 		
 		/*used to make the camera follow the mouse*/
 		private var MouseRectangle:FlxObject;
@@ -26,6 +35,10 @@ package States {
 			this.map = current_wave.getMap();
 			
 			this.active_vehicles = [];
+			
+			this.player = player;
+			
+			this.timer = 1000;
 		}
 		
 		FlxG.debug;	//allows debug messages to appear	
@@ -48,6 +61,33 @@ package States {
 			for (var k in current_wave.getAllSpawnSchedules()) 
 			{
 				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).initSpawnSchedule(this);
+			}
+
+			
+			switch (this.current_wave.getWaveMapName())
+			{
+				case "Pittsburgh":
+				    FlxG.playMusic(PittMusic);
+					break;
+				
+			    case "New York":
+					FlxG.playMusic(NYMusic);
+					break;
+					
+				case "London":
+					FlxG.playMusic(LondonMusic);
+					break;
+					
+				case "Paris":
+					FlxG.playMusic(ParisMusic);
+					break;
+					
+				case "Tokyo":
+					FlxG.playMusic(TokyoMusic);
+					break;
+				case "Beijing":
+					FlxG.playMusic(BeijingMusic);
+					break;
 			}
 
 			//adds the map and all of its components to the game
@@ -82,6 +122,13 @@ package States {
 			for (var k in current_wave.getAllSpawnSchedules()) 
 			{
 				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).update();
+			}
+			
+			this.timer--;
+			
+			if (this.timer == 0)
+			{
+				FlxG.resetGame();
 			}
 			
 			super.update();

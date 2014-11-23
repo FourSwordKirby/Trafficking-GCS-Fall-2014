@@ -19,16 +19,27 @@ package Vehicles {
 			//loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 		}
 		
+		FlxG.debug;
 		override public function update():void
-		{
+		{	
 			super.update();
 			
-			if (this.current_road != null && this.current_road.getDestination().isTerminal())
+			if (this.current_road != null)
 			{
-				trace(this.current_road.getDestination());
-				trace(this.current_road.getDestination().isTerminal());
-				
+				//trace(this.current_road.getDestination().toString());
+				//trace(this.current_road.getDestination().isTerminal());
+			}
+			
+			//trace("Source" + this.current_road.getSource().toString());
+			//trace(this.current_road.getDestination().toString());
+			if (this.current_road != null && this.current_road.getDestination().isTerminal())
+			{	
 				this.stopFollowingPath();
+			}
+			
+			if (this.current_road != null && !this.current_road.getDestination().isTerminal())
+			{	
+				this.pathSpeed = 100;	//Note 100 is a magic number at the moment
 			}
 			
 			if (this.pathSpeed == 0)
