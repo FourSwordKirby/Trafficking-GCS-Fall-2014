@@ -5,6 +5,7 @@ package States {
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
 	import Maps.*;
+	import PlayerInfo.Player;
 	import Waves.PittWave1;
 	import Waves.Wave;
 	import mx.utils.*;
@@ -26,12 +27,17 @@ package States {
 		/*used to indicate whether we are setting up on the map or not*/
 		public var in_setup:Boolean;
 		
-		public function SetupState(wave:Wave)
+		/*The player that is progressing through the waves*/
+		public var player:Player;
+		
+		public function SetupState(wave:Wave, player:Player)
 		{
 			this.current_wave = wave;
 			this.map = current_wave.getMap();
 			this.level_name = "Pitt";
 			this.wave_name = "1";
+			
+			this.player = player;
 			
 			this.in_setup = false;
 			this.setup_menu = new SetupMenu(this);

@@ -1,6 +1,7 @@
 package States {
 	import mx.core.FlexSprite;
 	import org.flixel.*;
+	import PlayerInfo.Player;
 	
 	import Waves.PittWave1;
 
@@ -85,7 +86,9 @@ package States {
 		private function BeginGame(): void 
 		{    
 			 //FlxG.switchState(new TransitionState(new PittWave1));
-			FlxG.switchState(new SetupState(new PittWave1));			//switches the current state to the overworld map.
+			 
+			var wave:PittWave1 = new PittWave1();
+			FlxG.switchState(new SetupState(wave, new Player()));			//switches the current state to the overworld map.
 		}
 	}
 }

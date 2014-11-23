@@ -18,16 +18,17 @@ package Vehicles
 		private static var follow_distance:int;
 
 		protected var location:FlxPoint;
-		protected var direction:int;
+		public var direction:int;
 		public var destination:Vertex;
 		
 		//this is an arraylist of edges that details the path the car is following to get to its destination.
 		protected var planned_path:Array;
-		protected var current_road:DirectedEdge;
+		public var current_road:DirectedEdge;
 		
 		/* this is the game state that the car is in, used to make the car stop if cars in front
 		 * of it are stopped etc.
 		 */
+		protected var game:GameState;
 		
 		public function Vehicle(X:int, Y:int,/*path:Array,*/maxSpeed:int)//destination:Vertex) 
 		{
@@ -63,7 +64,23 @@ package Vehicles
 		}
 		
 		public override function update():void
-		{
+		{	
+			/*
+			if(this.current_road != this.planned_path[this._pathNodeIndex])
+				this.current_road = this.planned_path[this._pathNodeIndex];
+				*/
+				
+				
+			/*
+			if (this.velocity.x > 0)
+				this.direction = Parameters.DIRECTION_EAST;
+			if (this.velocity.y > 0)
+				this.direction = Parameters.DIRECTION_SOUTH;
+			if (this.velocity.x < 0)
+				this.direction = Parameters.DIRECTION_WEST;
+			if (this.velocity.y < 0)
+				this.direction = Parameters.DIRECTION_NORTH;
+			*/
 			/*switch (this.direction)
 			{
 				case Parameters.DIRECTION_NORTH:
@@ -105,8 +122,6 @@ package Vehicles
 					}
 				}
 			}*/
-			
-			
 		}
 	}
 }

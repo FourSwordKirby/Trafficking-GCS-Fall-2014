@@ -5,6 +5,7 @@ package States {
 	import org.flashdevelop.utils.TraceLevel;
 	import org.flixel.*;
 	import Maps.*;
+	import PlayerInfo.Player;
 	import Waves.PittWave1;
 	import Waves.Wave;
 	import mx.utils.*;
@@ -41,10 +42,14 @@ package States {
 		private var pitt:FlxSprite; 
 		private var timer:int; 
 		
-		public function TransitionState(wave:Wave)
+		private var temp_player:Player;
+		
+		public function TransitionState(wave:Wave, player:Player)
 		{
 			this.current_wave = wave;
 			this.timer = 0; 
+			
+			this.temp_player = player;
 		}
 		override public function create():void
 		{
@@ -96,7 +101,7 @@ package States {
 				add(background_sprite);
 			}
 			if (timer == 250)
-				FlxG.switchState(new GameState(current_wave));
+				FlxG.switchState(new GameState(current_wave, temp_player));
 			timer ++; 
 			super.update();
 		}

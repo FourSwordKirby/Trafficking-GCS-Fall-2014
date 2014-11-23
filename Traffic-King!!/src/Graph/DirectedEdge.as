@@ -36,6 +36,11 @@ package Graph
 		{
 			return weight;
 		}
+		
+		public function toString():String
+		{
+			return "[" + this.source.x + " " + this.source.y + " ," + this.destination.x + " " + this.destination.y + "]";
+		}
 	}
 
 }

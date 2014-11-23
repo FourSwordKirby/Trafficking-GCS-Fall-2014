@@ -96,7 +96,12 @@ package GUI {
 			money_button.scrollFactor.y = 0;
 			money_button.loadGraphic(MoneyButton);
 			money_button.onOver = function() : void { money_button.loadGraphic(MoneyButtonOn) };
-			money_button.onOut = function() : void {money_button.loadGraphic(MoneyButton)};
+			money_button.onOut = function() : void { money_button.loadGraphic(MoneyButton) };
+			
+			var money_text:FlxText = new FlxText(money_button.x, money_button.y, money_button.width, setup_state.player.funds.toString());
+			money_text.size *= 6;
+			add(money_text);
+			
 			add(money_button);
 			
 			shop_button = new FlxButton(394, 340, "", dummyfunction);
@@ -156,7 +161,8 @@ package GUI {
 		
 		private function startGame():void
 		{
-			FlxG.switchState(new TransitionState(new PittWave1));	// have to make this load in the instance of the new wave
+			//Can't transfer the wave state between levels? Need to figure this out pretty badly
+			FlxG.switchState(new TransitionState(new PittWave1, setup_state.player));	// have to make this load in the instance of the new wave
 			return;
 		}
 		
