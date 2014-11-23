@@ -152,7 +152,7 @@ package GameObjects
 				{
 					NorthSouthLights.callAll("changeColor");
 					EastWestLights.callAll("changeColor");
-					toggleVertices;
+					toggleVertices();
 					timer = 0;
 					onYellow = false;
 					onCoolDown = true;

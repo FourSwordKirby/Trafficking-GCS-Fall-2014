@@ -125,6 +125,7 @@ package States {
 				FlxG.resetGame();
 			}
 			
+			
 			super.update();
 		}
 		

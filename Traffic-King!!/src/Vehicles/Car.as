@@ -26,8 +26,8 @@ package Vehicles {
 			
 			if (this.current_road != null)
 			{
-				trace(this.current_road.getDestination().toString());
-				trace(this.current_road.getDestination().isTerminal());
+				//trace(this.current_road.getDestination().toString());
+				//trace(this.current_road.getDestination().isTerminal());
 			}
 			
 			if (this.current_road != null && this.current_road.getDestination().isTerminal())
