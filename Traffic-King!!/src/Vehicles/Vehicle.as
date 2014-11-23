@@ -65,10 +65,9 @@ package Vehicles
 		
 		public override function update():void
 		{	
-			/*
+			
 			if(this.current_road != this.planned_path[this._pathNodeIndex])
 				this.current_road = this.planned_path[this._pathNodeIndex];
-				*/
 				
 				
 			/*

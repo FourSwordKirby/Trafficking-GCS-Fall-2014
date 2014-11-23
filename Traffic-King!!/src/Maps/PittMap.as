@@ -56,11 +56,6 @@ package Maps
 			
 			this.graph = new Graph();
 			
-			
-			var light_cluster:TrafficLightCluster = new TrafficLightCluster(400, 100, Parameters.ARRANGEMENT_NESW, 200)
-			//light_cluster.addEWvertices();
-			traffic_light_group.add(light_cluster);
-			
 			/* 1st row */
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 75), new Vertex(700, 75), 300));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(700, 125), new Vertex(1000, 125), 300));
@@ -73,7 +68,6 @@ package Maps
 			
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 125), new Vertex(350, 125), 350));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 75), new Vertex(0, 75), 350));
-			
 			
 			/* 1st row 1st col */
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(450, 75), new Vertex(425, 75), 25));
@@ -158,6 +152,12 @@ package Maps
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 375), new Vertex(600, 375), 25));
 			
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 425), new Vertex(675, 425), 50));
+			
+			
+			
+			var light_cluster:TrafficLightCluster = new TrafficLightCluster(400, 100, Parameters.ARRANGEMENT_NESW, 200)
+			light_cluster.addEWvertices(graph.getVertex(375, 125));
+			traffic_light_group.add(light_cluster);
 			
 			
 			/*graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 125), new Vertex(350, 125), 350));

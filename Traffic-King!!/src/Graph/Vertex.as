@@ -30,6 +30,9 @@ package Graph
 		{
 			return this.is_terminal;
 		}
+		public function toString():String
+		{
+			return "[" + this.x + ", " + this.y + "]";
+		}
 	}
-
 }
