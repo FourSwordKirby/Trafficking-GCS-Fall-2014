@@ -50,23 +50,25 @@ package Graph
 		
 		public function addDirectedEdge(edge:DirectedEdge):void
 		{
-			trace(1);
 			//Add source to vertex_list
 			var source:Vertex = edge.getSource();
 			var source_index:int = getItemIndexByVertex(vertex_list, source);
-
+			
+			var neighbors:Array;
+			
 			if (source_index != -1)
 			{
-				var neighbors:Array = neighbor_list[source_index];
+				neighbors = neighbor_list[source_index];
 			}
 			else {
 				vertex_list.push(source);
-				var neighbors:Array = [];
+				neighbors = [];
 				neighbor_list.push(neighbors);
 			}
 			
 			//Add edge to subarray of neighbors_list
 			var edge_index:int = getItemIndexByEdge(neighbors, edge);
+			
 			if (edge_index == -1)
 			{
 				neighbors.push(edge);
@@ -96,6 +98,21 @@ package Graph
 			return null;
 		}
 		
+		public function getVertex(X:int, Y:int):Vertex
+		{
+			var checkVertex:Vertex = new Vertex(X, Y);
+			
+			for (var i:int = 0; i < vertex_list.length; i++)
+			{
+				if (checkVertex.equals(vertex_list[i]))
+				{
+					return vertex_list[i];
+				}
+			}
+			
+			return null;
+		}
+		
 		public function getVertices():Array 
 		{
 			return vertex_list.concat();
@@ -114,9 +131,8 @@ package Graph
 			while (!frontier.isEmpty()) 
 			{
 				var vertex_edge_and_distance = frontier.removeSmallest();
-				trace(vertex_edge_and_distance[0]);
-				var destination_vertex = (Vertex) (vertex_edge_and_distance[0]);
-				var edge = vertex_edge_and_distance[1];
+				var destination_vertex:Vertex = (Vertex) (vertex_edge_and_distance[0]);
+				var edge:DirectedEdge = vertex_edge_and_distance[1];
 				var distance:Number = vertex_edge_and_distance[2];
 				
 				if (getItemIndexByVertex(observed_vertices, destination_vertex) == -1) {
@@ -133,7 +149,7 @@ package Graph
 						for (var i:int = 0; i < neighbor_edges.length; i++) 
 						{
 							var neighbor_edge:DirectedEdge = (DirectedEdge) (neighbor_edges[i]);
-							var new_destination_vertex = neighbor_edge.getDestination();
+							var new_destination_vertex:Vertex = neighbor_edge.getDestination();
 							var new_distance:Number = path_distance + neighbor_edge.getWeight() + final_destination.distanceTo(new_destination_vertex);
 							
 							frontier.addObject([new_destination_vertex, neighbor_edge, new_distance], new_distance);
@@ -149,8 +165,8 @@ package Graph
 		{
 			var source:Vertex;
 			var check_index:int;
-			var path = [];
-			var edge = follow_list[follow_list.length - 1];
+			var path:Array = [];
+			var edge:DirectedEdge = follow_list[follow_list.length - 1];
 			
 			while (edge != null) {
 				path.push(edge);
@@ -172,12 +188,12 @@ package Graph
 			else 
 			{
 				var search_queue:PriorityQueue = new PriorityQueue();
-				var distance = b.distanceTo(a);
+				var distance:Number = b.distanceTo(a);
 				search_queue.addObject([a, null, distance], b.distanceTo(a));
-				var result = findDestination(b, search_queue, [], []);
+				var result:Array = findDestination(b, search_queue, [], []);
 				
-				var observed_vertices = result[0];
-				var follow_list = result[1]
+				var observed_vertices:Array = result[0];
+				var follow_list:Array = result[1]
 				
 				if (follow_list != null) {
 					return getPathFromFollowList(observed_vertices, follow_list);

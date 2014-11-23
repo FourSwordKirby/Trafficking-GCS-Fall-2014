@@ -22,9 +22,9 @@ package Graph
 		
 		public function addObject(object:Object, priority:Number):void
 		{
-			var minIndex = -1;
-			var maxIndex = this.queue.length;
-			var midIndex;
+			var minIndex:int = -1;
+			var maxIndex:int = this.queue.length;
+			var midIndex:int;
 			
 			while (minIndex + 1 < maxIndex)
 			{
@@ -47,7 +47,7 @@ package Graph
 		{
 			if (queue.length > 0)
 			{
-				var result = this.queue.splice(0, 1)[0][0];
+				var result:Object = this.queue.splice(0, 1)[0][0];
 				return result;
 			}
 			else {
