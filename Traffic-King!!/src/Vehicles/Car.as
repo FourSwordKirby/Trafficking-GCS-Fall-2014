@@ -23,13 +23,7 @@ package Vehicles {
 		override public function update():void
 		{	
 			super.update();
-			
-			if (this.current_road != null)
-			{
-				//trace(this.current_road.getDestination().toString());
-				//trace(this.current_road.getDestination().isTerminal());
-			}
-			
+
 			//trace("Source" + this.current_road.getSource().toString());
 			//trace(this.current_road.getDestination().toString());
 			if (this.current_road != null && this.current_road.getDestination().isTerminal())
@@ -46,6 +40,13 @@ package Vehicles {
 			{
 				this.velocity.x = 0;
 				this.velocity.y = 0;
+			}
+			
+			if (this.x+this.width/2 == this.path.tail().x && this.y+this.height/2 == this.path.tail().y)
+			{
+				this.visible = false;
+				trace("hello");
+				this.kill();
 			}
 		}
 		

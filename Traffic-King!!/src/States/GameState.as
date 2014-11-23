@@ -38,7 +38,7 @@ package States {
 			
 			this.player = player;
 			
-			this.timer = 1000;
+			this.timer = 18000;
 		}
 		
 		FlxG.debug;	//allows debug messages to appear	
