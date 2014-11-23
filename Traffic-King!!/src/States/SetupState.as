@@ -15,6 +15,7 @@ package States {
 		/*Important information about the current level*/
 		public var current_wave:Wave;
 		public var map:Map;
+		public var map_group:FlxGroup;
 		
 		/*used to make the camera follow the mouse*/
 		protected var MouseRectangle:FlxObject;
@@ -61,9 +62,10 @@ package States {
 			//Need to crease the menu for the setup state
 			
 			//Here we create the actual map
-			add(this.map.create());
-			add(this.setup_menu);
 			
+			map_group = this.map.create();
+			add(map_group);
+			add(this.setup_menu);
 			super.create();
 		}
 		

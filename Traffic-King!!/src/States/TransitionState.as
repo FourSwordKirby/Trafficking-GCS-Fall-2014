@@ -47,7 +47,7 @@ package States {
 		public function TransitionState(wave:Wave, player:Player)
 		{
 			this.current_wave = wave;
-			this.timer = 0; 
+			this.timer = 0;
 			
 			this.temp_player = player;
 		}

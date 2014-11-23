@@ -9,11 +9,11 @@ package Maps
 		 /*Embedding outside text assets for use (this includes tilemaps etc.) */
 		[Embed(source = '../../assets/maplayouts/Pittsburgh.csv', mimeType = 'application/octet-stream')] private var Pitt_MapData:Class;
 		[Embed(source = "../../assets/tiles/Road Tiles No Edges.png")] private var Tiles:Class;
-
 	
 		public function PittMap() 
 		{
-			this.game_map = new FlxTilemap();
+			super();
+			//this.game_map = new FlxTilemap();
 			this.game_map.loadMap(new Pitt_MapData, Tiles, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 			
 			//Wbuilding_group.add(new Buildings(0, 245, "GateRight"));
@@ -54,12 +54,11 @@ package Maps
 			building_group.add(new Buildings(250, 710, "RectVerde"));
 			building_group.add(new Buildings(250, 760, "RectBeige"));
 			
-			this.graph = new Graph();
-			
-			
 			var light_cluster:TrafficLightCluster = new TrafficLightCluster(400, 100, Parameters.ARRANGEMENT_NESW, 200)
-			//light_cluster.addEWvertices(new Vertex(375, 125));
-			//traffic_light_group.add(light_cluster);
+			light_cluster.addEWvertices(new Vertex(375, 125));
+			traffic_light_group.add(light_cluster);
+			
+			this.graph = new Graph();
 			
 			/* 1st row */
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 75), new Vertex(700, 75), 300));

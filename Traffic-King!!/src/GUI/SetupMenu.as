@@ -54,6 +54,8 @@ package GUI {
 		/*the setup state that this menu represents*/
 		private var setup_state:SetupState;
 		
+		public var map_group:FlxGroup;
+		
 		public function SetupMenu(setup_state:SetupState) 
 		{
 			this.setup_state = setup_state;
@@ -161,8 +163,9 @@ package GUI {
 		
 		private function startGame():void
 		{
+			map_group = (FlxGroup) (setup_state.remove(setup_state.map_group, true));
 			//Can't transfer the wave state between levels? Need to figure this out pretty badly
-			FlxG.switchState(new TransitionState(new PittWave1, setup_state.player));	// have to make this load in the instance of the new wave
+			FlxG.switchState(new TransitionState(setup_state.current_wave/*new PittWave1*/, setup_state.player));	// have to make this load in the instance of the new wave
 			return;
 		}
 		

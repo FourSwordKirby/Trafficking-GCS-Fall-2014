@@ -11,6 +11,7 @@ package States {
 		/*Important information about the current level*/
 		protected var current_wave:Wave;
 		public var map:Map;
+		public var map_group:FlxGroup;
 		
 		public var active_vehicles:Array;
 		
@@ -40,7 +41,7 @@ package States {
 			FlxG.camera.setBounds(0, 0, map.getMapWidth(), map.getMapHeight());
 			FlxG.camera.follow(MouseRectangle);
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
-												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
+												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);
 			
 			
 			//Initializes all of our spawners
@@ -48,9 +49,10 @@ package States {
 			{
 				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).initSpawnSchedule(this);
 			}
-			
+
 			//adds the map and all of its components to the game
-			add(this.map.create());
+			map_group = this.map.create();
+			add(map_group);
 			super.create();
 		}
 		
