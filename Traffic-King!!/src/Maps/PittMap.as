@@ -16,7 +16,6 @@ package Maps
 			this.game_map = new FlxTilemap();
 			this.game_map.loadMap(new Pitt_MapData, Tiles, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 			
-			traffic_light_group.add(new TrafficLightCluster(200, 200, Parameters.ARRANGEMENT_NESW, 200));
 			//Wbuilding_group.add(new Buildings(0, 245, "GateRight"));
 			building_group.add(new Buildings(35, 610, "GateDown"));
 			building_group.add(new Buildings(240, 170, "Tree"));
@@ -56,6 +55,11 @@ package Maps
 			building_group.add(new Buildings(250, 760, "RectBeige"));
 			
 			this.graph = new Graph();
+			
+			
+			var light_cluster:TrafficLightCluster = new TrafficLightCluster(400, 100, Parameters.ARRANGEMENT_NESW, 200)
+			//light_cluster.addEWvertices(new Vertex(375, 125));
+			//traffic_light_group.add(light_cluster);
 			
 			/* 1st row */
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 75), new Vertex(700, 75), 300));

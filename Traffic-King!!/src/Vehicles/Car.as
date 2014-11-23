@@ -23,6 +23,14 @@ package Vehicles {
 		{
 			super.update();
 			
+			if (this.current_road != null && this.current_road.getDestination().isTerminal())
+			{
+				trace(this.current_road.getDestination());
+				trace(this.current_road.getDestination().isTerminal());
+				
+				this.stopFollowingPath();
+			}
+			
 			if (this.pathSpeed == 0)
 			{
 				this.velocity.x = 0;

@@ -26,7 +26,7 @@ package Graph
 			this.is_terminal = !this.is_terminal;
 		}
 		
-		public function get_terminal():Boolean
+		public function isTerminal():Boolean
 		{
 			return this.is_terminal;
 		}

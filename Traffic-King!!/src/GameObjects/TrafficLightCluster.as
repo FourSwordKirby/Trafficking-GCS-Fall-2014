@@ -8,7 +8,6 @@ package GameObjects
 	{
 		/*Embedding art assets for use */
 		[Embed(source = "/../assets/gfx/invisible.PNG")] private static var invisiButton:Class;
-		[Embed(source = "/../assets/gfx/dummy.PNG")] private static var dummy:Class
 		
 		private var NorthSouthLights:FlxGroup;
 		private var EastWestLights:FlxGroup;
@@ -26,7 +25,10 @@ package GameObjects
 		
 		public function TrafficLightCluster(X:int, Y:int, arrangement:int, frequency:int)
 		{
-			this.position = new FlxPoint(X, Y);
+			var light:TrafficLight;
+			light = new TrafficLight(0, 0);	//dummy traffic light to help us initialize position.
+			
+			this.position = new FlxPoint(X-light.width/2, Y-light.height/2);
 			this.arrangement = arrangement;
 			
 			this.frequency = frequency;
@@ -41,7 +43,6 @@ package GameObjects
 			this.NSvertices = [];
 			this.EWvertices = [];
 			
-			var light:TrafficLight;
 			switch (arrangement)
 			{
 				case Parameters.ARRANGEMENT_NESW:
