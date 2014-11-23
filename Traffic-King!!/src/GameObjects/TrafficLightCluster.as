@@ -178,7 +178,7 @@ package GameObjects
 		
 		public function onClick():void 
 		{
-			if (!onCoolDown)
+			if (!onCoolDown && !onYellow)
 			{
 				if ((TrafficLight) (NorthSouthLights.members[0]).getColor() == Parameters.LIGHT_GREEN)
 					NorthSouthLights.callAll("changeColor");
