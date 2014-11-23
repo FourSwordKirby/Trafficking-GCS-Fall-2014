@@ -58,8 +58,8 @@ package Maps
 			
 			
 			var light_cluster:TrafficLightCluster = new TrafficLightCluster(400, 100, Parameters.ARRANGEMENT_NESW, 200)
-			//light_cluster.addEWvertices(new Vertex(375, 125));
-			//traffic_light_group.add(light_cluster);
+			//light_cluster.addEWvertices();
+			traffic_light_group.add(light_cluster);
 			
 			/* 1st row */
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 75), new Vertex(700, 75), 300));

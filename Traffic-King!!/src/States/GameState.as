@@ -16,6 +16,8 @@ package States {
 		
 		public var player:Player;
 		
+		private var timer:int;
+		
 		/*used to make the camera follow the mouse*/
 		private var MouseRectangle:FlxObject;
 		
@@ -25,6 +27,7 @@ package States {
 			this.map = current_wave.getMap();
 			
 			this.active_vehicles = [];
+			this.timer = 1000;
 		}
 		
 		FlxG.debug;	//allows debug messages to appear	
@@ -80,6 +83,13 @@ package States {
 			for (var k in current_wave.getAllSpawnSchedules()) 
 			{
 				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).update();
+			}
+			
+			this.timer--;
+			
+			if (this.timer == 0)
+			{
+				FlxG.resetGame();
 			}
 			
 			super.update();
