@@ -30,9 +30,16 @@ package Vehicles {
 				//trace(this.current_road.getDestination().isTerminal());
 			}
 			
+			//trace("Source" + this.current_road.getSource().toString());
+			//trace(this.current_road.getDestination().toString());
 			if (this.current_road != null && this.current_road.getDestination().isTerminal())
 			{	
 				this.stopFollowingPath();
+			}
+			
+			if (this.current_road != null && !this.current_road.getDestination().isTerminal())
+			{	
+				this.pathSpeed = 100;	//Note 100 is a magic number at the moment
 			}
 			
 			if (this.pathSpeed == 0)
