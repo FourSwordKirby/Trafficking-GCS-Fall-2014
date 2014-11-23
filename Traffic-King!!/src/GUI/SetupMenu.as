@@ -34,7 +34,7 @@ package GUI {
 		
 		/*Embedded return button asset for us to use*/
 		[Embed(source = "../../assets/UI/Back Button Small.png")] private var ReturnButton:Class;
-		[Embed(source = "../../assets/UI/Back Button Big.png")] private var ReturnButtonOn:Class;
+		[Embed(source = "../../assets/UI/Back Button Big2.png")] private var ReturnButtonOn:Class;
 		
 		/*Buttons for the setup state menu*/
 		private var traffic_button:FlxButton;	
@@ -162,6 +162,7 @@ package GUI {
 		private function startGame():void
 		{
 			//Can't transfer the wave state between levels? Need to figure this out pretty badly
+			FlxG.music.stop();
 			FlxG.switchState(new TransitionState(new PittWave1, setup_state.player));	// have to make this load in the instance of the new wave
 			return;
 		}
