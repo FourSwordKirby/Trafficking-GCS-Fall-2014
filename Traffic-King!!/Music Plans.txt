@@ -35,3 +35,9 @@ http://www.downloadfreesound.com/8-bit-sound-effects/ (Broken_Robot5)
 
 Car crash:
 http://www.downloadfreesound.com/8-bit-sound-effects/ (Explosion2, Explosion9, Explosion10)
+
+Huayun would like to suggest here that main screen, level selection and level info page should use
+the same background music. Because the player can feel the situation "changes" when the BGM changes.
+For example when you are watching a scary movie, suddenly a ghostly music starts and you will have
+a sudden change in your mood. There should be a shift between a "relax" mood and a "game" mood for
+our players. 
