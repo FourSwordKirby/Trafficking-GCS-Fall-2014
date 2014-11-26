@@ -1,5 +1,8 @@
 package States {
+	import flash.display.Loader;
+	import flash.display.MovieClip;
 	import flash.display.NativeMenu;
+	import flash.net.URLRequest;
 	import GameObjects.*;
 	import GUI.SetupMenu;
 	import org.flashdevelop.utils.TraceLevel;
@@ -27,7 +30,6 @@ package States {
 		[Embed(source = "../../assets/UI/LevelInfo-BeginBtn1.png")] private var BeginButton:Class;
 		
 		[Embed(source = "../../assets/UI/wave_pitt.png")] private var pittsburgh:Class;	
-
 		
 		
 		protected var current_wave:Wave;
@@ -43,6 +45,8 @@ package States {
 		private var timer:int; 
 		
 		private var temp_player:Player;
+		
+		private var movie_loader:Loader;
 		
 		public function TransitionState(wave:Wave, player:Player)
 		{
@@ -72,6 +76,11 @@ package States {
 			add(begin);
 			pitt = new FlxSprite ( 150, 135, pittsburgh);
 			add(pitt);
+			
+			
+			movie_loader = new Loader();
+			var url:URLRequest = new URLRequest("../assets/transitions/transitionState.swf");
+			movie_loader.load(url);
 		}
 		
 		override public function update():void
@@ -91,6 +100,15 @@ package States {
 				info.acceleration.x = 500;
 			}
 			if (timer == 150)
+			{	
+				FlxG.stage.addChild(movie_loader);
+/*				
+				var transition_clip:FlxMovieClip = new FlxMovieClip();
+				transition_clip.loadMovieClip(myLoader, 800, 800);
+				*/
+			}
+			/*
+			if (timer == 150)
 			{
 				background_sprite = new FlxSprite(0, 0, Background2);
 				add(background_sprite);
@@ -100,8 +118,12 @@ package States {
 				background_sprite = new FlxSprite(0, 0, Background3);
 				add(background_sprite);
 			}
-			if (timer == 250)
+			*/
+			if (timer == 300)
+			{
+				FlxG.stage.removeChild(movie_loader);
 				FlxG.switchState(new GameState(current_wave, temp_player));
+			}
 			timer ++; 
 			super.update();
 		}
