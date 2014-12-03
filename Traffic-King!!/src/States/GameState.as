@@ -180,7 +180,8 @@ package States {
 		
 		public function toSeconds(time:int):String
 		{
-			return (time / 100).toString();
+			var i:int = time / 60;
+			return i.toString();
 		}
 	}
 

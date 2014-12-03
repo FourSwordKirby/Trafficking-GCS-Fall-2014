@@ -41,6 +41,7 @@ package GUI {
 		private var time_limit_button:FlxButton;	
 		private var map_button:FlxButton;	
 		private var money_button:FlxButton;	
+		private var money_text:FlxText;
 		private var shop_button:FlxButton;	
 		private var info_button:FlxButton;	
 		private var begin_button:FlxButton;	
@@ -100,7 +101,7 @@ package GUI {
 			money_button.onOver = function() : void { money_button.loadGraphic(MoneyButtonOn) };
 			money_button.onOut = function() : void { money_button.loadGraphic(MoneyButton) };
 			
-			var money_text:FlxText = new FlxText(money_button.x, money_button.y, money_button.width, setup_state.player.funds.toString());
+			money_text= new FlxText(money_button.x + 100, money_button.y, money_button.width, setup_state.player.funds.toString());
 			money_text.size *= 6;
 			add(money_text);
 			
@@ -156,6 +157,7 @@ package GUI {
 			shop_button.visible = false;
 			info_button.visible = false;
 			begin_button.visible = false;
+			money_text.visible = false;
 			
 			return_button.visible = true;
 			setup_state.in_setup = true;
@@ -180,6 +182,7 @@ package GUI {
 			shop_button.visible = true;
 			info_button.visible = true;
 			begin_button.visible = true;
+			money_text.visible = true;
 			
 			return_button.visible = false;
 			setup_state.in_setup = false;

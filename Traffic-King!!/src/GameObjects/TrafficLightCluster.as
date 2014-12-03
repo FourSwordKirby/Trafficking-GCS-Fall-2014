@@ -8,10 +8,29 @@ package GameObjects
 	{
 		/*Embedding art assets for use */
 		[Embed(source = "/../assets/gfx/invisible.PNG")] private static var invisiButton:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle1.PNG")] private static var cdcircle1:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle2.PNG")] private static var cdcircle2:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle3.PNG")] private static var cdcircle3:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle4.PNG")] private static var cdcircle4:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle5.PNG")] private static var cdcircle5:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle6.PNG")] private static var cdcircle6:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle7.PNG")] private static var cdcircle7:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle8.PNG")] private static var cdcircle8:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle9.PNG")] private static var cdcircle9:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle10.PNG")] private static var cdcircle10:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle11.PNG")] private static var cdcircle11:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle12.PNG")] private static var cdcircle12:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle13.PNG")] private static var cdcircle13:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle14.PNG")] private static var cdcircle14:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle15.PNG")] private static var cdcircle15:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle16.PNG")] private static var cdcircle16:Class;
+		[Embed(source = "/../assets/gfx/cooldown circle.PNG")] private static var cdcircle:Class;
 		
 		private var NorthSouthLights:FlxGroup;
 		private var EastWestLights:FlxGroup;
 
+		private var cooldownBubble:FlxSprite;
+		
 		private var frequency:int;		//This is used indicate how many seconds until the light changes from green to red
 		private var position:FlxPoint;
 		private var onCoolDown:Boolean;
@@ -37,6 +56,10 @@ package GameObjects
 			this.onYellow = false;
 			this.traffic_button = new FlxButton(X - 12, Y - 15, "", onClick);
 			traffic_button.loadGraphic(invisiButton);
+			
+			this.cooldownBubble = new FlxSprite(X-light.width-3, Y-light.width-3, invisiButton);
+			cooldownBubble.loadGraphic(cdcircle, true, false, 50, 60);
+			cooldownBubble.addAnimation("cooldown", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 0], 8, false);
 			
 			this.NorthSouthLights = new FlxGroup();
 			this.EastWestLights = new FlxGroup();
@@ -142,6 +165,7 @@ package GameObjects
 			this.add(NorthSouthLights);
 			this.add(EastWestLights);
 			this.add (traffic_button); 
+			this.add(cooldownBubble);
 		}
 		
 		override public function update():void
@@ -169,7 +193,7 @@ package GameObjects
 				onYellow = true; 
 				timer = 0;
 				}
-				if (timer == 100) 
+				if (timer == 120) 
 					onCoolDown = false;
 			}
 			timer++;
@@ -187,6 +211,7 @@ package GameObjects
 				timer = 0;
 				onYellow = true;
 				onCoolDown = true;
+				this.cooldownBubble.play("cooldown");
 			}
 		}
 		
