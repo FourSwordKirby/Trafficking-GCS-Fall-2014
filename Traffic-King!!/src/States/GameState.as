@@ -25,6 +25,10 @@ package States {
 		
 		private var timer:int;
 		
+		private var clock:FlxText;
+		
+		private var score:FlxText; 
+		
 		/*used to make the camera follow the mouse*/
 		private var MouseRectangle:FlxObject;
 		
@@ -32,6 +36,7 @@ package States {
 		{
 			this.current_wave = wave;
 			this.map = current_wave.getMap();
+			this.player = player;
 			
 			this.active_vehicles = [];
 			this.timer = 18000;
@@ -87,6 +92,19 @@ package States {
 			
 			//adds the map and all of its components to the game
 			add(this.map.create());
+			
+			this.clock = new FlxText(20, 20, 600, ("Time: " + toSeconds(this.timer)), true);
+			this.clock.size = 14;
+			this.clock.scrollFactor.x = 0;
+			this.clock.scrollFactor.y = 0;
+			add(clock);
+			
+			this.score = new FlxText(500, 20, 80, ("Score: " + player.getScore().toString()), true);
+			this.score.size = 14;
+			this.score.scrollFactor.x = 0;
+			this.score.scrollFactor.y = 0;
+			add(score);
+			
 			super.create();
 		}
 		
@@ -95,6 +113,9 @@ package States {
 			/*updates the position of the mouse*/
 			MouseRectangle.x = FlxG.mouse.x;
 			MouseRectangle.y = FlxG.mouse.y;
+			
+			this.clock.text = "Time: " + toSeconds(this.timer);
+			this.score.text = ("Score: " + player.getScore().toString());
 			
 			/*Zoom in zoom out is not feasible, better to have a minimap*/			
 			
@@ -124,7 +145,7 @@ package States {
 			
 			if (this.timer == 0)
 			{
-				FlxG.resetGame();
+				FlxG.switchState(new GameOverState(this.player));
 			}
 			
 			super.update();
@@ -155,6 +176,11 @@ package States {
 		public function getVehicles():Array
 		{
 			return active_vehicles;
+		}
+		
+		public function toSeconds(time:int):String
+		{
+			return (time / 100).toString();
 		}
 	}
 
