@@ -57,8 +57,7 @@ package States {
 			FlxG.camera.setBounds(0, 0, map.getMapWidth(), map.getMapHeight());
 			FlxG.camera.follow(MouseRectangle);
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
-												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
-			
+												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);	
 			//Need to crease the menu for the setup state
 			
 			//Here we create the actual map

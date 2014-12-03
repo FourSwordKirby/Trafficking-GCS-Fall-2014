@@ -18,7 +18,6 @@ package States {
 		/*Important information about the current level*/
 		protected var current_wave:Wave;
 		public var map:Map;
-		public var map_group:FlxGroup;
 		
 		public var active_vehicles:Array;
 		
@@ -35,9 +34,6 @@ package States {
 			this.map = current_wave.getMap();
 			
 			this.active_vehicles = [];
-			
-			this.player = player;
-			
 			this.timer = 18000;
 		}
 		
@@ -54,7 +50,7 @@ package States {
 			FlxG.camera.setBounds(0, 0, map.getMapWidth(), map.getMapHeight());
 			FlxG.camera.follow(MouseRectangle);
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
-												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);
+												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
 			
 			
 			//Initializes all of our spawners
@@ -62,7 +58,6 @@ package States {
 			{
 				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).initSpawnSchedule(this);
 			}
-
 			
 			switch (this.current_wave.getWaveMapName())
 			{
@@ -89,10 +84,9 @@ package States {
 					FlxG.playMusic(BeijingMusic);
 					break;
 			}
-
+			
 			//adds the map and all of its components to the game
-			map_group = this.map.create();
-			add(map_group);
+			add(this.map.create());
 			super.create();
 		}
 		
@@ -102,17 +96,19 @@ package States {
 			MouseRectangle.x = FlxG.mouse.x;
 			MouseRectangle.y = FlxG.mouse.y;
 			
-			/*Zoom in zoom out is bussteeeed*/
-			/*
+			/*Zoom in zoom out is not feasible, better to have a minimap*/			
+			
 			if (FlxG.keys.justPressed("Z"))
 			{
+				FlxG.resetCameras(new FlxCamera(FlxG.camera.x, FlxG.camera.y, FlxG.camera.width*0.5, FlxG.camera.height*0.5, 1));
 				FlxG.camera.zoom *= 2;
 			}
 			if (FlxG.keys.justPressed("X"))
 			{
+				FlxG.resetCameras(new FlxCamera(FlxG.camera.x, FlxG.camera.y, FlxG.camera.width*2, FlxG.camera.height*2, 1));
 				FlxG.camera.zoom *= 0.5;
 			}
-			*/
+			
 			
 			for (var i:int = 0; i < active_vehicles.length; i++)
 			{

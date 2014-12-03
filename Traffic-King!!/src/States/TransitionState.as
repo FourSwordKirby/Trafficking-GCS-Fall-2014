@@ -119,7 +119,7 @@ package States {
 				add(background_sprite);
 			}
 			*/
-			if (timer == 300)
+			if (timer == 250)
 			{
 				FlxG.stage.removeChild(movie_loader);
 				FlxG.switchState(new GameState(current_wave, temp_player));
