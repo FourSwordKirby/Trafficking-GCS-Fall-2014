@@ -57,104 +57,43 @@ package Maps
 			this.graph = new Graph();
 			
 			/* 1st row */
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 75), new Vertex(700, 75), 300));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(700, 125), new Vertex(1000, 125), 300));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 125), new Vertex(325, 125), 325));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(325, 75), new Vertex(0, 75), 325));
 			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 0), new Vertex(625, 50), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 50), new Vertex(675, 0), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(475, 125), new Vertex(575, 125), 100));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(575, 75), new Vertex(475, 75), 100));
 			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(600, 75), new Vertex(450, 75), 150));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(450, 125), new Vertex(600, 125), 150));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(725, 125), new Vertex(1000, 125), 275));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 75), new Vertex(725, 75), 275));
 			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 125), new Vertex(325, 125), 350));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(325, 75), new Vertex(0, 75), 350));
+			/*2nd row*/
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 425), new Vertex(325, 425), 325));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(325, 375), new Vertex(0, 375), 325));
 			
-			/* 1st row 1st col */
-			/*graph.addDirectedEdge(new DirectedEdge(new Vertex(450, 75), new Vertex(425, 75), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 125), new Vertex(425, 75), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 125), new Vertex(450, 125), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(475, 425), new Vertex(575, 425), 100));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(575, 375), new Vertex(475, 375), 100));
 			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 75), new Vertex(375, 75), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(725, 425), new Vertex(1000, 425), 275));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 375), new Vertex(725, 375), 275));
 			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 125), new Vertex(375, 125), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 75), new Vertex(375, 125), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 75), new Vertex(350, 75), 25));
+			/*1st col*/
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 175), new Vertex(375, 325), 150));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 325), new Vertex(425, 175), 150));
 			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 150), new Vertex(375, 125), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 125), new Vertex(425, 125), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 125), new Vertex(375, 150), 25));
-			*/
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 475), new Vertex(375, 1000), 150));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 1000), new Vertex(425, 475), 150));
 			
-			/* 1st row 2nd col */
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(700, 75), new Vertex(675, 75), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 125), new Vertex(675, 75), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 125), new Vertex(700, 125), 25));
+			/*2nd col*/
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 175), new Vertex(625, 325), 150));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 325), new Vertex(675, 175), 150));
+
+			/*Adds the traffic lights*/
+			addTrafficLight(400, 100, Parameters.ARRANGEMENT_ESW, 1000);
+			addTrafficLight(650, 100, Parameters.ARRANGEMENT_NESW, 1000);
+			addTrafficLight(400, 400, Parameters.ARRANGEMENT_NESW, 1000);
+			addTrafficLight(650, 400, Parameters.ARRANGEMENT_WNE, 1000);
 			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 50), new Vertex(625, 75), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 75), new Vertex(625, 75), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 75), new Vertex(675, 50), 25));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(600, 125), new Vertex(625, 125), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 75), new Vertex(625, 125), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 75), new Vertex(600, 75), 25));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 150), new Vertex(675, 125), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 125), new Vertex(675, 125), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 125), new Vertex(625, 150), 25));
-			
-			
-			/* 2nd row */
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 150), new Vertex(375, 350), 200));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 350), new Vertex(425, 150), 200));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 150), new Vertex(625, 350), 200));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 350), new Vertex(675, 150), 200));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 375), new Vertex(0, 375), 350));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 425), new Vertex(350, 425), 350));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(600, 375), new Vertex(450, 375), 150));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(450, 425), new Vertex(600, 425), 150));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 375), new Vertex(700, 375), 300));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(700, 425), new Vertex(1000, 425), 300));
-			
-			
-			/* 2nd row 1st col */
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(450, 375), new Vertex(425, 375), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 425), new Vertex(425, 375), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 425), new Vertex(450, 425), 25));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 350), new Vertex(375, 375), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 375), new Vertex(375, 375), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 375), new Vertex(425, 350), 25));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 425), new Vertex(375, 425), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 375), new Vertex(375, 425), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 375), new Vertex(350, 375), 25));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 450), new Vertex(375, 425), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 425), new Vertex(425, 425), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 425), new Vertex(375, 450), 25));
-			
-			
-			/* 2nd row 2nd col */
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(700, 375), new Vertex(675, 375), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 425), new Vertex(675, 375), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 425), new Vertex(700, 425), 25));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 350), new Vertex(625, 375), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 375), new Vertex(625, 375), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 375), new Vertex(675, 350), 25));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(600, 425), new Vertex(625, 425), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 375), new Vertex(625, 425), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 375), new Vertex(600, 375), 25));
-			
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 425), new Vertex(675, 425), 50));
-			
-			addTrafficLight(400, 100, Parameters.ARRANGEMENT_NESW, 100);
-			
+			/*
 			var light_cluster:TrafficLightCluster = new TrafficLightCluster(650, 100, Parameters.ARRANGEMENT_NESW, 200);
 			light_cluster.addNSvertices(graph.getVertex(625, 75));
 			light_cluster.addEWvertices(graph.getVertex(625, 125));
@@ -175,6 +114,7 @@ package Maps
 			light_cluster.addEWvertices(graph.getVertex(675, 375));
 			light_cluster.addNSvertices(graph.getVertex(675, 425));
 			traffic_light_group.add(light_cluster);
+			*/
 			
 			/*graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 125), new Vertex(350, 125), 350));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 125), new Vertex(375, 125), 25));
@@ -205,52 +145,42 @@ package Maps
 			var y5:int = y + 50;
 			var y6:int = y + 75;
 	
-			switch (arrangement)
-			{
-				case Parameters.ARRANGEMENT_NESW:
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x1, y4), new Vertex(x2, y4), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x2, y4), new Vertex(x3, y4), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y4), new Vertex(x4, y4), 50));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y4), new Vertex(x5, y4), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x5, y4), new Vertex(x6, y4), 25));
-					
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x6, y3), new Vertex(x5, y3), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x5, y3), new Vertex(x4, y3), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y3), new Vertex(x3, y3), 50));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y3), new Vertex(x2, y3), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x2, y3), new Vertex(x1, y3), 25));
-					
-					
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y1), new Vertex(x3, y2), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y2), new Vertex(x3, y3), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y3), new Vertex(x3, y4), 50));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y4), new Vertex(x3, y5), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y5), new Vertex(x3, y6), 25));
-					
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y6), new Vertex(x4, y5), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y5), new Vertex(x4, y4), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y4), new Vertex(x4, y3), 50));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y3), new Vertex(x4, y2), 25));
-					graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y2), new Vertex(x4, y1), 25));
-					
-					var light_cluster:TrafficLightCluster = new TrafficLightCluster(x, y, Parameters.ARRANGEMENT_NESW, frequency);
-					light_cluster.addEWvertices(graph.getVertex(x2, y4));
-					light_cluster.addEWvertices(graph.getVertex(x5, y3));
-					
-					light_cluster.addNSvertices(graph.getVertex(x3, y2));
-					light_cluster.addNSvertices(graph.getVertex(x4, y5));
-					traffic_light_group.add(light_cluster);
-					
-					break;
-				case Parameters.ARRANGEMENT_NES:
-					break;
-				case Parameters.ARRANGEMENT_ESW:
-					break;
-				case Parameters.ARRANGEMENT_SWN:	
-					break;
-				case Parameters.ARRANGEMENT_WNE:
-					break;
-			}
+			//Don't actually need to case on arrangement, we'll just have vertices that no one ever touches instead
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x1, y4), new Vertex(x2, y4), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x2, y4), new Vertex(x3, y4), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y4), new Vertex(x4, y4), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y4), new Vertex(x5, y4), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x5, y4), new Vertex(x6, y4), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x6, y3), new Vertex(x5, y3), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x5, y3), new Vertex(x4, y3), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y3), new Vertex(x3, y3), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y3), new Vertex(x2, y3), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x2, y3), new Vertex(x1, y3), 25));
+			
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y1), new Vertex(x3, y2), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y2), new Vertex(x3, y3), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y3), new Vertex(x3, y4), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y4), new Vertex(x3, y5), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x3, y5), new Vertex(x3, y6), 25));
+			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y6), new Vertex(x4, y5), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y5), new Vertex(x4, y4), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y4), new Vertex(x4, y3), 50));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y3), new Vertex(x4, y2), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(x4, y2), new Vertex(x4, y1), 25));
+			
+			var light_cluster:TrafficLightCluster = new TrafficLightCluster(x, y, arrangement, frequency);
+			light_cluster.addNSvertices(graph.getVertex(x3, y2));
+			light_cluster.addNSvertices(graph.getVertex(x4, y5));
+			light_cluster.toggleVertices();
+			
+			light_cluster.addEWvertices(graph.getVertex(x2, y4));
+			light_cluster.addEWvertices(graph.getVertex(x5, y3));
+			
+			traffic_light_group.add(light_cluster);
+			
 		}
 	}
 }

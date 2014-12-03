@@ -27,13 +27,13 @@ package Waves
 			//This is hella hardcoded at the moment and shouldn't be, 1 hours = 1 minute
 			var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(1000, 425));// vertices[0], vertices[vertices.length-1]);
 			spawn_times[150] = new Car(path1, map.graph.getVertexPathFromEdgePath(path1));
-			
+			/*
 			var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 375));// vertices[0], vertices[vertices.length-1]);
 			spawn_times[3000] = new Car(path1, map.graph.getVertexPathFromEdgePath(path1));
 			
 			var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 125));// vertices[0], vertices[vertices.length-1]);
 			spawn_times[3000] = new Car(path1, map.graph.getVertexPathFromEdgePath(path1));
-			
+			*/
 			
 			//spawn_times[0] = new Car(10, 10);
 			//spawn_times[20] = new Car(20, 10);
