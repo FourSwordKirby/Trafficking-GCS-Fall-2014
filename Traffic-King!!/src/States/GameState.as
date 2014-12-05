@@ -70,27 +70,34 @@ package States {
 			{
 				case "Pittsburgh":
 				    FlxG.playMusic(PittMusic);
+					tint = 0x00FFFFFF;
 					break;
 				
 			    case "New York":
 					FlxG.playMusic(NYMusic);
+					tint = 0x00FF231F;
 					break;
 					
 				case "London":
 					FlxG.playMusic(LondonMusic);
+					tint = 0x00F2313F;
 					break;
 					
 				case "Paris":
 					FlxG.playMusic(ParisMusic);
+					tint = 0x001241F;
 					break;
 					
 				case "Tokyo":
 					FlxG.playMusic(TokyoMusic);
+					tint = 0x002311F2;
 					break;
 				case "Beijing":
 					FlxG.playMusic(BeijingMusic);
+					tint = 0x00FF2322;
 					break;
 			}
+			FlxG.camera.color = tint
 			
 			//adds the map and all of its components to the game
 			add(this.map.create());
@@ -111,13 +118,35 @@ package States {
 			help_menu.visible = false;
 			help_text.visible = false;
 			
+			FlxG.play(PauseSound);
+				help_menu.loadGraphic(HelpMenu);
+				help_menu.scrollFactor.x = 0;
+				help_menu.scrollFactor.y = 0;
+				help_menu.visible = !help_menu.visible;
+				help_text.visible = !help_text.visible;
+				
+				remove(help_menu);
+				remove(help_text);
+				
+				add(help_menu);
+				add(help_text);
+				
+				for (var i:int; i < active_vehicles.length; i++)
+				{
+					var car:Vehicle = (Vehicle)(active_vehicles[i]);
+					car.visible = !car.visible;
+				}
+				
+				paused = !paused;
+			
 			super.create();
 		}
 		
+		public var tint:int;
 		
 		[Embed(source = "../../assets/UI/Help-BG.png")] private var HelpMenu:Class;
 		public var help_menu:FlxSprite = new FlxSprite(0, 0);
-		public var help_text:FlxText = new FlxText(50, 250, 200, "Objective: You control the traffic lights by clicking on them! Try to get as many cars to crash as possible, and prevent as many as you can from returning home. \n Controls: \n x = display mini map \n p = pause/unpause");
+		public var help_text:FlxText = new FlxText(50, 250, 500, "Objective: You control the traffic lights by clicking on them! Try to get as many cars to crash as possible, and prevent as many as you can from returning home. \n Controls: \n x = display mini map \n p = pause/unpause");
 		
 		public var on_mini_map:Boolean = false;
 		public var zoom:Number = 0.25;
@@ -177,7 +206,7 @@ package States {
 						MouseRectangle.x = mapLocationX / zoom;
 						MouseRectangle.y = mapLocationY / zoom;
 						
-						FlxG.camera.color = 0x00FFFFFF;	//resets to normal
+						FlxG.camera.color = tint;
 						FlxG.removeCamera(FlxG.cameras.pop());
 						
 						FlxG.camera.scroll.x = MouseRectangle.x - Parameters.SCREEN_WIDTH / 2;
@@ -194,7 +223,7 @@ package States {
 				
 				if (FlxG.keys.justPressed("X"))
 				{
-					FlxG.camera.color = 0x00FFFFFF;	//resets to normal
+					FlxG.camera.color = tint;	//resets to normal
 					FlxG.removeCamera(FlxG.cameras.pop());
 					
 					on_mini_map = false;

@@ -1,5 +1,6 @@
 package Vehicles {
 	import flash.net.NetStreamMulticastInfo;
+	import GameObjects.Blip;
 	import Graph.*;
 	import org.flixel.*;
 	import States.GameState;
@@ -96,6 +97,8 @@ package Vehicles {
 //				trace (this.game_state == null);
 				this.game_state.player.increaseScore(10);
 				this.game_state.active_vehicles.splice(this.game_state.active_vehicles.indexOf(this), 1);
+				
+				this.game_state.add(new Blip(this.x, this.y));
 				this.kill();
 			}
 		}
