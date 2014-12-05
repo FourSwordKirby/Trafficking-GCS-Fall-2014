@@ -63,7 +63,7 @@ package Vehicles {
 			
 			if (this.current_road != null && !this.current_road.getDestination().isTerminal())
 			{	
-				this.pathSpeed = 100;	
+				this.pathSpeed = 100;
 			}
 			
 			if (this.pathSpeed == 0)

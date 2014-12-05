@@ -62,10 +62,11 @@ package Waves
 			if (spawn_times[timer] != null)
 			{
 				game_state.add(spawn_times[timer]);
+				game_state.active_vehicles.push(spawn_times[timer]);
 			}
 			
 			timer++;
-			trace(timer);
+			//trace(timer);
 		}
 	}
 }

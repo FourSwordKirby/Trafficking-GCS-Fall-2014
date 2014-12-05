@@ -198,7 +198,7 @@ package States {
 		
 		public function checkSurroundings(this_vehicle:Vehicle)
 		{
-			//var follow_distance = 20;
+			var follow_distance = 200;
 			
 			//trace("myRoad: " + this_vehicle.current_road.toString());
 			
@@ -209,10 +209,20 @@ package States {
 				{
 					if (this_vehicle.current_road != null && 
 						vehicle.current_road != null && 
-						this_vehicle.current_road.equals(vehicle.current_road))
+						(this_vehicle.current_road.equals(vehicle.current_road) ||
+						this_vehicle.current_road.getDestination().equals(vehicle.current_road.getSource()))
+						)
 					{
-						if(this_vehicle.pathSpeed > vehicle.pathSpeed)
+				//		trace(this_vehicle.pathSpeed);
+				//		trace(vehicle.pathSpeed);
+						if (this_vehicle.pathSpeed > vehicle.pathSpeed 
+							&& (Math.abs(this_vehicle.x - vehicle.x) < follow_distance || Math.abs(this_vehicle.y - vehicle.y) < follow_distance)
+							)
+						{
+							trace("stop");
 							this_vehicle.pathSpeed = vehicle.pathSpeed;
+							trace(this_vehicle.pathSpeed);
+						}
 					}
 				}
 			}
