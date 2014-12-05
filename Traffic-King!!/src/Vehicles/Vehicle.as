@@ -72,5 +72,11 @@ package Vehicles
 			if(this.current_road != this.planned_path[this._pathNodeIndex-1])
 				this.current_road = this.planned_path[this._pathNodeIndex-1];
 		}
+		
+		//This is abstract and must be implemented
+		public function crash():void
+		{
+			return;
+		}
 	}
 }

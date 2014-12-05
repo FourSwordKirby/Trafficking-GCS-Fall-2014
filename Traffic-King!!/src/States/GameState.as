@@ -14,6 +14,8 @@ package States {
 		[Embed(source = "../../assets/music/On the way to work.mp3")] private var ParisMusic:Class;
 		[Embed(source = "../../assets/music/i++.mp3")] private var TokyoMusic:Class;
 		[Embed(source = "../../assets/music/It's my world.mp3")] private var BeijingMusic:Class;
+		
+		[Embed(source = "../../assets/sfx/pause_chime.mp3")] private var PauseSound:Class;
 
 		/*Important information about the current level*/
 		protected var current_wave:Wave;
@@ -105,14 +107,50 @@ package States {
 			this.score.scrollFactor.y = 0;
 			add(score);
 			
+			
+			help_menu.visible = false;
+			help_text.visible = false;
+			
 			super.create();
 		}
 		
 		
+		[Embed(source = "../../assets/UI/Help-BG.png")] private var HelpMenu:Class;
+		public var help_menu:FlxSprite = new FlxSprite(0, 0);
+		public var help_text:FlxText = new FlxText(50, 50, 200, "Controls: \n x = display mini map \n p = pause");
+		
 		public var on_mini_map:Boolean = false;
 		public var zoom:Number = 0.25;
+		public var paused:Boolean = false;
 		override public function update():void
 		{
+			//Pause code is just these two if statements
+			if (FlxG.keys.justPressed("P"))
+			{
+				FlxG.play(PauseSound);
+				help_menu.loadGraphic(HelpMenu);
+				help_menu.visible = !help_menu.visible;
+				help_text.visible = !help_text.visible;
+				
+				remove(help_menu);
+				remove(help_text);
+				
+				add(help_menu);
+				add(help_text);
+				
+				for (var i:int; i < active_vehicles.length; i++)
+				{
+					var car:Vehicle = (Vehicle)(active_vehicles[i]);
+					car.visible = !car.visible;
+				}
+				
+				paused = !paused;
+			}
+			if (paused)
+			{
+				return //pauseGroup.update(); //update() finishes here if paused
+			}
+			
 			/*updates the position of the mouse*/
 			MouseRectangle.x = FlxG.mouse.x;
 			MouseRectangle.y = FlxG.mouse.y;
@@ -123,7 +161,6 @@ package States {
 			if (on_mini_map)
 			{	
 				//Only move the mouse rechtangle if it is in the bounds of the minimap
-				//KIND OF HACKY WTF
 				if ((FlxG.mouse.x-FlxG.camera.scroll.x) > ((Parameters.SCREEN_WIDTH - map.getMapWidth() * zoom) / 2) && 
 					(FlxG.mouse.x-FlxG.camera.scroll.x) < ((Parameters.SCREEN_WIDTH - map.getMapWidth() * zoom) / 2 + map.getMapWidth() * zoom) &&
 					(FlxG.mouse.y-FlxG.camera.scroll.y) > ((Parameters.SCREEN_HEIGHT - map.getMapHeight() * zoom) / 2) && 
@@ -160,9 +197,6 @@ package States {
 					
 					on_mini_map = false;
 				}
-				
-				//Here is where the code will go when we want to quick travel to a certain place on the map
-				//if(MouseRectangle.x)
 			}
 			else
 			{			
@@ -186,6 +220,19 @@ package States {
 				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).update();
 			}
 			
+			/*Checks if cars crash*/
+			for (var i:int = 0; i < active_vehicles.length; i++)
+			{
+				for (var j:int = 0; j < active_vehicles.length; j++)
+				{
+					if (FlxG.collide(active_vehicles[i], active_vehicles[j]))
+					{
+						((Vehicle) (active_vehicles[i])).crash();
+						((Vehicle) (active_vehicles[j])).crash();
+					}
+				}
+			}
+			
 			this.timer--;
 			
 			if (this.timer == 0)
@@ -198,7 +245,7 @@ package States {
 		
 		public function checkSurroundings(this_vehicle:Vehicle)
 		{
-			var follow_distance = 200;
+			var follow_distance = this_vehicle.height + 20;	//This really should be the larger of height and width
 			
 			//trace("myRoad: " + this_vehicle.current_road.toString());
 			
@@ -213,15 +260,13 @@ package States {
 						this_vehicle.current_road.getDestination().equals(vehicle.current_road.getSource()))
 						)
 					{
-				//		trace(this_vehicle.pathSpeed);
-				//		trace(vehicle.pathSpeed);
-						if (this_vehicle.pathSpeed > vehicle.pathSpeed 
-							&& (Math.abs(this_vehicle.x - vehicle.x) < follow_distance || Math.abs(this_vehicle.y - vehicle.y) < follow_distance)
-							)
+						if (this_vehicle.pathSpeed > vehicle.pathSpeed )
 						{
-							trace("stop");
-							this_vehicle.pathSpeed = vehicle.pathSpeed;
-							trace(this_vehicle.pathSpeed);
+							if (((Math.abs(this_vehicle.x - vehicle.x) < follow_distance) && this_vehicle.y == vehicle.y)
+							|| ((Math.abs(this_vehicle.y - vehicle.y) < follow_distance) && this_vehicle.x == vehicle.x))
+							{
+								this_vehicle.pathSpeed = vehicle.pathSpeed;
+							}
 						}
 					}
 				}

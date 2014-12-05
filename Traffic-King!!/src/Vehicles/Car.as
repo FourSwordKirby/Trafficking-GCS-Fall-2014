@@ -14,6 +14,9 @@ package Vehicles {
 		[Embed(source = "../../assets/gfx/Gray Car.PNG")] private static var GreyCarSprite:Class;
 		[Embed(source = "../../assets/gfx/Yellow Car.PNG")] private static var YellowCarSprite:Class;
 		
+		[Embed(source = "../../assets/sfx/car_brake.mp3")] private var BrakeSound:Class;
+		[Embed(source = "../../assets/sfx/car_reach_destination.mp3")] private var ReachSound:Class;
+		
 		public function Car(edge_path:Array,vertex_path:Array) 
 		{
 			var speed:int = 45 + Math.floor(Math.random() * 100);
@@ -58,12 +61,14 @@ package Vehicles {
 			//trace(this.current_road.getDestination().toString());
 			if (this.current_road != null && this.current_road.getDestination().isTerminal())
 			{	
+				FlxG.play(BrakeSound);
 				this.stopFollowingPath();
 			}
 			
-			if (this.current_road != null && !this.current_road.getDestination().isTerminal())
-			{	
-				this.pathSpeed = 100;
+			if (this.current_road != null && !this.current_road.getDestination().isTerminal() && (this._pathNodeIndex < this.planned_path.length))
+			{
+				if(!(DirectedEdge)(this.planned_path[this._pathNodeIndex]).getDestination().isTerminal())
+					this.pathSpeed = 100;
 			}
 			
 			if (this.pathSpeed == 0)
@@ -74,6 +79,7 @@ package Vehicles {
 			
 			if (this.x+this.width/2 == this.path.tail().x && this.y+this.height/2 == this.path.tail().y)
 			{
+				FlxG.play(ReachSound);
 				this.visible = false;
 				trace("hello");
 //				trace (this.game_state == null);
