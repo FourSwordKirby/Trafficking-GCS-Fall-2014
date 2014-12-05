@@ -101,7 +101,7 @@ package States {
 			this.clock.scrollFactor.y = 0;
 			add(clock);
 			
-			this.score = new FlxText(500, 20, 80, ("Score: " + player.getScore().toString()), true);
+			this.score = new FlxText(450, 20, 140, ("Score: " + player.getScore().toString()), true);
 			this.score.size = 14;
 			this.score.scrollFactor.x = 0;
 			this.score.scrollFactor.y = 0;
@@ -221,7 +221,7 @@ package States {
 			}
 			
 			/*Checks if cars crash*/
-			for (var i:int = 0; i < active_vehicles.length; i++)
+			/*for (var i:int = 0; i < active_vehicles.length; i++)
 			{
 				for (var j:int = 0; j < active_vehicles.length; j++)
 				{
@@ -231,13 +231,13 @@ package States {
 						((Vehicle) (active_vehicles[j])).crash();
 					}
 				}
-			}
+			}*/
 			
 			this.timer--;
 			
 			if (this.timer == 0)
 			{
-				FlxG.switchState(new GameOverState(this.player));
+				FlxG.switchState(new RestartState(this.player));
 			}
 			
 			super.update();
@@ -245,7 +245,7 @@ package States {
 		
 		public function checkSurroundings(this_vehicle:Vehicle)
 		{
-			var follow_distance = this_vehicle.height + 20;	//This really should be the larger of height and width
+			var follow_distance = this_vehicle.height +85;	//This really should be the larger of height and width
 			
 			//trace("myRoad: " + this_vehicle.current_road.toString());
 			

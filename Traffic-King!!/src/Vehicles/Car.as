@@ -3,7 +3,8 @@ package Vehicles {
 	import Graph.*;
 	import org.flixel.*;
 	import States.GameState;
-
+	import GameObjects.Explosion;
+	
 	public class Car extends Vehicle
 	{
 		/*Embedding art assets for use */
@@ -13,9 +14,9 @@ package Vehicles {
 		[Embed(source = "../../assets/gfx/White Car.PNG")] private static var WhiteCarSprite:Class;
 		[Embed(source = "../../assets/gfx/Gray Car.PNG")] private static var GreyCarSprite:Class;
 		[Embed(source = "../../assets/gfx/Yellow Car.PNG")] private static var YellowCarSprite:Class;
-		[Embed(source = "/../assets/gfx/explosion.PNG")] private static var explodes:Class;
 		
 		[Embed(source = "../../assets/sfx/car_brake.mp3")] private var BrakeSound:Class;
+		[Embed(source = "../../assets/sfx/car_brake.mp3")] private var ExplodeSound:Class;
 		[Embed(source = "../../assets/sfx/car_reach_destination.mp3")] private var ReachSound:Class;
 		
 		var canBrake:Boolean = true;
@@ -29,8 +30,6 @@ package Vehicles {
 			this.followPath(new FlxPath(vertex_path), 100, PATH_FORWARD,true);
 			
 			var rgraphic:int = Math.floor(Math.random() * 6);
-			loadGraphic(explodes, true, false, 100, 100);
-			addAnimation("boom", [1, 2, 3, 4, 0], 8, false);
 			
 			switch(rgraphic) 
 			{
@@ -55,6 +54,8 @@ package Vehicles {
 			}
 			// Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
 			//loadGraphic(CarSprite, true, true, Parameters.TILE_WIDTH, Parameters.TILE_HEIGHT);
+			this.width = this.width - 10;
+			this.height = this.height - 10;
 		}
 		
 		FlxG.debug;
@@ -101,8 +102,9 @@ package Vehicles {
 		
 		public override function crash():void
 		{
-			play("boom");
+			FlxG.play(ExplodeSound);
 			this.visible = false;
+			game_state.add(new Explosion(this.x, this.y));
 			this.kill();
 		}
 	}

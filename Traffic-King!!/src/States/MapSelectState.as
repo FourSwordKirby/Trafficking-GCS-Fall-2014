@@ -3,7 +3,7 @@ package States {
 	import org.flixel.*;
 	import PlayerInfo.Player;
 	
-	import Waves.PittWave1;
+	import Waves.*;
 
 	public class MapSelectState extends FlxState
 	{
@@ -48,37 +48,37 @@ package States {
 			add(background_sprite);	
 			
 			/*Initializes the various map buttons and adds them to the game*/
-			pitt_button = new FlxButton(50, 200, "", BeginGame);
+			pitt_button = new FlxButton(50, 200, "", LoadPitt);
 			pitt_button.loadGraphic(PittButton);
 			pitt_button.onOver = function() : void {FlxG.play(EnterSound); pitt_button.loadGraphic(PittButtonOn)};
 			pitt_button.onOut = function() : void {pitt_button.loadGraphic(PittButton)};
 			add(pitt_button);
 			
-			new_york_button = new FlxButton(250, 200, "", BeginGame);
+			new_york_button = new FlxButton(250, 200, "", LoadNY);
 			new_york_button.loadGraphic(NewYorkButton);
 			new_york_button.onOver = function() : void {FlxG.play(EnterSound); new_york_button.loadGraphic(NewYorkButtonOn)}
 			new_york_button.onOut = function() : void {new_york_button.loadGraphic(NewYorkButton)};
 			add(new_york_button);
 			
-			london_button = new FlxButton(450, 200, "", BeginGame);
+			london_button = new FlxButton(450, 200, "", LoadLondon);
 			london_button.loadGraphic(LondonButton);
 			london_button.onOver = function() : void {FlxG.play(EnterSound); london_button.loadGraphic(LondonButtonOn)}
 			london_button.onOut = function() : void {london_button.loadGraphic(LondonButton)};
 			add(london_button);
 			
-			paris_button = new FlxButton(50, 300, "", BeginGame);
+			paris_button = new FlxButton(50, 300, "", LoadParis);
 			paris_button.loadGraphic(ParisButton);
 			paris_button.onOver = function() : void {FlxG.play(EnterSound); paris_button.loadGraphic(ParisButtonOn)}
 			paris_button.onOut = function() : void {paris_button.loadGraphic(ParisButton)};
 			add(paris_button);
 			
-			tokyo_button = new FlxButton(250, 300, "", BeginGame);
+			tokyo_button = new FlxButton(250, 300, "", LoadTokyo);
 			tokyo_button.loadGraphic(TokyoButton);
 			tokyo_button.onOver = function() : void {FlxG.play(EnterSound); tokyo_button.loadGraphic(TokyoButtonOn)}
 			tokyo_button.onOut = function() : void {tokyo_button.loadGraphic(TokyoButton)};
 			add(tokyo_button);
 			
-			beijing_button = new FlxButton(450, 300, "", BeginGame);
+			beijing_button = new FlxButton(450, 300, "", LoadBeijing);
 			beijing_button.loadGraphic(BeijingButton);
 			beijing_button.onOver = function() : void {FlxG.play(EnterSound); beijing_button.loadGraphic(BeijingButtonOn) };
 			beijing_button.onOut = function() : void {beijing_button.loadGraphic(BeijingButton)};
@@ -89,11 +89,51 @@ package States {
 			super.create();	//super method that takes care of the rest
 		}
 		
-		private function BeginGame(): void 
+		private function LoadPitt(): void 
 		{   
 			FlxG.play(ClickSound);
 			//FlxG.switchState(new TransitionState(new PittWave1));
 			var wave:PittWave1 = new PittWave1();
+			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
+		}
+		
+		private function LoadNY(): void 
+		{   
+			FlxG.play(ClickSound);
+			//FlxG.switchState(new TransitionState(new PittWave1));
+			var wave:NYWave1 = new NYWave1();
+			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
+		}
+		
+		private function LoadLondon(): void 
+		{   
+			FlxG.play(ClickSound);
+			//FlxG.switchState(new TransitionState(new PittWave1));
+			var wave:LondonWave1 = new LondonWave1();
+			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
+		}
+		
+		private function LoadParis(): void 
+		{   
+			FlxG.play(ClickSound);
+			//FlxG.switchState(new TransitionState(new PittWave1));
+			var wave:ParisWave1 = new ParisWave1();
+			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
+		}
+		
+		private function LoadTokyo(): void 
+		{   
+			FlxG.play(ClickSound);
+			//FlxG.switchState(new TransitionState(new PittWave1));
+			var wave:TokyoWave1 = new TokyoWave1();
+			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
+		}
+		
+		private function LoadBeijing(): void 
+		{   
+			FlxG.play(ClickSound);
+			//FlxG.switchState(new TransitionState(new PittWave1));
+			var wave:BeijingWave1 = new BeijingWave1();
 			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
 		}
 	}
