@@ -18,6 +18,8 @@ package Vehicles {
 		[Embed(source = "../../assets/sfx/car_brake.mp3")] private var BrakeSound:Class;
 		[Embed(source = "../../assets/sfx/car_reach_destination.mp3")] private var ReachSound:Class;
 		
+		var canBrake:Boolean = true;
+		
 		public function Car(edge_path:Array,vertex_path:Array) 
 		{
 			var speed:int = 45 + Math.floor(Math.random() * 100);
@@ -29,6 +31,7 @@ package Vehicles {
 			var rgraphic:int = Math.floor(Math.random() * 6);
 			loadGraphic(explodes, true, false, 100, 100);
 			addAnimation("boom", [1, 2, 3, 4, 0], 8, false);
+			
 			switch(rgraphic) 
 			{
 				case 0:
@@ -62,19 +65,24 @@ package Vehicles {
 			//trace("Source" + this.current_road.getSource().toString());
 			//trace(this.current_road.getDestination().toString());
 			if (this.current_road != null && this.current_road.getDestination().isTerminal())
-			{	
-				FlxG.play(BrakeSound);
+			{
 				this.stopFollowingPath();
 			}
 			
 			if (this.current_road != null && !this.current_road.getDestination().isTerminal() && (this._pathNodeIndex < this.planned_path.length))
 			{
-				if(!(DirectedEdge)(this.planned_path[this._pathNodeIndex]).getDestination().isTerminal())
+				if(!(DirectedEdge)(this.planned_path[this._pathNodeIndex]).getDestination().isTerminal()) {
+					this.canBrake = true;
 					this.pathSpeed = 100;
+				}	
 			}
 			
 			if (this.pathSpeed == 0)
 			{
+				if (this.canBrake) {
+					FlxG.play(BrakeSound);
+					this.canBrake = false;
+				}
 				this.velocity.x = 0;
 				this.velocity.y = 0;
 			}

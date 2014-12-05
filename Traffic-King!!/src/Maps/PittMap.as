@@ -66,6 +66,9 @@ package Maps
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(725, 125), new Vertex(1000, 125), 275));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 75), new Vertex(725, 75), 275));
 			
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 0), new Vertex(625, 25), 25));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 25), new Vertex(675, 0), 25));
+			
 			/*2nd row*/
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 425), new Vertex(75, 425), 75));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(75, 425), new Vertex(325, 425), 250));

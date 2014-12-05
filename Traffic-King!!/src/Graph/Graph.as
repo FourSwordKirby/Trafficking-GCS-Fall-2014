@@ -206,12 +206,17 @@ package Graph
 		
 		public function getVertexPathFromEdgePath(edge_path:Array):Array
 		{
-			var vertex_path:Array = [new FlxPoint((DirectedEdge)(edge_path[0]).getSource().x, (DirectedEdge)(edge_path[0]).getSource().y)];
-			for (var i:int = 0; i < edge_path.length; i++)
-			{
-				vertex_path.push(new FlxPoint((DirectedEdge)(edge_path[i]).getDestination().x, (DirectedEdge)(edge_path[i]).getDestination().y));
+			if (edge_path) {
+				var vertex_path:Array = [new FlxPoint((DirectedEdge)(edge_path[0]).getSource().x, (DirectedEdge)(edge_path[0]).getSource().y)];
+				for (var i:int = 0; i < edge_path.length; i++)
+				{
+					vertex_path.push(new FlxPoint((DirectedEdge)(edge_path[i]).getDestination().x, (DirectedEdge)(edge_path[i]).getDestination().y));
+				}
+				return vertex_path;
 			}
-			return vertex_path;
+			else {
+				return null;
+			}
 		}
 	}
 }
