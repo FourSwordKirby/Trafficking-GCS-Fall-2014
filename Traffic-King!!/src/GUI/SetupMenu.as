@@ -63,7 +63,7 @@ package GUI {
 		public function SetupMenu(setup_state:SetupState) 
 		{
 			this.setup_state = setup_state;
-			if (setup_state.current_wave.getWaveMapName() == "Pittsburgh")
+			if (setup_state.current_wave.getWaveMapName() == "Pittsburgh" || true)
 			{
 				/*Initializes and adds the background to the game*/
 				background_sprite = new FlxSprite(0, 0, PittBackground);
