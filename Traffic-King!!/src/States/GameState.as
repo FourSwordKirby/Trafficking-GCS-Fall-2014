@@ -178,6 +178,11 @@ package States {
 			return active_vehicles;
 		}
 		
+		public function getPlayer():void
+		{
+			
+		}
+		
 		public function toSeconds(time:int):String
 		{
 			var i:int = time / 60;

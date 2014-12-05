@@ -2,15 +2,16 @@ package Vehicles {
 	import flash.net.NetStreamMulticastInfo;
 	import Graph.*;
 	import org.flixel.*;
+	import States.GameState;
 
 	public class Car extends Vehicle
 	{
 		/*Embedding art assets for use */
-		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
+		[Embed(source = "../../assets/gfx/Red Car.PNG")] private static var CarSprite:Class;
 		
-		public function Car(edge_path:Array,vertex_path:Array) 
+		public function Car(edge_path:Array,vertex_path:Array, gameState:GameState) 
 		{
-			super((DirectedEdge)(edge_path[0]).getSource().x - 25, (DirectedEdge)(edge_path[0]).getSource().y - 25, 400);
+			super((DirectedEdge)(edge_path[0]).getSource().x - 25, (DirectedEdge)(edge_path[0]).getSource().y - 25, 400, gameState);
 			this.planned_path = edge_path;
 			
 			this.followPath(new FlxPath(vertex_path), 100, PATH_FORWARD,true);
@@ -46,6 +47,7 @@ package Vehicles {
 			{
 				this.visible = false;
 				trace("hello");
+				trace (this.game == null);
 				this.kill();
 			}
 		}

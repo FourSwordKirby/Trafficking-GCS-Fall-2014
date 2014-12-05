@@ -30,14 +30,14 @@ package Vehicles
 		 */
 		protected var game:GameState;
 		
-		public function Vehicle(X:int, Y:int,/*path:Array,*/maxSpeed:int)//destination:Vertex) 
+		public function Vehicle(X:int, Y:int,/*path:Array,*/maxSpeed:int, gameState:GameState)//destination:Vertex) 
 		{
 			super(X, Y); 
 			this.maxVelocity.x = maxSpeed;
 			this.maxVelocity.y = maxSpeed;
 			//this.destination = destination;
 			this.direction = Parameters.DIRECTION_SOUTH;
-			
+			this.game = gameState;
 			
 			/* the car upon initilization will generate the path it needs to travel?
 			this.path = */
