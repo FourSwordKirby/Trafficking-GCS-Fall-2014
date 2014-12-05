@@ -13,9 +13,9 @@ package Waves
 	public class SpawnSchedule 
 	{
 		private var spawn_times:Dictionary;	//This is a collection of spawns
-		private var game_state:GameState;	//This needs to be initialized before we can start spawning cars
 		private var active:Boolean;
 		private var timer:int;
+		private var game_state:GameState;
 		
 		//Eventually we want the schedule file name be such so that we can easily adjust when vehicles spawn
 		public function SpawnSchedule(X:int, Y:int, direction:int, scheduleFileName:String, map:Map)
@@ -27,7 +27,7 @@ package Waves
 			
 			//This is hella hardcoded at the moment and shouldn't be, 1 hours = 1 minute
 			var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(1000, 425));// vertices[0], vertices[vertices.length-1]);
-			spawn_times[150] = new Car(path1, map.graph.getVertexPathFromEdgePath(path1), this.game_state);
+			spawn_times[150] = new Car(path1, map.graph.getVertexPathFromEdgePath(path1));
 			/*
 			var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 375));// vertices[0], vertices[vertices.length-1]);
 			spawn_times[3000] = new Car(path1, map.graph.getVertexPathFromEdgePath(path1));
@@ -41,9 +41,14 @@ package Waves
 			//spawn_times[40] = new Car(40, 10);
 		}
 		
+		//This needs to be run before we start spawning any cars
 		public function initSpawnSchedule(game_state:GameState):void
 		{
 			this.game_state = game_state;
+			for (var k in spawn_times)
+			{
+				(Car)(spawn_times[k]).setGameState(game_state);
+			}
 			active = true;
 		}
 		

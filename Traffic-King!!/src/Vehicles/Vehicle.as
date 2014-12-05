@@ -28,16 +28,15 @@ package Vehicles
 		/* this is the game state that the car is in, used to make the car stop if cars in front
 		 * of it are stopped etc.
 		 */
-		protected var game:GameState;
+		protected var game_state:GameState;
 		
-		public function Vehicle(X:int, Y:int,/*path:Array,*/maxSpeed:int, gameState:GameState)//destination:Vertex) 
+		public function Vehicle(X:int, Y:int,/*path:Array,*/maxSpeed:int)//destination:Vertex) 
 		{
 			super(X, Y); 
 			this.maxVelocity.x = maxSpeed;
 			this.maxVelocity.y = maxSpeed;
 			//this.destination = destination;
 			this.direction = Parameters.DIRECTION_SOUTH;
-			this.game = gameState;
 			
 			/* the car upon initilization will generate the path it needs to travel?
 			this.path = */
@@ -56,6 +55,11 @@ package Vehicles
 		public function getNextDir(direction:int):void
 		{
 			
+		}
+		
+		public function setGameState(game_state:GameState):void 
+		{
+			this.game_state = game_state;
 		}
 		
 		public function getCurrentRoad():DirectedEdge 
