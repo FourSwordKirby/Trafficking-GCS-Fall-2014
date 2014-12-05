@@ -61,9 +61,10 @@ package Vehicles {
 				this.stopFollowingPath();
 			}
 			
-			if (this.current_road != null && !this.current_road.getDestination().isTerminal())
-			{	
-				this.pathSpeed = 100;
+			if (this.current_road != null && !this.current_road.getDestination().isTerminal() && (this._pathNodeIndex < this.planned_path.length))
+			{
+				if(!(DirectedEdge)(this.planned_path[this._pathNodeIndex]).getDestination().isTerminal())
+					this.pathSpeed = 100;
 			}
 			
 			if (this.pathSpeed == 0)

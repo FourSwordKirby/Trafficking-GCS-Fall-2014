@@ -111,8 +111,15 @@ package States {
 		
 		public var on_mini_map:Boolean = false;
 		public var zoom:Number = 0.25;
+		public var paused:Boolean = false;
 		override public function update():void
 		{
+			//Pause code is just these two if statements
+			if(FlxG.keys.justPressed("P"))
+				paused = !paused;
+			if(paused)
+				return //pauseGroup.update(); //update() finishes here if paused
+			
 			/*updates the position of the mouse*/
 			MouseRectangle.x = FlxG.mouse.x;
 			MouseRectangle.y = FlxG.mouse.y;
@@ -160,9 +167,6 @@ package States {
 					
 					on_mini_map = false;
 				}
-				
-				//Here is where the code will go when we want to quick travel to a certain place on the map
-				//if(MouseRectangle.x)
 			}
 			else
 			{			
@@ -186,6 +190,16 @@ package States {
 				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).update();
 			}
 			
+			/*Checks if cars crash*/
+			for (var i:int = 0; i < active_vehicles.length; i++)
+			{
+				for (var j:int = 0; j < active_vehicles.length; j++)
+				{
+					((Vehicle) (active_vehicles[i])).crash();
+					((Vehicle) (active_vehicles[j])).crash();
+				}
+			}
+			
 			this.timer--;
 			
 			if (this.timer == 0)
@@ -198,7 +212,7 @@ package States {
 		
 		public function checkSurroundings(this_vehicle:Vehicle)
 		{
-			var follow_distance = 200;
+			var follow_distance = this_vehicle.height + 20;	//This really should be the larger of height and width
 			
 			//trace("myRoad: " + this_vehicle.current_road.toString());
 			
@@ -213,14 +227,11 @@ package States {
 						this_vehicle.current_road.getDestination().equals(vehicle.current_road.getSource()))
 						)
 					{
-				//		trace(this_vehicle.pathSpeed);
-				//		trace(vehicle.pathSpeed);
-						if (this_vehicle.pathSpeed > vehicle.pathSpeed 
-							&& (Math.abs(this_vehicle.x - vehicle.x) < follow_distance || Math.abs(this_vehicle.y - vehicle.y) < follow_distance)
-							)
+						if (this_vehicle.pathSpeed > vehicle.pathSpeed )
 						{
-							trace("stop");
-							this_vehicle.pathSpeed = vehicle.pathSpeed;
+							if (((Math.abs(this_vehicle.x - vehicle.x) < follow_distance) && this_vehicle.y == vehicle.y)
+							|| ((Math.abs(this_vehicle.y - vehicle.y) < follow_distance) && this_vehicle.x == vehicle.x))
+								this_vehicle.pathSpeed = vehicle.pathSpeed;
 							trace(this_vehicle.pathSpeed);
 						}
 					}
