@@ -13,6 +13,7 @@ package Vehicles {
 		[Embed(source = "../../assets/gfx/White Car.PNG")] private static var WhiteCarSprite:Class;
 		[Embed(source = "../../assets/gfx/Gray Car.PNG")] private static var GreyCarSprite:Class;
 		[Embed(source = "../../assets/gfx/Yellow Car.PNG")] private static var YellowCarSprite:Class;
+		[Embed(source = "/../assets/gfx/explosion.PNG")] private static var explodes:Class;
 		
 		[Embed(source = "../../assets/sfx/car_brake.mp3")] private var BrakeSound:Class;
 		[Embed(source = "../../assets/sfx/car_reach_destination.mp3")] private var ReachSound:Class;
@@ -26,7 +27,8 @@ package Vehicles {
 			this.followPath(new FlxPath(vertex_path), 100, PATH_FORWARD,true);
 			
 			var rgraphic:int = Math.floor(Math.random() * 6);
-			
+			loadGraphic(explodes, true, false, 100, 100);
+			addAnimation("boom", [1, 2, 3, 4, 0], 8, false);
 			switch(rgraphic) 
 			{
 				case 0:
@@ -84,8 +86,16 @@ package Vehicles {
 				trace("hello");
 //				trace (this.game_state == null);
 				this.game_state.player.increaseScore(10);
+				this.game_state.active_vehicles.splice(this.game_state.active_vehicles.indexOf(this), 1);
 				this.kill();
 			}
+		}
+		
+		public override function crash():void
+		{
+			play("boom");
+			this.visible = false;
+			this.kill();
 		}
 	}
 }

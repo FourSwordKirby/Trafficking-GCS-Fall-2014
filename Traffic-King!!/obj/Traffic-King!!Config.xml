@@ -32,12 +32,20 @@
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
+<<<<<<< HEAD
       <path-element>C:\Users\Tae\Documents\GitHub\Trafficking-GCS-Fall-2014\Traffic-King!!\src</path-element>
+=======
+      <path-element>C:\Users\mapleakuma\Trafficking-GCS-Fall-2014\Traffic-King!!\src</path-element>
+>>>>>>> 3ca8b6ea4efb1579eed493f4a9b74d32d88864d3
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>
   <file-specs>
+<<<<<<< HEAD
     <path-element>C:\Users\Tae\Documents\GitHub\Trafficking-GCS-Fall-2014\Traffic-King!!\src\Main.as</path-element>
+=======
+    <path-element>C:\Users\mapleakuma\Trafficking-GCS-Fall-2014\Traffic-King!!\src\Main.as</path-element>
+>>>>>>> 3ca8b6ea4efb1579eed493f4a9b74d32d88864d3
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
