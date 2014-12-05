@@ -117,7 +117,7 @@ package States {
 		
 		[Embed(source = "../../assets/UI/Help-BG.png")] private var HelpMenu:Class;
 		public var help_menu:FlxSprite = new FlxSprite(0, 0);
-		public var help_text:FlxText = new FlxText(50, 50, 200, "Controls: \n x = display mini map \n p = pause");
+		public var help_text:FlxText = new FlxText(50, 250, 200, "Objective: You control the traffic lights by clicking on them! Try to get as many cars to crash as possible, and prevent as many as you can from returning home. \n Controls: \n x = display mini map \n p = pause/unpause");
 		
 		public var on_mini_map:Boolean = false;
 		public var zoom:Number = 0.25;
@@ -129,6 +129,8 @@ package States {
 			{
 				FlxG.play(PauseSound);
 				help_menu.loadGraphic(HelpMenu);
+				help_menu.scrollFactor.x = 0;
+				help_menu.scrollFactor.y = 0;
 				help_menu.visible = !help_menu.visible;
 				help_text.visible = !help_text.visible;
 				
@@ -221,7 +223,7 @@ package States {
 			}
 			
 			/*Checks if cars crash*/
-			/*for (var i:int = 0; i < active_vehicles.length; i++)
+			for (var i:int = 0; i < active_vehicles.length; i++)
 			{
 				for (var j:int = 0; j < active_vehicles.length; j++)
 				{
@@ -231,7 +233,7 @@ package States {
 						((Vehicle) (active_vehicles[j])).crash();
 					}
 				}
-			}*/
+			}
 			
 			this.timer--;
 			
