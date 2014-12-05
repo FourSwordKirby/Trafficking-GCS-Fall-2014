@@ -108,6 +108,9 @@ package States {
 			super.create();
 		}
 		
+		
+		public var on_mini_map:Boolean = false;
+		public var zoom:Number = 0.25;
 		override public function update():void
 		{
 			/*updates the position of the mouse*/
@@ -117,19 +120,61 @@ package States {
 			this.clock.text = "Time: " + toSeconds(this.timer);
 			this.score.text = ("Score: " + player.getScore().toString());
 			
-			/*Zoom in zoom out is not feasible, better to have a minimap*/			
-			
-			if (FlxG.keys.justPressed("Z"))
-			{
-				FlxG.resetCameras(new FlxCamera(FlxG.camera.x, FlxG.camera.y, FlxG.camera.width*0.5, FlxG.camera.height*0.5, 1));
-				FlxG.camera.zoom *= 2;
+			if (on_mini_map)
+			{	
+				//Only move the mouse rechtangle if it is in the bounds of the minimap
+				//KIND OF HACKY WTF
+				if ((FlxG.mouse.x-FlxG.camera.scroll.x) > ((Parameters.SCREEN_WIDTH - map.getMapWidth() * zoom) / 2) && 
+					(FlxG.mouse.x-FlxG.camera.scroll.x) < ((Parameters.SCREEN_WIDTH - map.getMapWidth() * zoom) / 2 + map.getMapWidth() * zoom) &&
+					(FlxG.mouse.y-FlxG.camera.scroll.y) > ((Parameters.SCREEN_HEIGHT - map.getMapHeight() * zoom) / 2) && 
+					(FlxG.mouse.y-FlxG.camera.scroll.y) < ((Parameters.SCREEN_HEIGHT - map.getMapHeight() * zoom) / 2 + map.getMapHeight() * zoom)
+					)
+				{
+					if (FlxG.mouse.justPressed())
+					{
+						var mapLocationX:int = FlxG.mouse.x - FlxG.camera.scroll.x  - ((Parameters.SCREEN_WIDTH - map.getMapWidth() * zoom) / 2); 
+						var mapLocationY:int = FlxG.mouse.y - FlxG.camera.scroll.y  - ((Parameters.SCREEN_HEIGHT - map.getMapHeight() * zoom) / 2); 
+
+						MouseRectangle.x = mapLocationX / zoom;
+						MouseRectangle.y = mapLocationY / zoom;
+						
+						FlxG.camera.color = 0x00FFFFFF;	//resets to normal
+						FlxG.removeCamera(FlxG.cameras.pop());
+						
+						FlxG.camera.scroll.x = MouseRectangle.x - Parameters.SCREEN_WIDTH / 2;
+						FlxG.camera.scroll.y = MouseRectangle.y - Parameters.SCREEN_HEIGHT / 2;
+
+						/*FlxG.camera.follow(MouseRectangle);
+						FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
+											Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);	
+						*/
+											
+						on_mini_map = false;
+					}
+				}
+				
+				if (FlxG.keys.justPressed("X"))
+				{
+					FlxG.camera.color = 0x00FFFFFF;	//resets to normal
+					FlxG.removeCamera(FlxG.cameras.pop());
+					
+					on_mini_map = false;
+				}
+				
+				//Here is where the code will go when we want to quick travel to a certain place on the map
+				//if(MouseRectangle.x)
 			}
-			if (FlxG.keys.justPressed("X"))
-			{
-				FlxG.resetCameras(new FlxCamera(FlxG.camera.x, FlxG.camera.y, FlxG.camera.width*2, FlxG.camera.height*2, 1));
-				FlxG.camera.zoom *= 0.5;
+			else
+			{			
+				if (FlxG.keys.justPressed("X"))
+				{
+					FlxG.addCamera(new FlxCamera((Parameters.SCREEN_WIDTH - map.getMapWidth()* zoom)/2, 
+												 (Parameters.SCREEN_HEIGHT - map.getMapHeight() * zoom) / 2 , 
+												 map.game_map.width, map.game_map.height, zoom));
+					FlxG.camera.color = 0x0044444B;
+					on_mini_map = true;
+				}
 			}
-			
 			
 			for (var i:int = 0; i < active_vehicles.length; i++)
 			{

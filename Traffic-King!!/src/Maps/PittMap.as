@@ -69,8 +69,9 @@ package Maps
 			/*2nd row*/
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 425), new Vertex(75, 425), 75));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(75, 425), new Vertex(325, 425), 250));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(75, 425), new Vertex(75, 575), 150)); // Small road
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(325, 375), new Vertex(0, 375), 325));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(325, 375), new Vertex(75, 375), 325));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(75, 375), new Vertex(0, 375), 325));
+			graph.addDirectedEdge(new DirectedEdge(new Vertex(75, 375), new Vertex(75, 575), 150)); // Small road
 			
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(475, 425), new Vertex(525, 425), 50));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(525, 425), new Vertex(575, 425), 50));
