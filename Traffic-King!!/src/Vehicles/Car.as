@@ -6,7 +6,7 @@ package Vehicles {
 	public class Car extends Vehicle
 	{
 		/*Embedding art assets for use */
-		[Embed(source = "../../assets/gfx/Car Temporary Graphic.PNG")] private static var CarSprite:Class;
+		[Embed(source = "../../assets/gfx/Red Car.PNG")] private static var CarSprite:Class;
 		
 		public function Car(edge_path:Array,vertex_path:Array) 
 		{
