@@ -105,9 +105,17 @@ package States {
 			this.score.scrollFactor.y = 0;
 			add(score);
 			
+			
+			help_menu.visible = false;
+			help_text.visible = false;
+			
 			super.create();
 		}
 		
+		
+		[Embed(source = "../../assets/UI/Help-BG.png")] private var HelpMenu:Class;
+		public var help_menu:FlxSprite = new FlxSprite(0, 0);
+		public var help_text:FlxText = new FlxText(50, 50, 200, "Controls: \n x = display mini map \n p = pause");
 		
 		public var on_mini_map:Boolean = false;
 		public var zoom:Number = 0.25;
@@ -115,10 +123,30 @@ package States {
 		override public function update():void
 		{
 			//Pause code is just these two if statements
-			if(FlxG.keys.justPressed("P"))
+			if (FlxG.keys.justPressed("P"))
+			{
+				help_menu.loadGraphic(HelpMenu);
+				help_menu.visible = !help_menu.visible;
+				help_text.visible = !help_text.visible;
+				
+				remove(help_menu);
+				remove(help_text);
+				
+				add(help_menu);
+				add(help_text);
+				
+				for (var i:int; i < active_vehicles.length; i++)
+				{
+					var car:Vehicle = (Vehicle)(active_vehicles[i]);
+					car.visible = !car.visible;
+				}
+				
 				paused = !paused;
-			if(paused)
+			}
+			if (paused)
+			{
 				return //pauseGroup.update(); //update() finishes here if paused
+			}
 			
 			/*updates the position of the mouse*/
 			MouseRectangle.x = FlxG.mouse.x;
@@ -130,7 +158,6 @@ package States {
 			if (on_mini_map)
 			{	
 				//Only move the mouse rechtangle if it is in the bounds of the minimap
-				//KIND OF HACKY WTF
 				if ((FlxG.mouse.x-FlxG.camera.scroll.x) > ((Parameters.SCREEN_WIDTH - map.getMapWidth() * zoom) / 2) && 
 					(FlxG.mouse.x-FlxG.camera.scroll.x) < ((Parameters.SCREEN_WIDTH - map.getMapWidth() * zoom) / 2 + map.getMapWidth() * zoom) &&
 					(FlxG.mouse.y-FlxG.camera.scroll.y) > ((Parameters.SCREEN_HEIGHT - map.getMapHeight() * zoom) / 2) && 
@@ -195,8 +222,11 @@ package States {
 			{
 				for (var j:int = 0; j < active_vehicles.length; j++)
 				{
-					((Vehicle) (active_vehicles[i])).crash();
-					((Vehicle) (active_vehicles[j])).crash();
+					if (FlxG.collide(active_vehicles[i], active_vehicles[j]))
+					{
+						((Vehicle) (active_vehicles[i])).crash();
+						((Vehicle) (active_vehicles[j])).crash();
+					}
 				}
 			}
 			
@@ -231,8 +261,9 @@ package States {
 						{
 							if (((Math.abs(this_vehicle.x - vehicle.x) < follow_distance) && this_vehicle.y == vehicle.y)
 							|| ((Math.abs(this_vehicle.y - vehicle.y) < follow_distance) && this_vehicle.x == vehicle.x))
+							{
 								this_vehicle.pathSpeed = vehicle.pathSpeed;
-							trace(this_vehicle.pathSpeed);
+							}
 						}
 					}
 				}
