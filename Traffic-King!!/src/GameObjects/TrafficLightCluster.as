@@ -26,6 +26,8 @@ package GameObjects
 		[Embed(source = "/../assets/gfx/cooldown circle16.PNG")] private static var cdcircle16:Class;
 		[Embed(source = "/../assets/gfx/cooldown circle.PNG")] private static var cdcircle:Class;
 		
+		[Embed(source = "../../assets/sfx/trafficlight_click.mp3")] private var ClickSound:Class;
+		
 		private var NorthSouthLights:FlxGroup;
 		private var EastWestLights:FlxGroup;
 
@@ -204,6 +206,7 @@ package GameObjects
 		{
 			if (!onCoolDown && !onYellow)
 			{
+				FlxG.play(ClickSound);
 				if ((TrafficLight) (NorthSouthLights.members[0]).getColor() == Parameters.LIGHT_GREEN)
 					NorthSouthLights.callAll("changeColor");
 				else

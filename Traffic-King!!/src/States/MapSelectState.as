@@ -92,9 +92,9 @@ package States {
 		private function BeginGame(): void 
 		{   
 			FlxG.play(ClickSound);
-			 //FlxG.switchState(new TransitionState(new PittWave1));
+			//FlxG.switchState(new TransitionState(new PittWave1));
 			var wave:PittWave1 = new PittWave1();
-			FlxG.switchState(new SetupState(wave, new Player()));			//switches the current state to the overworld map.
+			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
 		}
 	}
 }

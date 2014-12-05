@@ -31,6 +31,7 @@ package States {
 		
 		[Embed(source = "../../assets/UI/wave_pitt.png")] private var pittsburgh:Class;	
 		
+		[Embed(source = "../../assets/sfx/menu_button_click.mp3")] private var ClickSound:Class;
 		
 		protected var current_wave:Wave;
 		private var background_sprite:FlxSprite;
@@ -81,6 +82,7 @@ package States {
 			movie_loader = new Loader();
 			var url:URLRequest = new URLRequest("../assets/transitions/transitionState.swf");
 			movie_loader.load(url);
+			FlxG.play(ClickSound);
 		}
 		
 		override public function update():void
