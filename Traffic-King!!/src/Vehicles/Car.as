@@ -95,7 +95,7 @@ package Vehicles {
 				this.visible = false;
 				trace("hello");
 //				trace (this.game_state == null);
-				this.game_state.player.increaseScore(10);
+				this.game_state.player.increaseScore(-2);
 				this.game_state.active_vehicles.splice(this.game_state.active_vehicles.indexOf(this), 1);
 				
 				this.game_state.add(new Blip(this.x, this.y));
@@ -107,6 +107,7 @@ package Vehicles {
 		{
 			FlxG.play(ExplodeSound);
 			this.visible = false;
+			this.game_state.player.increaseScore(55);
 			game_state.add(new Explosion(this.x, this.y));
 			this.kill();
 		}

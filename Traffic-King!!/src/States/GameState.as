@@ -75,26 +75,26 @@ package States {
 				
 			    case "New York":
 					FlxG.playMusic(NYMusic);
-					tint = 0x00FF231F;
+					tint = 0x00808080;
 					break;
 					
 				case "London":
 					FlxG.playMusic(LondonMusic);
-					tint = 0x00F2313F;
+					tint = 0x00800080;
 					break;
 					
 				case "Paris":
 					FlxG.playMusic(ParisMusic);
-					tint = 0x001241F;
+					tint = 0x00FF0000;
 					break;
 					
 				case "Tokyo":
 					FlxG.playMusic(TokyoMusic);
-					tint = 0x002311F2;
+					tint = 0x00F0A804;
 					break;
 				case "Beijing":
 					FlxG.playMusic(BeijingMusic);
-					tint = 0x00FF2322;
+					tint = 0x00FFF000;
 					break;
 			}
 			FlxG.camera.color = tint

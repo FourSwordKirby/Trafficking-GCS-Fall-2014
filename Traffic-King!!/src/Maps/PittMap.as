@@ -123,12 +123,12 @@ package Maps
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 325), new Vertex(675, 175), 150));
 
 			/*Adds the traffic lights*/
-			addTrafficLight(400, 100, Parameters.ARRANGEMENT_ESW, 1000);
-			addTrafficLight(650, 100, Parameters.ARRANGEMENT_NESW, 1000);
-			addTrafficLight(400, 400, Parameters.ARRANGEMENT_NESW, 1000);
-			addTrafficLight(650, 400, Parameters.ARRANGEMENT_WNE, 1000);
-			addTrafficLight(400, 800, Parameters.ARRANGEMENT_NES, 1000);
-			addTrafficLight(400, 900, Parameters.ARRANGEMENT_SWN, 1000);
+			addTrafficLight(400, 100, Parameters.ARRANGEMENT_ESW, 500);
+			addTrafficLight(650, 100, Parameters.ARRANGEMENT_NESW, 500);
+			addTrafficLight(400, 400, Parameters.ARRANGEMENT_NESW, 500);
+			addTrafficLight(650, 400, Parameters.ARRANGEMENT_WNE, 500);
+			addTrafficLight(400, 800, Parameters.ARRANGEMENT_NES, 500);
+			addTrafficLight(400, 900, Parameters.ARRANGEMENT_SWN, 500);
 			
 			/*
 			var light_cluster:TrafficLightCluster = new TrafficLightCluster(650, 100, Parameters.ARRANGEMENT_NESW, 200);
