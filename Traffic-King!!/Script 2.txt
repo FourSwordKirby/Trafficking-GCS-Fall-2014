@@ -1,0 +1,60 @@
+Total time: 3:00
+
+0:15: car from point B to point E
+0:30: car from point A to point D
+0:45: car from point D to point C
+0:55: car from point B to point D
+1:00: car from point A to point D
+
+(5-second gap)
+1:05: car from point D to point A
+1:10: car from point B to point A
+1:15: car from point B to point C
+1:20: car from point C to point A
+1:25: car from point D to point E
+1:30: car from point C to point E
+1:35: car from point B to point D
+      car from point A to point D
+1:40: car from point A to point E
+      car from point E to point B
+      car from point D to point B
+1:45: car from point D to point A
+      car from point E to point C
+1:50: car from point C to point D
+      car from point D to point A
+1:55: car from point C to point E
+      car from point C to point D
+2:00: car from point A to point B
+      car from point D to point B
+
+(5-second gap)
+2:05: car from point B to point A
+      car from point E to point B
+2:10: car from point C to point E
+      car from point E to point D
+2:15: car from point A to point B
+      car from point D to point E
+2:20: car from point C to point C
+      car from point E to point A
+2:25: car from point B to point A
+      car from point A to point B
+2:30: car from point D to point E
+      car from point A to point E
+2:35: car from point C to point C
+      car from point D to point A
+      car from point B to point D
+2:40: car from point A to point B
+      car from point B to point C
+      car from point D to point A
+2:45: car from point E to point B
+      car from point D to point A
+      car from point A to point B
+2:50: car from point E to point D
+      car from point B to point C
+      car from point C to point B
+2:55: car from point A to point D
+      car from point D to point E
+      car from point C to point D
+3:00: car from point A to point C
+      car from point E to point A
+      car from point D to point C
