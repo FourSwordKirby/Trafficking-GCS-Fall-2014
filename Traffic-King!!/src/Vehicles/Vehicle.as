@@ -14,6 +14,7 @@ package Vehicles
 	 */ 
 	public class Vehicle extends FlxSprite 
 	{
+		
 		private var stopped:Boolean;
 		private static var follow_distance:int;
 

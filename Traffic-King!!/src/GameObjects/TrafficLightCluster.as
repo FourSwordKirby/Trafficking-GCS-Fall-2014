@@ -8,22 +8,6 @@ package GameObjects
 	{
 		/*Embedding art assets for use */
 		[Embed(source = "/../assets/gfx/invisible.PNG")] private static var invisiButton:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle1.PNG")] private static var cdcircle1:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle2.PNG")] private static var cdcircle2:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle3.PNG")] private static var cdcircle3:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle4.PNG")] private static var cdcircle4:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle5.PNG")] private static var cdcircle5:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle6.PNG")] private static var cdcircle6:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle7.PNG")] private static var cdcircle7:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle8.PNG")] private static var cdcircle8:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle9.PNG")] private static var cdcircle9:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle10.PNG")] private static var cdcircle10:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle11.PNG")] private static var cdcircle11:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle12.PNG")] private static var cdcircle12:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle13.PNG")] private static var cdcircle13:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle14.PNG")] private static var cdcircle14:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle15.PNG")] private static var cdcircle15:Class;
-		[Embed(source = "/../assets/gfx/cooldown circle16.PNG")] private static var cdcircle16:Class;
 		[Embed(source = "/../assets/gfx/cooldown circle.PNG")] private static var cdcircle:Class;
 		
 		private var NorthSouthLights:FlxGroup;
