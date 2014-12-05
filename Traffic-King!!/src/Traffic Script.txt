@@ -1,14 +1,19 @@
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 125));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(575, 275));
 if (path1) {
    spawn_times[0] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(1000, 425));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(625, 1000));
 if (path1) {
    spawn_times[0] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(75, 575));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(425, 1000), new Vertex(575, 275));
+if (path1) {
+   spawn_times[0] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(425, 1000), new Vertex(575, 275));
 if (path1) {
    spawn_times[0] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
@@ -18,414 +23,404 @@ if (path1) {
    spawn_times[0] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(75, 575));
-if (path1) {
-   spawn_times[0] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(575, 275));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(625, 1000));
 if (path1) {
    spawn_times[300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(0, 375));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(425, 1000), new Vertex(575, 725));
 if (path1) {
    spawn_times[300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(575, 275));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(625, 575));
 if (path1) {
    spawn_times[300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(675, 0));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(575, 275));
 if (path1) {
    spawn_times[300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(575, 275));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 925), new Vertex(625, 575));
 if (path1) {
    spawn_times[300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(675, 0));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(0, 75));
 if (path1) {
    spawn_times[600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 75));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(675, 0));
 if (path1) {
    spawn_times[600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(75, 575));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(625, 575));
 if (path1) {
    spawn_times[600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(0, 75));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(0, 875));
 if (path1) {
    spawn_times[600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(0, 375));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(1000, 125));
 if (path1) {
    spawn_times[600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 75));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(375, 1000));
 if (path1) {
    spawn_times[900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(0, 75));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 925), new Vertex(675, 0));
 if (path1) {
    spawn_times[900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 75));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(1000, 825));
 if (path1) {
    spawn_times[900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(75, 575));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(425, 1000), new Vertex(75, 575));
 if (path1) {
    spawn_times[900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(575, 275));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(675, 0));
 if (path1) {
    spawn_times[900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(0, 75));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(625, 575));
 if (path1) {
    spawn_times[1200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(75, 575));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(1000, 925));
 if (path1) {
    spawn_times[1200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 125));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(0, 875));
 if (path1) {
    spawn_times[1200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(75, 575));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(625, 575));
 if (path1) {
    spawn_times[1200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(1000, 825));
+if (path1) {
+   spawn_times[1200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 925), new Vertex(0, 875));
+if (path1) {
+   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(625, 575));
+if (path1) {
+   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(1000, 425));
+if (path1) {
+   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(675, 0));
+if (path1) {
+   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(0, 375));
+if (path1) {
+   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(1000, 125));
 if (path1) {
-   spawn_times[1200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(575, 275));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(1000, 825));
 if (path1) {
-   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(675, 0));
+if (path1) {
+   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(0, 375));
 if (path1) {
-   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(675, 0));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(1000, 925));
 if (path1) {
-   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(0, 75));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 925), new Vertex(575, 275));
 if (path1) {
-   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 875));
+if (path1) {
+   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 425));
+if (path1) {
+   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(1000, 925));
+if (path1) {
+   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(625, 575));
+if (path1) {
+   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(0, 75));
+if (path1) {
+   spawn_times[2400] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(825, 1000));
+if (path1) {
+   spawn_times[2400] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 375));
 if (path1) {
-   spawn_times[1500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[2400] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(0, 75));
-if (path1) {
-   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(575, 275));
-if (path1) {
-   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(1000, 425));
-if (path1) {
-   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(1000, 425));
-if (path1) {
-   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(575, 275));
-if (path1) {
-   spawn_times[1800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 125));
-if (path1) {
-   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(0, 375));
-if (path1) {
-   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(0, 75));
-if (path1) {
-   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(75, 575));
-if (path1) {
-   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(575, 275));
-if (path1) {
-   spawn_times[2100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(0, 375));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(825, 1000));
 if (path1) {
    spawn_times[2400] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(0, 375));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(625, 1000));
 if (path1) {
    spawn_times[2400] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(0, 75));
+if (path1) {
+   spawn_times[2700] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(1000, 425));
+if (path1) {
+   spawn_times[2700] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(575, 275));
 if (path1) {
-   spawn_times[2400] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[2700] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(1000, 425));
-if (path1) {
-   spawn_times[2400] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(0, 75));
-if (path1) {
-   spawn_times[2400] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(1000, 425));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(1000, 425));
 if (path1) {
    spawn_times[2700] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(1000, 125));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(425, 1000), new Vertex(75, 575));
 if (path1) {
    spawn_times[2700] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 125));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(0, 375));
 if (path1) {
-   spawn_times[2700] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(0, 375));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 875));
 if (path1) {
-   spawn_times[2700] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(75, 575));
 if (path1) {
-   spawn_times[2700] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(1000, 925));
+if (path1) {
+   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(575, 275));
+if (path1) {
+   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(625, 1000));
+if (path1) {
+   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(825, 1000));
+if (path1) {
+   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(425, 1000), new Vertex(1000, 125));
+if (path1) {
+   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(375, 1000));
+if (path1) {
+   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(0, 375));
 if (path1) {
-   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(75, 575));
-if (path1) {
-   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(0, 375));
-if (path1) {
-   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(675, 0));
-if (path1) {
-   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(0, 375));
 if (path1) {
-   spawn_times[3000] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(425, 1000), new Vertex(1000, 425));
+if (path1) {
+   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(375, 1000));
+if (path1) {
+   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(425, 1000), new Vertex(1000, 825));
+if (path1) {
+   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(625, 575));
+if (path1) {
+   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 925), new Vertex(575, 275));
+if (path1) {
+   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 875));
+if (path1) {
+   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(575, 725));
+if (path1) {
+   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 925), new Vertex(1000, 925));
+if (path1) {
+   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(1000, 125));
 if (path1) {
-   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 425));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(825, 1000));
 if (path1) {
-   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[4200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(1000, 125));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(1000, 425));
 if (path1) {
-   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(675, 0));
-if (path1) {
-   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(0, 375));
-if (path1) {
-   spawn_times[3300] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(75, 575));
-if (path1) {
-   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 125));
-if (path1) {
-   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(75, 575));
-if (path1) {
-   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(0, 375));
-if (path1) {
-   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[4200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(75, 575));
 if (path1) {
-   spawn_times[3600] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[4200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(75, 575));
-if (path1) {
-   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(1000, 425));
-if (path1) {
-   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 425));
-if (path1) {
-   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 425));
-if (path1) {
-   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(75, 575));
-if (path1) {
-   spawn_times[3900] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 75));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(625, 575));
 if (path1) {
    spawn_times[4200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(675, 0));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 925), new Vertex(75, 575));
 if (path1) {
    spawn_times[4200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(75, 575));
-if (path1) {
-   spawn_times[4200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(0, 75));
-if (path1) {
-   spawn_times[4200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(675, 0));
-if (path1) {
-   spawn_times[4200] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(0, 375));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(375, 1000));
 if (path1) {
    spawn_times[4500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(1000, 425));
+if (path1) {
+   spawn_times[4500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(1000, 925));
+if (path1) {
+   spawn_times[4500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(625, 575));
+if (path1) {
+   spawn_times[4500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 775), new Vertex(75, 575));
 if (path1) {
    spawn_times[4500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(675, 0));
 if (path1) {
-   spawn_times[4500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+   spawn_times[4800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(675, 0));
-if (path1) {
-   spawn_times[4500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(1000, 125));
-if (path1) {
-   spawn_times[4500] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(0, 375));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(375, 1000));
 if (path1) {
    spawn_times[4800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(0, 75));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(425, 1000), new Vertex(675, 0));
 if (path1) {
    spawn_times[4800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(75, 575));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(1000, 825));
 if (path1) {
    spawn_times[4800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 75), new Vertex(575, 275));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 925), new Vertex(1000, 825));
 if (path1) {
    spawn_times[4800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(0, 375));
-if (path1) {
-   spawn_times[4800] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
-}
-
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(675, 0));
-if (path1) {
-   spawn_times[5100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
 var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(1000, 425));
@@ -433,17 +428,22 @@ if (path1) {
    spawn_times[5100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(1000, 125));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(375, 1000));
 if (path1) {
    spawn_times[5100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(1000, 425));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(1000, 375), new Vertex(0, 875));
 if (path1) {
    spawn_times[5100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
 
-var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 425), new Vertex(675, 0));
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(0, 125), new Vertex(1000, 425));
+if (path1) {
+   spawn_times[5100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
+}
+
+var path1:Array = map.graph.getShortestEdgePath(new Vertex(625, 0), new Vertex(0, 875));
 if (path1) {
    spawn_times[5100] = new Car (path1, map.graph.getVertexPathFromEdgePath(path1));
 }
