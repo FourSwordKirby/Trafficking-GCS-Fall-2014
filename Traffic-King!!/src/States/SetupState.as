@@ -20,7 +20,7 @@ package States {
 		public var map_group:FlxGroup;
 		
 		/*used to make the camera follow the mouse*/
-		protected var MouseRectangle:FlxSprite;
+		protected var MouseRectangle:FlxObject;
 		
 		/*Components of the menu for the setup part of the game*/
 		public var setup_menu:SetupMenu;
@@ -58,10 +58,7 @@ package States {
 			add(this.setup_menu);
 			
 			/*Initializes the rectangle that the camera will follow*/
-			MouseRectangle = new FlxSprite(FlxG.mouse.x, FlxG.mouse.y)
-			MouseRectangle.loadGraphic(mapSelectBoxSprite, false, false);
-			MouseRectangle.width = 16;
-			MouseRectangle.height = 16 * map.getMapHeight() / map.getMapWidth();
+			MouseRectangle = new FlxObject(FlxG.mouse.x, FlxG.mouse.y, 16, 16 * map.getMapHeight() / map.getMapWidth())
 
 			MouseRectangle.visible = false;
 			add(MouseRectangle);
@@ -77,10 +74,6 @@ package States {
 		}
 		
 		//Temporary for now, gonn put it in gamestate. Used to indicate whether we are fast accessing the map
-				
-		[Embed(source = "/../assets/gfx/mapSelectBox.PNG")] private static var mapSelectBoxSprite:Class;
-		public var on_mini_map:Boolean = false;
-		public var zoom:Number = 0.25;
 		
 		override public function update():void
 		{
