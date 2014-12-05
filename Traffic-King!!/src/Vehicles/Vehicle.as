@@ -16,6 +16,7 @@ package Vehicles
 	{
 		
 		private var stopped:Boolean;
+		//private var firststop:Boolean; 
 		private static var follow_distance:int;
 
 		protected var location:FlxPoint;
@@ -38,6 +39,7 @@ package Vehicles
 			this.maxVelocity.y = maxSpeed;
 			//this.destination = destination;
 			this.direction = Parameters.DIRECTION_SOUTH;
+			//this.firststop = true;
 			
 			/* the car upon initilization will generate the path it needs to travel?
 			this.path = */
