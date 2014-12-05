@@ -104,7 +104,7 @@ package States {
 						{
 							var mapLocationX:int = FlxG.mouse.x - FlxG.camera.scroll.x  - ((Parameters.SCREEN_WIDTH - map.getMapWidth() * zoom) / 2); 
 							var mapLocationY:int = FlxG.mouse.y - FlxG.camera.scroll.y  - ((Parameters.SCREEN_HEIGHT - map.getMapHeight() * zoom) / 2); 
-							
+
 							MouseRectangle.x = mapLocationX / zoom;
 							MouseRectangle.y = mapLocationY / zoom;
 							
