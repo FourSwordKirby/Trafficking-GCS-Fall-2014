@@ -16,7 +16,8 @@ package Vehicles {
 		
 		public function Car(edge_path:Array,vertex_path:Array) 
 		{
-			super((DirectedEdge)(edge_path[0]).getSource().x - 25, (DirectedEdge)(edge_path[0]).getSource().y - 25, 40);
+			var speed:int = 45 + Math.floor(Math.random() * 100);
+			super((DirectedEdge)(edge_path[0]).getSource().x - 25, (DirectedEdge)(edge_path[0]).getSource().y - 25, speed);
 			this.planned_path = edge_path;
 			
 			this.followPath(new FlxPath(vertex_path), 100, PATH_FORWARD,true);
@@ -62,7 +63,7 @@ package Vehicles {
 			
 			if (this.current_road != null && !this.current_road.getDestination().isTerminal())
 			{	
-				this.pathSpeed = 75 + Math.floor(Math.random() * 100);	
+				this.pathSpeed = 100;	
 			}
 			
 			if (this.pathSpeed == 0)
