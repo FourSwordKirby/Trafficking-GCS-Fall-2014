@@ -12,14 +12,12 @@ package States {
 		//[Embed(source = "../../assets/UI/Main-Circle1.png")] private var BGCircle:Class;			//Background rotating wheel
 		//[Embed(source = "../../assets/UI/Main-Circle2.png")] private var FGCircle:Class;			//Foreground rotating wheel
 		
-		
-		
 		[Embed(source = "../../assets/UI/Main-StartBtn1.png")] private var StartButton:Class;			//Button Graphic
 		[Embed(source = "../../assets/music/The Village MSX_mp3.mp3")] private var StartMusic:Class;
 		FlxG.debug;
 		
 		/*Buttons for the start menu*/
-		private var start_button:FlxButton;				
+		private var start_button:FlxButton;
 		
 		/*Background for the start menu*/
 		private var background_sprite:FlxSprite;

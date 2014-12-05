@@ -36,6 +36,9 @@ package GUI {
 		[Embed(source = "../../assets/UI/Back Button Small.png")] private var ReturnButton:Class;
 		[Embed(source = "../../assets/UI/Back Button Big2.png")] private var ReturnButtonOn:Class;
 		
+		[Embed(source = "../../assets/sfx/menu_button_enter.mp3")] private var EnterSound:Class;
+		[Embed(source = "../../assets/sfx/menu_button_click.mp3")] private var ClickSound:Class;
+		
 		/*Buttons for the setup state menu*/
 		private var traffic_button:FlxButton;	
 		private var time_limit_button:FlxButton;	
@@ -72,8 +75,12 @@ package GUI {
 				map_button.scrollFactor.x = 0;
 				map_button.scrollFactor.y = 0;
 				map_button.loadGraphic(MapButton);
-				map_button.onOver = function() : void { map_button.loadGraphic(MapButtonOn) };
-				map_button.onOut = function() : void {map_button.loadGraphic(MapButton)};
+				map_button.onOver = function() : void {
+					if (map_button.visible) {
+						FlxG.play(EnterSound);
+					}
+					map_button.loadGraphic(MapButtonOn) };
+				map_button.onOut = function() : void { map_button.loadGraphic(MapButton)};
 				add(map_button);
 			}
 			
@@ -82,23 +89,35 @@ package GUI {
 			traffic_button.scrollFactor.x = 0;
 			traffic_button.scrollFactor.y = 0;
 			traffic_button.loadGraphic(TrafficButton);
-			traffic_button.onOver = function() : void { traffic_button.loadGraphic(TrafficButtonOn) };
-			traffic_button.onOut = function() : void {traffic_button.loadGraphic(TrafficButton)};
+			traffic_button.onOver = function() : void { 
+				if (traffic_button.visible) {
+					FlxG.play(EnterSound);
+				}
+				traffic_button.loadGraphic(TrafficButtonOn) };
+			traffic_button.onOut = function() : void { traffic_button.loadGraphic(TrafficButton)};
 			add(traffic_button);
 			
 			time_limit_button = new FlxButton(215, 254, "", dummyfunction);
 			time_limit_button.scrollFactor.x = 0;
 			time_limit_button.scrollFactor.y = 0;
 			time_limit_button.loadGraphic(TimeLimitButton);
-			time_limit_button.onOver = function() : void { time_limit_button.loadGraphic(TimeLimitButtonOn) };
-			time_limit_button.onOut = function() : void {time_limit_button.loadGraphic(TimeLimitButton)};
+			time_limit_button.onOver = function() : void {
+				if (time_limit_button.visible) {
+					FlxG.play(EnterSound);
+				}
+				time_limit_button.loadGraphic(TimeLimitButtonOn) };
+			time_limit_button.onOut = function() : void { time_limit_button.loadGraphic(TimeLimitButton)};
 			add(time_limit_button);
 			
 			money_button = new FlxButton(394, 254, "", dummyfunction);
 			money_button.scrollFactor.x = 0;
 			money_button.scrollFactor.y = 0;
 			money_button.loadGraphic(MoneyButton);
-			money_button.onOver = function() : void { money_button.loadGraphic(MoneyButtonOn) };
+			money_button.onOver = function() : void {
+				if (money_button.visible) {
+					FlxG.play(EnterSound);
+				}
+				money_button.loadGraphic(MoneyButtonOn) };
 			money_button.onOut = function() : void { money_button.loadGraphic(MoneyButton) };
 			
 			money_text= new FlxText(money_button.x + 100, money_button.y, money_button.width, setup_state.player.funds.toString());
@@ -111,24 +130,36 @@ package GUI {
 			shop_button.scrollFactor.x = 0;
 			shop_button.scrollFactor.y = 0;
 			shop_button.loadGraphic(ShopButton);
-			shop_button.onOver = function() : void { shop_button.loadGraphic(ShopButtonOn) };
-			shop_button.onOut = function() : void {shop_button.loadGraphic(ShopButton)};
+			shop_button.onOver = function() : void {
+				if (shop_button.visible) {
+					FlxG.play(EnterSound);
+				}
+				shop_button.loadGraphic(ShopButtonOn) };
+			shop_button.onOut = function() : void { shop_button.loadGraphic(ShopButton)};
 			add(shop_button);
 			
 			info_button = new FlxButton(394, 425, "", dummyfunction);
 			info_button.scrollFactor.x = 0;
 			info_button.scrollFactor.y = 0;
 			info_button.loadGraphic(InfoButton);
-			info_button.onOver = function() : void { info_button.loadGraphic(InfoButtonOn) };
-			info_button.onOut = function() : void {info_button.loadGraphic(InfoButton)};
+			info_button.onOver = function() : void {
+				if (info_button.visible) {
+					FlxG.play(EnterSound);
+				}
+				info_button.loadGraphic(InfoButtonOn) };
+			info_button.onOut = function() : void { info_button.loadGraphic(InfoButton)};
 			add(info_button);
 			
 			begin_button = new FlxButton(250, 500, "", startGame);
 			begin_button.scrollFactor.x = 0;
 			begin_button.scrollFactor.y = 0;
 			begin_button.loadGraphic(BeginButton);
-			begin_button.onOver = function() : void { begin_button.loadGraphic(BeginButtonOn) };
-			begin_button.onOut = function() : void {begin_button.loadGraphic(BeginButton)};
+			begin_button.onOver = function() : void { 
+				if (begin_button.visible) {
+					FlxG.play(EnterSound);
+				}
+				begin_button.loadGraphic(BeginButtonOn); };
+			begin_button.onOut = function() : void { begin_button.loadGraphic(BeginButton)};
 			add(begin_button);
 			
 			//Here is us creating a button that will let us return to the setup menu
@@ -136,7 +167,11 @@ package GUI {
 			return_button.scrollFactor.x = 0;
 			return_button.scrollFactor.y = 0;
 			return_button.loadGraphic(ReturnButton);
-			return_button.onOver = function() : void { return_button.loadGraphic(ReturnButtonOn) };
+			return_button.onOver = function() : void {
+				if (return_button.visible) {
+					FlxG.play(EnterSound);
+				}
+				return_button.loadGraphic(ReturnButtonOn); };
 			return_button.onOut = function() : void { return_button.loadGraphic(ReturnButton) };
 			return_button.visible = false;
 			add(return_button);
@@ -144,11 +179,13 @@ package GUI {
 		
 		private function dummyfunction(): void 
 		{
+			FlxG.play(ClickSound);
 			trace("hi");
 		}
 		
 		private function goToMap(): void 
 		{
+			FlxG.play(ClickSound);
 			background_sprite.visible = false;
 			traffic_button.visible = false;
 			time_limit_button.visible = false;
@@ -174,6 +211,7 @@ package GUI {
 		
 		private function returnToMenu():void
 		{
+			FlxG.play(ClickSound);
 			background_sprite.visible = true;
 			traffic_button.visible = true;
 			time_limit_button.visible = true;
