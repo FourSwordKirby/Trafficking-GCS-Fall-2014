@@ -105,7 +105,7 @@ package States {
 							var mapLocationX:int = FlxG.mouse.x - ((Parameters.SCREEN_WIDTH - map.getMapWidth()) * zoom / 2); 
 							var mapLocationY:int = FlxG.mouse.y - ((Parameters.SCREEN_HEIGHT - map.getMapHeight()) * zoom / 2); 
 							
-							MouseRectangle.x = mapLocationX / (map.getMapWidth()/2) * 
+							MouseRectangle.x = mapLocationX / (map.getMapWidth()/2)  
 							MouseRectangle.y = mapLocationY / (map.getMapHeight()/2) 
 							
 							setup_menu.return_button.visible = true;
