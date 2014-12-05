@@ -13,17 +13,18 @@ fps = 30; # frames per second
 interval = 10; # seconds before next set of cars spawn
 density = 5; # number of cars per second
 
-for i in xrange(0, timeLimit, interval):
-    for j in xrange(0, density):
-        start = entrances[random.randint(0, len(entrances) - 1)];
-        end = exits[random.randint(0, len(exits) - 1)];
+with open("Traffic Script.txt", mode = "w") as f:
+    for i in xrange(0, timeLimit, interval):
+        for j in xrange(0, density):
+            start = entrances[random.randint(0, len(entrances) - 1)];
+            end = exits[random.randint(0, len(exits) - 1)];
 
-        print("var path1:Array = map.graph.getShortestEdgePath"
-              "(new Vertex%s, new Vertex%s);"
-             %(start, end));
-        print("spawn_times[%d] = new Car"
-              "(path1, map.graph.getVertexPathFromEdgePath(path1));\n"
-              % (i * fps));
+            f.write("var path1:Array = map.graph.getShortestEdgePath"
+                  "(new Vertex%s, new Vertex%s);\n"
+                 %(start, end));
+            f.write("spawn_times[%d] = new Car"
+                  "(path1, map.graph.getVertexPathFromEdgePath(path1));\n\n"
+                  % (i * fps));
 
 # Old:
 
