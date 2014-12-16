@@ -206,6 +206,8 @@ package GUI {
 			info_button.visible = false;
 			begin_button.visible = false;
 			money_text.visible = false;
+			level_name_text.visible = false;
+			wave_name_text.visible = false;
 			
 			return_button.visible = true;
 			setup_state.in_setup = true;
@@ -235,6 +237,8 @@ package GUI {
 			info_button.visible = true;
 			begin_button.visible = true;
 			money_text.visible = true;
+			level_name_text.visible = true;
+			wave_name_text.visible = true;
 			
 			return_button.visible = false;
 			setup_state.in_setup = false;

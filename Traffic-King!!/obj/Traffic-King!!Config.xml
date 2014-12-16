@@ -5,7 +5,6 @@
   <target-player>10.1</target-player>
   <benchmark>false</benchmark>
   <static-link-runtime-shared-libraries>true</static-link-runtime-shared-libraries>
-  <warnings>false</warnings>
   <compiler>
     <define append="true">
       <name>CONFIG::debug</name>

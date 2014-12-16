@@ -7,8 +7,8 @@ package
 		public static const SCREEN_WIDTH:int = 600; 
 		public static const SCREEN_HEIGHT:int = 600; 
 		
-		public static const DEADZONE_WIDTH:int = SCREEN_WIDTH * 0.875;
-		public static const DEADZONE_HEIGHT:int = SCREEN_HEIGHT * 0.875;
+		public static const DEADZONE_WIDTH:int = SCREEN_WIDTH * 0.75;
+		public static const DEADZONE_HEIGHT:int = SCREEN_HEIGHT * 0.75;
 		
 		public static const LIGHT_GREEN:int = 0;
 		public static const LIGHT_YELLOW:int = 1;
