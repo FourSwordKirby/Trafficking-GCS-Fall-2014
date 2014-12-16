@@ -24,8 +24,6 @@ package States {
 		
 		/*Components of the menu for the setup part of the game*/
 		public var setup_menu:SetupMenu;
-		protected var level_name:String;
-		protected var wave_name:String;
 		
 		/*used to indicate whether we are setting up on the map or not*/
 		public var in_setup:Boolean;
@@ -37,8 +35,6 @@ package States {
 		{
 			this.current_wave = wave;
 			this.map = current_wave.getMap();
-			this.level_name = "Pitt";
-			this.wave_name = "1";
 			
 			this.player = player;
 			
@@ -51,7 +47,7 @@ package States {
 		override public function create():void 
 		{
 			FlxG.mouse.show();
-
+			
 			//Here we create the actual map and add the setup menu
 			map_group = this.map.create();
 			add(map_group);
@@ -66,14 +62,12 @@ package States {
 			/*sets the camera to follow the mouse */
 			FlxG.camera.setBounds(0, 0, map.getMapWidth(), map.getMapHeight());
 			FlxG.camera.follow(MouseRectangle);
-			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
+			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, 
+												(Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
 												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);	
-			
 			
 			super.create();
 		}
-		
-		//Temporary for now, gonn put it in gamestate. Used to indicate whether we are fast accessing the map
 		
 		override public function update():void
 		{

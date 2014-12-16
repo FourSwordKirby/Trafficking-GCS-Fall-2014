@@ -14,7 +14,9 @@ package GUI {
 		[Embed(source = "../../assets/UI/LevelInfo-3LdnBG.png")] private var LondonBackground:Class;	
 		[Embed(source = "../../assets/UI/LevelInfo-4ParisBG.png")] private var ParisBackground:Class;	
 		[Embed(source = "../../assets/UI/LevelInfo-5TokyoBG.png")] private var TokyoBackground:Class;	
-		[Embed(source = "../../assets/UI/LevelInfo-6BeijingBG.png")] private var BeijingBackground:Class;	
+		[Embed(source = "../../assets/UI/LevelInfo-6BeijingBG.png")] private var BeijingBackground:Class;
+		
+		[Embed(source = "../../assets/UI/LevelInfo-1Trans1.png")] private var Background:Class;
 		
 		[Embed(source = "../../assets/UI/LevelInfo-1Traffics1.png")] private var TrafficButton:Class;	
 		[Embed(source = "../../assets/UI/LevelInfo-2TimeLimit1.png")] private var TimeLimitButton:Class;
@@ -39,12 +41,16 @@ package GUI {
 		[Embed(source = "../../assets/sfx/menu_button_enter.mp3")] private var EnterSound:Class;
 		[Embed(source = "../../assets/sfx/menu_button_click.mp3")] private var ClickSound:Class;
 		
+		/*Text that goes on the menu*/
+		private var level_name_text:FlxText;
+		private var wave_name_text:FlxText;
+		private var money_text:FlxText;
+		
 		/*Buttons for the setup state menu*/
 		private var traffic_button:FlxButton;	
 		private var time_limit_button:FlxButton;	
 		private var map_button:FlxButton;	
 		private var money_button:FlxButton;	
-		private var money_text:FlxText;
 		private var shop_button:FlxButton;	
 		private var info_button:FlxButton;	
 		private var begin_button:FlxButton;	
@@ -63,29 +69,34 @@ package GUI {
 		public function SetupMenu(setup_state:SetupState) 
 		{
 			this.setup_state = setup_state;
-			if (setup_state.current_wave.getWaveMapName() == "Pittsburgh" || true)
-			{
-				/*Initializes and adds the background to the game*/
-				background_sprite = new FlxSprite(0, 0, PittBackground);
-				background_sprite.scrollFactor.x = 0;
-				background_sprite.scrollFactor.y = 0;
-				add(background_sprite);
-				
-				map_button = new FlxButton(215, 337, "", goToMap);
-				map_button.scrollFactor.x = 0;
-				map_button.scrollFactor.y = 0;
-				map_button.loadGraphic(MapButton);
-				map_button.onOver = function() : void {
-					if (map_button.visible) {
-						FlxG.play(EnterSound);
-					}
-					map_button.loadGraphic(MapButtonOn) };
-				map_button.onOut = function() : void { map_button.loadGraphic(MapButton)};
-				add(map_button);
-			}
+			
+			background_sprite = new FlxSprite(0, 0, Background);
+			background_sprite.scrollFactor.x = 0;
+			background_sprite.scrollFactor.y = 0;
+			add(background_sprite);
+			
+			wave_name_text= new FlxText(250, 135, Parameters.SCREEN_WIDTH, setup_state.current_wave.getWaveName());
+			wave_name_text.size *= 3;
+			add(wave_name_text);
+			
+			level_name_text= new FlxText(160, 170, Parameters.SCREEN_WIDTH, setup_state.current_wave.getMapName());
+			level_name_text.size *= 6;
+			add(level_name_text);
+			
+			map_button = new FlxButton(215, 337, "", goToMap);
+			map_button.scrollFactor.x = 0;
+			map_button.scrollFactor.y = 0; 
+			map_button.loadGraphic(MapButton);
+			map_button.onOver = function() : void {
+				if (map_button.visible) {
+					FlxG.play(EnterSound);
+				}
+				map_button.loadGraphic(MapButtonOn) };
+			map_button.onOut = function() : void { map_button.loadGraphic(MapButton)};
+			add(map_button);
 			
 			/*Initializes the various menu buttons*/
-			traffic_button = new FlxButton(35, 254, "", dummyfunction);
+			traffic_button = new FlxButton(35, 254, "", playSound);
 			traffic_button.scrollFactor.x = 0;
 			traffic_button.scrollFactor.y = 0;
 			traffic_button.loadGraphic(TrafficButton);
@@ -97,7 +108,7 @@ package GUI {
 			traffic_button.onOut = function() : void { traffic_button.loadGraphic(TrafficButton)};
 			add(traffic_button);
 			
-			time_limit_button = new FlxButton(215, 254, "", dummyfunction);
+			time_limit_button = new FlxButton(215, 254, "", playSound);
 			time_limit_button.scrollFactor.x = 0;
 			time_limit_button.scrollFactor.y = 0;
 			time_limit_button.loadGraphic(TimeLimitButton);
@@ -109,7 +120,7 @@ package GUI {
 			time_limit_button.onOut = function() : void { time_limit_button.loadGraphic(TimeLimitButton)};
 			add(time_limit_button);
 			
-			money_button = new FlxButton(394, 254, "", dummyfunction);
+			money_button = new FlxButton(394, 254, "", playSound);
 			money_button.scrollFactor.x = 0;
 			money_button.scrollFactor.y = 0;
 			money_button.loadGraphic(MoneyButton);
@@ -126,7 +137,7 @@ package GUI {
 			
 			add(money_button);
 			
-			shop_button = new FlxButton(394, 340, "", dummyfunction);
+			shop_button = new FlxButton(394, 340, "", playSound);
 			shop_button.scrollFactor.x = 0;
 			shop_button.scrollFactor.y = 0;
 			shop_button.loadGraphic(ShopButton);
@@ -138,7 +149,7 @@ package GUI {
 			shop_button.onOut = function() : void { shop_button.loadGraphic(ShopButton)};
 			add(shop_button);
 			
-			info_button = new FlxButton(394, 425, "", dummyfunction);
+			info_button = new FlxButton(394, 425, "", playSound);
 			info_button.scrollFactor.x = 0;
 			info_button.scrollFactor.y = 0;
 			info_button.loadGraphic(InfoButton);
@@ -177,7 +188,7 @@ package GUI {
 			add(return_button);
 		}
 		
-		private function dummyfunction(): void 
+		private function playSound(): void 
 		{
 			FlxG.play(ClickSound);
 			trace("hi");
@@ -204,7 +215,10 @@ package GUI {
 		{
 			map_group = (FlxGroup) (setup_state.remove(setup_state.map_group, true));
 			
-			FlxG.switchState(new TransitionState(setup_state.current_wave, setup_state.player));
+			//Temporarily moving the transition state so that I can do testing.
+			//FlxG.switchState(new TransitionState(setup_state.current_wave, setup_state.player));
+			FlxG.switchState(new GameState(setup_state.current_wave, setup_state.player));
+			
 			FlxG.music.stop();
 			return;
 		}

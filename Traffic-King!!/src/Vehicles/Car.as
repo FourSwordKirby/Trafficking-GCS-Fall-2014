@@ -24,7 +24,7 @@ package Vehicles {
 		
 		public function Car(edge_path:Array,vertex_path:Array) 
 		{
-			var speed:int = 45 + Math.floor(Math.random() * 100);
+			var speed:int = 100;//45 + Math.floor(Math.random() * 100);
 			super((DirectedEdge)(edge_path[0]).getSource().x - 25, (DirectedEdge)(edge_path[0]).getSource().y - 25, speed);
 			this.planned_path = edge_path;
 			
@@ -93,8 +93,6 @@ package Vehicles {
 			{
 				FlxG.play(ReachSound);
 				this.visible = false;
-				trace("hello");
-//				trace (this.game_state == null);
 				this.game_state.player.increaseScore(-2);
 				this.game_state.active_vehicles.splice(this.game_state.active_vehicles.indexOf(this), 1);
 				

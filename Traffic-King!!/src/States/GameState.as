@@ -1,4 +1,5 @@
 package States {
+	import GUI.PauseMenu;
 	import org.flixel.*;
 	import PlayerInfo.Player;
 	import Vehicles.Car;
@@ -20,16 +21,14 @@ package States {
 		/*Important information about the current level*/
 		protected var current_wave:Wave;
 		public var map:Map;
-		
-		public var active_vehicles:Array;
-		
-		public var player:Player;
-		
-		private var timer:int;
-		
+		public var active_vehicles:Array;		
+		public var player:Player;		
+		private var timer:int;		
 		private var clock:FlxText;
-		
 		private var score:FlxText; 
+		
+		/*Our pause menu*/
+		private var pause_menu:PauseMenu;
 		
 		/*used to make the camera follow the mouse*/
 		private var MouseRectangle:FlxObject;
@@ -41,7 +40,7 @@ package States {
 			this.player = player;
 			
 			this.active_vehicles = [];
-			this.timer = 18000;
+			this.timer = 6000;
 		}
 		
 		FlxG.debug;	//allows debug messages to appear	
@@ -49,7 +48,7 @@ package States {
 		{
 			FlxG.mouse.show();
 			
-			/*Initializes the rectangle that the camera will follow said rectangle*/
+			/*Initializes the rectangle that the camera will follow*/
 			MouseRectangle = new FlxObject(FlxG.mouse.x, FlxG.mouse.y, 16, 16);
 			add(MouseRectangle);
 			
@@ -59,14 +58,10 @@ package States {
 			FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
 												Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);				
 			
+			//Initializes the spawner
+			current_wave.getSpawnScedule().initSpawnSchedule(this);
 			
-			//Initializes all of our spawners
-			for (var k in current_wave.getAllSpawnSchedules()) 
-			{
-				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).initSpawnSchedule(this);
-			}
-			
-			switch (this.current_wave.getWaveMapName())
+			switch (this.current_wave.getMapName())
 			{
 				case "Pittsburgh":
 				    FlxG.playMusic(PittMusic);
@@ -114,72 +109,41 @@ package States {
 			this.score.scrollFactor.y = 0;
 			add(score);
 			
+			//Initializes our pause menu
+			this.pause_menu = new PauseMenu(this);
+			add(pause_menu);
 			
-			help_menu.visible = false;
-			help_text.visible = false;
-			
-			FlxG.play(PauseSound);
-				help_menu.loadGraphic(HelpMenu);
-				help_menu.scrollFactor.x = 0;
-				help_menu.scrollFactor.y = 0;
-				help_menu.visible = !help_menu.visible;
-				help_text.visible = !help_text.visible;
-				
-				remove(help_menu);
-				remove(help_text);
-				
-				add(help_menu);
-				add(help_text);
-				
-				for (var i:int; i < active_vehicles.length; i++)
-				{
-					var car:Vehicle = (Vehicle)(active_vehicles[i]);
-					car.visible = !car.visible;
-				}
-				
-				paused = !paused;
+			paused = true;
 			
 			super.create();
 		}
 		
 		public var tint:int;
 		
-		[Embed(source = "../../assets/UI/Help-BG.png")] private var HelpMenu:Class;
-		public var help_menu:FlxSprite = new FlxSprite(0, 0);
-		public var help_text:FlxText = new FlxText(50, 250, 500, "Objective: You control the traffic lights by clicking on them! Try to get as many cars to crash as possible, and prevent as many as you can from returning home. \n Controls: \n x = display mini map \n p = pause/unpause");
-		
 		public var on_mini_map:Boolean = false;
 		public var zoom:Number = 0.25;
 		public var paused:Boolean = false;
+		
 		override public function update():void
 		{
 			//Pause code is just these two if statements
 			if (FlxG.keys.justPressed("P"))
 			{
 				FlxG.play(PauseSound);
-				help_menu.loadGraphic(HelpMenu);
-				help_menu.scrollFactor.x = 0;
-				help_menu.scrollFactor.y = 0;
-				help_menu.visible = !help_menu.visible;
-				help_text.visible = !help_text.visible;
-				
-				remove(help_menu);
-				remove(help_text);
-				
-				add(help_menu);
-				add(help_text);
-				
-				for (var i:int; i < active_vehicles.length; i++)
+				if (paused)
+					pause_menu.close();
+				else
 				{
-					var car:Vehicle = (Vehicle)(active_vehicles[i]);
-					car.visible = !car.visible;
+					pause_menu.open();
+					pause_menu.visible = false;
 				}
-				
+					
 				paused = !paused;
 			}
 			if (paused)
 			{
-				return //pauseGroup.update(); //update() finishes here if paused
+				pause_menu.update(); //update() finishes here if paused
+				return;
 			}
 			
 			/*updates the position of the mouse*/
@@ -189,6 +153,7 @@ package States {
 			this.clock.text = "Time: " + toSeconds(this.timer);
 			this.score.text = ("Score: " + player.getScore().toString());
 			
+			/*Handles interations involving the minimap*/
 			if (on_mini_map)
 			{	
 				//Only move the mouse rechtangle if it is in the bounds of the minimap
@@ -202,7 +167,7 @@ package States {
 					{
 						var mapLocationX:int = FlxG.mouse.x - FlxG.camera.scroll.x  - ((Parameters.SCREEN_WIDTH - map.getMapWidth() * zoom) / 2); 
 						var mapLocationY:int = FlxG.mouse.y - FlxG.camera.scroll.y  - ((Parameters.SCREEN_HEIGHT - map.getMapHeight() * zoom) / 2); 
-
+						
 						MouseRectangle.x = mapLocationX / zoom;
 						MouseRectangle.y = mapLocationY / zoom;
 						
@@ -211,12 +176,7 @@ package States {
 						
 						FlxG.camera.scroll.x = MouseRectangle.x - Parameters.SCREEN_WIDTH / 2;
 						FlxG.camera.scroll.y = MouseRectangle.y - Parameters.SCREEN_HEIGHT / 2;
-
-						/*FlxG.camera.follow(MouseRectangle);
-						FlxG.camera.deadzone = new FlxRect((Parameters.SCREEN_WIDTH - Parameters.DEADZONE_WIDTH) / 2, (Parameters.SCREEN_HEIGHT - Parameters.DEADZONE_HEIGHT) / 2,
-											Parameters.DEADZONE_WIDTH, Parameters.DEADZONE_WIDTH);	
-						*/
-											
+						
 						on_mini_map = false;
 					}
 				}
@@ -241,22 +201,21 @@ package States {
 				}
 			}
 			
+			//Each cars individual AI kicks in
 			for (var i:int = 0; i < active_vehicles.length; i++)
 			{
 				checkSurroundings(active_vehicles[i]);
 			}
 			
-			for (var k in current_wave.getAllSpawnSchedules()) 
-			{
-				(SpawnSchedule)(current_wave.getAllSpawnSchedules()[k]).update();
-			}
+			//Lets our spawners add in new cars
+			current_wave.getSpawnScedule().update();
 			
 			/*Checks if cars crash*/
 			for (var i:int = 0; i < active_vehicles.length; i++)
 			{
 				for (var j:int = 0; j < active_vehicles.length; j++)
 				{
-					if (FlxG.collide(active_vehicles[i], active_vehicles[j]))
+					if (FlxG.overlap(active_vehicles[i], active_vehicles[j]))
 					{
 						((Vehicle) (active_vehicles[i])).crash();
 						((Vehicle) (active_vehicles[j])).crash();
@@ -277,8 +236,6 @@ package States {
 		public function checkSurroundings(this_vehicle:Vehicle)
 		{
 			var follow_distance = this_vehicle.height +85;	//This really should be the larger of height and width
-			
-			//trace("myRoad: " + this_vehicle.current_road.toString());
 			
 			for (var i:int = 0; i < active_vehicles.length; i++)
 			{

@@ -13,8 +13,8 @@ exits = [(675, 0), (0, 75), (1000, 125), (0, 375), (1000, 425), (0, 875),
 
 timeLimit = 180; # number of seconds
 fps = 30; # frames per second
-interval = 8; # seconds before next set of cars spawn
-density = 5; # number of cars per second
+interval = 6; # seconds before next set of cars spawn
+density = 10; # number of cars per second
 
 with open("Traffic Script.txt", mode = "w") as f:
     for i in xrange(0, timeLimit, interval):

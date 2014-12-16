@@ -85,26 +85,26 @@ package Maps
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(725, 425), new Vertex(925, 425), 200));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(925, 425), new Vertex(1000, 425), 75));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(925, 425), new Vertex(925, 625), 200)); // Small road
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(925, 625), new Vertex(825, 625), 100)); // Small road
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 625), new Vertex(825, 775), 100)); // Small road
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(925, 625), new Vertex(825, 625), 100)); // Small road
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 625), new Vertex(825, 775), 100)); // Small road
 
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 375), new Vertex(725, 375), 275));
 
-                        /*3rd row*/
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 925), new Vertex(325, 925), 325));
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(325, 875), new Vertex(0, 875), 325));
+            /*3rd row*/
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 925), new Vertex(325, 925), 325));
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(325, 875), new Vertex(0, 875), 325));
 
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 775), new Vertex(825, 775), 175));
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 775), new Vertex(575, 775), 250));
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(575, 775), new Vertex(475, 775), 100));
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(575, 775), new Vertex(575, 725), 50)); // Small road
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(475, 825), new Vertex(825, 825), 350));
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 825), new Vertex(1000, 825), 175));
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 825), new Vertex(825, 925), 100)); // Small road
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 925), new Vertex(625, 925), 200)); // Small road
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 925), new Vertex(625, 1000), 75)); // Small road
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 925), new Vertex(825, 1000), 75)); // Small road
-                        graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 925), new Vertex(1000, 925), 175)); // Small road
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(1000, 775), new Vertex(825, 775), 175));
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 775), new Vertex(575, 775), 250));
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(575, 775), new Vertex(475, 775), 100));
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(575, 775), new Vertex(575, 725), 50)); // Small road
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(475, 825), new Vertex(825, 825), 350));
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 825), new Vertex(1000, 825), 175));
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 825), new Vertex(825, 925), 100)); // Small road
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 925), new Vertex(625, 925), 200)); // Small road
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 925), new Vertex(625, 1000), 75)); // Small road
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 925), new Vertex(825, 1000), 75)); // Small road
+            graph.addDirectedEdge(new DirectedEdge(new Vertex(825, 925), new Vertex(1000, 925), 175)); // Small road
 			
 			/*1st col*/
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 175), new Vertex(375, 325), 150));
@@ -115,7 +115,7 @@ package Maps
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 1000), new Vertex(425, 875), 125));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 725), new Vertex(425, 475), 300));
 			
-			/*2nd col*/
+			/*2nd col*/ 
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 175), new Vertex(625, 275), 100));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 275), new Vertex(625, 325), 50));
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(625, 275), new Vertex(575, 275), 50)); // Small road
@@ -123,47 +123,11 @@ package Maps
 			graph.addDirectedEdge(new DirectedEdge(new Vertex(675, 325), new Vertex(675, 175), 150));
 
 			/*Adds the traffic lights*/
-			addTrafficLight(400, 100, Parameters.ARRANGEMENT_ESW, 500);
-			addTrafficLight(650, 100, Parameters.ARRANGEMENT_NESW, 500);
-			addTrafficLight(400, 400, Parameters.ARRANGEMENT_NESW, 500);
-			addTrafficLight(650, 400, Parameters.ARRANGEMENT_WNE, 500);
-			addTrafficLight(400, 800, Parameters.ARRANGEMENT_NES, 500);
-			addTrafficLight(400, 900, Parameters.ARRANGEMENT_SWN, 500);
-			
-			/*
-			var light_cluster:TrafficLightCluster = new TrafficLightCluster(650, 100, Parameters.ARRANGEMENT_NESW, 200);
-			light_cluster.addNSvertices(graph.getVertex(625, 75));
-			light_cluster.addEWvertices(graph.getVertex(625, 125));
-			light_cluster.addEWvertices(graph.getVertex(675, 75));
-			light_cluster.addNSvertices(graph.getVertex(675, 125));
-			traffic_light_group.add(light_cluster);
-			
-			var light_cluster:TrafficLightCluster = new TrafficLightCluster(400, 400, Parameters.ARRANGEMENT_NESW, 200);
-			light_cluster.addNSvertices(graph.getVertex(375, 375));
-			light_cluster.addEWvertices(graph.getVertex(375, 425));
-			light_cluster.addEWvertices(graph.getVertex(425, 375));
-			light_cluster.addNSvertices(graph.getVertex(425, 425));
-			traffic_light_group.add(light_cluster);
-			
-			var light_cluster:TrafficLightCluster = new TrafficLightCluster(650, 400, Parameters.ARRANGEMENT_WNE, 200);
-			light_cluster.addNSvertices(graph.getVertex(625, 375));
-			light_cluster.addEWvertices(graph.getVertex(625, 425));
-			light_cluster.addEWvertices(graph.getVertex(675, 375));
-			light_cluster.addNSvertices(graph.getVertex(675, 425));
-			traffic_light_group.add(light_cluster);
-			*/
-			
-			/*graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 125), new Vertex(350, 125), 350));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(350, 125), new Vertex(375, 125), 25));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 125), new Vertex(375, 150), 25));*/
-			
-			/*graph.addDirectedEdge(new DirectedEdge(new Vertex(0, 75), new Vertex(375, 75), 375));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 75), new Vertex(425, 75), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 75), new Vertex(425, 125), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 125), new Vertex(425, 375), 250));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 375), new Vertex(425, 425), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(425, 425), new Vertex(375, 425), 50));
-			graph.addDirectedEdge(new DirectedEdge(new Vertex(375, 425), new Vertex(0, 425), 375));*/
+			addTrafficLight(400, 100, Parameters.ARRANGEMENT_ESW, 1500);
+			addTrafficLight(650, 100, Parameters.ARRANGEMENT_NESW, 1000);
+			addTrafficLight(400, 400, Parameters.ARRANGEMENT_NESW, 1500);
+			addTrafficLight(650, 400, Parameters.ARRANGEMENT_WNE, 1000);
+			addTrafficLight(400, 800, Parameters.ARRANGEMENT_NES, 1500);
 		}
 		
 		private function addTrafficLight(x:int, y:int, arrangement:int, frequency:int):void

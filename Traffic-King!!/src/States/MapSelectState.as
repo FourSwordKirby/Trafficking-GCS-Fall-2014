@@ -5,6 +5,7 @@ package States {
 	
 	import Waves.*;
 
+	//Plans for the future, make the city at the top and bottom rotate
 	public class MapSelectState extends FlxState
 	{
 		/*Embedding art assets for use */
@@ -92,7 +93,6 @@ package States {
 		private function LoadPitt(): void 
 		{   
 			FlxG.play(ClickSound);
-			//FlxG.switchState(new TransitionState(new PittWave1));
 			var wave:PittWave1 = new PittWave1();
 			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
 		}
@@ -100,7 +100,6 @@ package States {
 		private function LoadNY(): void 
 		{   
 			FlxG.play(ClickSound);
-			//FlxG.switchState(new TransitionState(new PittWave1));
 			var wave:NYWave1 = new NYWave1();
 			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
 		}
@@ -108,7 +107,6 @@ package States {
 		private function LoadLondon(): void 
 		{   
 			FlxG.play(ClickSound);
-			//FlxG.switchState(new TransitionState(new PittWave1));
 			var wave:LondonWave1 = new LondonWave1();
 			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
 		}
@@ -116,7 +114,6 @@ package States {
 		private function LoadParis(): void 
 		{   
 			FlxG.play(ClickSound);
-			//FlxG.switchState(new TransitionState(new PittWave1));
 			var wave:ParisWave1 = new ParisWave1();
 			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
 		}
@@ -124,7 +121,6 @@ package States {
 		private function LoadTokyo(): void 
 		{   
 			FlxG.play(ClickSound);
-			//FlxG.switchState(new TransitionState(new PittWave1));
 			var wave:TokyoWave1 = new TokyoWave1();
 			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
 		}
@@ -132,7 +128,6 @@ package States {
 		private function LoadBeijing(): void 
 		{   
 			FlxG.play(ClickSound);
-			//FlxG.switchState(new TransitionState(new PittWave1));
 			var wave:BeijingWave1 = new BeijingWave1();
 			FlxG.switchState(new SetupState(wave, new Player()));	//switches the current state to the overworld map.
 		}
