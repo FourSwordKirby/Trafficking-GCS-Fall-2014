@@ -1,7 +1,6 @@
 package GameObjects
 {
 	import GameObjects.Buildings;
-	import mx.collections.*;
 	import org.flixel.*;
 	
 	public class Buildings extends FlxSprite

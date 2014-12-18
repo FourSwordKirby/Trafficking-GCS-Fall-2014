@@ -1,6 +1,5 @@
 package GameObjects
 {
-	import mx.collections.*;
 	import org.flixel.*;
 	
 	public class TrafficLight extends FlxSprite
